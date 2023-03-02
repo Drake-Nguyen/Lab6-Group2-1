@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+ruleRe="<([^>]*)> *:: = (.*)"
+
+main() {
+	IFS=$'\n' rulesRaw=( $(cat RULES.txt) )
+
+	declare -A rules
+
+	for rule in "${rulesRaw[@]}"; do
+		[[ $rule =~ $ruleRe ]] || continue
+
+		rstart="${BASH_REMATCH[1]}"
+		rrest="${BASH_REMATCH[2]}"
+		rules[$rstart]="$rrest"
+	done
+
+	echo "digraph rules {"
+
+	for rule in "${!rules[@]}"; do
+		printf '\t"%s"\n' "$rule"
+	done
+	echo
+	for rule in "${!rules[@]}"; do
+		# Find all the stuff that this rule references.
+		refs=(
+			$(echo "${rules[$rule]}" \
+				| tr \| $'\n' \
+				| grep -o '<[^>]*>' \
+				| sed -n 's/< *\(.*\) *>/\1/p' \
+				| sort -u)
+		)
+
+		for r in "${refs[@]}"; do
+			printf '\t"%s" -> "%s"\n' "$rule" "$r"
+		done
+	done
+
+	echo "}"
+}
+
+main "$@"
