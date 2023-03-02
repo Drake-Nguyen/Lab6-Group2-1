@@ -1,0 +1,30 @@
+<Primary>                   :: = <Identifier> | <Integer> | <Identifier> (<IDs>) | (<Expression>) | <Real> | true | false
+<Factor>                    :: = -<Primary> | <Primary>
+<Term'>                     :: = * <Factor> <Term>' | / <Factor> <Term>' | ϵ
+<Term>                      :: = <Factor> <Term>'
+<Expression>                :: = <Term> <Expression'>
+<Expression'>               :: = ϵ | +<Term> <Expression'> | -<Term> <Expression'>
+<Relop>                     :: = == | != | > | < | <= | = >
+<Condition>                 :: = <Expression> <Relop> <Expression>
+<While>                     :: = while (<Condition>) < Statement >
+<Scan>                      :: = get(<IDs>);
+<Print>                     :: = put(<Expression>);
+<Return>                    :: = return; | return <Expression>;
+<If>                        :: = if (<Condition>) < Statement > fi | if (<Condition>) < Statement > else <Statement> fi
+<Assign>                    :: = <Identifier> = <Expression>;
+<Compound>                  :: = { <Statement List> }
+<Statement>                 :: = <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Statement List>            :: = <Statement> | <Statement> <Statement List>
+<IDs>                       :: = <Identifier> | <Identifier>, <IDs>
+<Declaration>               :: = <Qualifier > <IDs>
+<Declaration List>          :: = <Declaration>; | <Declaration>; <Declaration List>
+<Opt Declaration List>      :: = <Declaration List> | <Empty>
+<Body>                      :: = { < Statement List> }
+<Qualifier>                 :: = int | boolean | real
+<Parameter>                 :: = <IDs > <Qualifier>
+<Parameter List>            :: = <Parameter> | <Parameter>, <Parameter List>
+<Opt Parameter List>        :: = <Parameter List> | <Empty>
+<Function>                  :: = function <Identifier> ( <Opt Parameter List> ) < Opt Declaration List > <Body>
+<Function Definitions>      :: = <Function> | <Function> <Function Definitions>
+<Opt Function Definitions>  :: = <Function Definitions> | <Empty>
+<Rat20F>                    :: = <Opt Function Definitions> $$ <Opt Declaration List> <Statement List> $$
