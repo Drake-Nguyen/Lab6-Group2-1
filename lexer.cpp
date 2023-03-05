@@ -229,7 +229,6 @@ token_323 lexer_323(istream &input_file) {
     return_token.lexeme_update(return_lexime_st);
     return return_token;
   } else if (input_char == '\0' || input_file.eof()) {
-    std::cout << "error";
     return return_token;
   } else // case for other seperator/operators
   {      // determine what typen of token input char is
