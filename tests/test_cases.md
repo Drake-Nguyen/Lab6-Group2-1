@@ -31,3 +31,25 @@ For the other test cases:
 
 Conditions with `>=` and `<=` were not included in the tests, because they would
 yield similar results to Relop's `>=` and `<=` test cases.
+
+## Identifier
+
+In the case of Identifiers, whitespace or empty inputs would return errors. A 
+possible example for this situation is identifying a class but the class wouldn't
+have a space between two words in its name and leaving behind an error.
+
+As for the other errors, 
+
+- `class` was not lexed properly most likely due to it being a reserved word in terms
+  of C++. 
+- `$tring` also returned an error due to the invalid character '$'  being seen as a 
+  separator while assuming the Identifier was the rest of the string 'tring'. 
+
+## Qualifiers
+
+For Qualifiers, it was a really big unsure for why the errors were appearing. This could
+be due to the way the inputs were put into the procedure_Qualifier or potentially other 
+factors.
+
+In terms of the inputs of static, int, and char, those would have been lexed properly
+under qualifiers to my knowledge but the tests return errors in those cases. 
