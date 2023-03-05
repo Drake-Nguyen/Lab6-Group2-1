@@ -7,6 +7,10 @@ Test qualifier_int...                           [ FAILED ]
 Test relop...                                   [ FAILED ]
   Case "!=":
     test_relop.hpp:12: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
+  Case ">=":
+    test_relop.hpp:16: Check tokens.size mismatch: 2 != 1... failed
+    test_relop.hpp:16: Check token [0]: lexeme mismatch: ">" != ">="... failed
+    test_relop.hpp:16: Check erroneous extra token [1]: { token: "Operator", lexeme: "=" }... failed
 Test condition...                               [ FAILED ]
   Case "true == true":
     test_condition.hpp:31: Check procedure... failed
