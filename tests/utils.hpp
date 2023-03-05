@@ -32,9 +32,11 @@ static vector<token_323> parseTokens(std::string input) {
     tokens.push_back(token);
   }
 
-  // Ignore the last token, which is a whitespace.
-  assert(tokens.back().token() == "Other Separators");
-  tokens.pop_back();
+  // Ignore the last few tokens, which are whitespaces.
+  while (tokens.back().token() == "Other Separators" &&
+         tokens.back().lexeme() == " ") {
+    tokens.pop_back();
+  }
 
   return tokens;
 }
@@ -97,7 +99,6 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
   }
 
   if (tokens.size() > expects.size()) {
-    TEST_MSG("found %ld extra tokens:", tokens.size() - expects.size());
     for (size_t i = expects.size(); i < tokens.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line,
@@ -107,7 +108,6 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
   }
 
   if (tokens.size() < expects.size()) {
-    TEST_MSG("missing %ld tokens:", expects.size() - tokens.size());
     for (size_t i = tokens.size(); i < expects.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line,
