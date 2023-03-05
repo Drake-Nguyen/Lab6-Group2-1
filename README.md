@@ -20,14 +20,24 @@ define a `void test_thing(void) {}`.
 Then, go to `tests/tests.cpp`, import the added `.hpp` file and add `{"thing",
 test_thing}` into `TEST_LIST`. This should add the test to the test suite.
 
+**Note**: You must keep the last empty test `{}` in `TEST_LIST`.
+
 After that, `make test` should run the test.
 
-Several functions are provided to assert test conditions:
+A simple test can be written as:
 
-- `TEST_CHECK(true)` - Asserts that the condition is true
-- `TEST_EQUAL(1, 1)` - Asserts that the two values are equal
+```hpp
+test(procedure_Relop, "==", {}, CURRENT_LOCATION);
+```
 
-For more information, refer to [acutest](https://github.com/mity/acutest).
+If needed, you can also provide a `std::vector<std::string>` of expected tokens
+as the third argument:
+
+```hpp
+test(procedure_Relop, "==", {{"Operator", "=="}}, CURRENT_LOCATION);
+```
+
+Refer to the existing tests for more examples.
 
 ## Cleaning
 

@@ -86,28 +86,27 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
   TEST_CASE(quote(input).c_str());
 
   auto tokens = parseTokens(input);
-  test_equal_(tokens.size(), expects.size(), file, line,
-              "tokens.size mismatch");
 
-  auto it = expects.begin();
-  for (size_t i = 0; i < min(tokens.size(), expects.size()); i++) {
-    test_equal_(tokens[i].token(), it->token, file, line,
-                "token [" + to_string(i) + "]: token mismatch");
-    test_equal_(tokens[i].lexeme(), it->lexeme, file, line,
-                "token [" + to_string(i) + "]: lexeme mismatch");
-    it++;
-  }
+  if (expects.size() != 0) {
+    test_equal_(tokens.size(), expects.size(), file, line,
+                "tokens.size mismatch");
 
-  if (tokens.size() > expects.size()) {
+    auto it = expects.begin();
+    for (size_t i = 0; i < min(tokens.size(), expects.size()); i++) {
+      test_equal_(tokens[i].token(), it->token, file, line,
+                  "token [" + to_string(i) + "]: token mismatch");
+      test_equal_(tokens[i].lexeme(), it->lexeme, file, line,
+                  "token [" + to_string(i) + "]: lexeme mismatch");
+      it++;
+    }
+
     for (size_t i = expects.size(); i < tokens.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line,
                      "erroneous extra token [%ld]: { token: %s, lexeme: %s }",
                      i, quote(v.token()).c_str(), quote(v.lexeme()).c_str());
     }
-  }
 
-  if (tokens.size() < expects.size()) {
     for (size_t i = tokens.size(); i < expects.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line,
