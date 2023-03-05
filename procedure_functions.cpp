@@ -31,7 +31,6 @@ front is needed. But for coding convenience, push_back and print out backwordly
 are used.
 */
 
-#pragma once
 #include "procedure_functions.h"
 #include <algorithm>
 #include <cctype>
