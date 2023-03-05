@@ -11,7 +11,8 @@ help:
 
 test: *.cpp *.hpp tests/*.cpp
 	$(CXX) $(CXXFLAGS) -o tests/tests.out *.cpp tests/tests.cpp
-	tests/tests.out |& tee tests/test_results.txt
+	tests/tests.out &> tests/test_results.txt || true
+	tests/tests.out # run twice for colors!
 
 clean:
 	find . -name "*.out" -type f -delete

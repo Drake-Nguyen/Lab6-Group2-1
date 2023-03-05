@@ -1,13 +1,11 @@
 #include "../lexer.hpp"
 #include "../procedure_functions.h"
 
-#include "../include/acutest.h"
 #include "./utils.hpp"
+#define macro TEST_NO_MAIN
 
 #include <map>
 #include <sstream>
-
-#define macro TEST_NO_MAIN
 
 static void test_qualifier_boolean(void) {
   test(procedure_Qualifier, "true", {{"Keyword", "true"}}, CURRENT_LOCATION);

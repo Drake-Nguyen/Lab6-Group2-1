@@ -75,23 +75,24 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
                  std::string input, std::initializer_list<ExpectToken> expects,
                  const char *file, int line) {
 
-  auto tokens = parseTokens(input);
+  std::stringstream caseName;
+  caseName << std::quoted(input);
+  TEST_CASE(caseName.str().c_str());
 
-  if (tokens.size() != expects.size()) {
-    test_equal_(tokens.size(), expects.size(), file, line);
-    return;
-  }
+  auto tokens = parseTokens(input);
+  test_equal_(tokens.size(), expects.size(), file, line,
+              "tokens.size mismatch");
 
   auto it = expects.begin();
-  for (size_t i = 0; i < tokens.size(); i++) {
+  for (size_t i = 0; i < min(tokens.size(), expects.size()); i++) {
     test_equal_(tokens[i].token(), it->token, file, line,
-                "token " + to_string(i) + " token");
+                "token " + to_string(i) + ": token mismatch");
     test_equal_(tokens[i].lexeme(), it->lexeme, file, line,
-                "token " + to_string(i) + " lexeme");
+                "token " + to_string(i) + ": lexeme mismatch");
     it++;
   }
 
   int loc = 0;
-  auto res = procedure(tokens, loc);
+  bool res = procedure(tokens, loc);
   acutest_check_(res, file, line, "%s", "procedure");
 }

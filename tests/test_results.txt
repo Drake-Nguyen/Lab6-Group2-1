@@ -1,5 +1,10 @@
-Test qualifier_boolean...                       error[ FAILED ]
-  test_qualifier.hpp:14: Check procedure... failed
-Test qualifier_int...                           error[ FAILED ]
-  test_qualifier.hpp:19: Check procedure... failed
-FAILED: 2 of 2 unit tests have failed.
+Test qualifier_boolean...                       [ FAILED ]
+  Case "true":
+    test_qualifier.hpp:11: Check procedure... failed
+Test qualifier_int...                           [ FAILED ]
+  Case "123":
+    test_qualifier.hpp:15: Check procedure... failed
+Test relop...                                   [ FAILED ]
+  Case "!=":
+    test_relop.hpp:12: Check token 0: token mismatch: "Other Separators" != "Operator"... failed
+FAILED: 3 of 3 unit tests have failed.
