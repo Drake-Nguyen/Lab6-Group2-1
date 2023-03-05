@@ -33,25 +33,23 @@ Test id...                                      [ FAILED ]
   Case "":
     test_id.hpp:17: Check procedure... failed
   Case "    ":
-    test_id.hpp:20: Check procedure... failed
+    test_id.hpp:19: Check procedure... failed
   Case "$tring":
-    test_id.hpp:21: Check tokens.size mismatch: 2 != 1... failed
-    test_id.hpp:21: Check token [0]: token mismatch: "Other Separators" != "Identifier"... failed
-    test_id.hpp:21: Check token [0]: lexeme mismatch: "$" != "$tring"... failed
-    test_id.hpp:21: Check erroneous extra token [1]: { token: "Identifier", lexeme: "tring" }... failed
-    test_id.hpp:21: Check procedure... failed
+    test_id.hpp:20: Check tokens.size mismatch: 2 != 1... failed
+    test_id.hpp:20: Check token [0]: token mismatch: "Other Separators" != "Identifier"... failed
+    test_id.hpp:20: Check token [0]: lexeme mismatch: "$" != "$tring"... failed
+    test_id.hpp:20: Check erroneous extra token [1]: { token: "Identifier", lexeme: "tring" }... failed
+    test_id.hpp:20: Check procedure... failed
 Test qualifier...                               [ FAILED ]
   Case "static":
     test_qualifier.hpp:12: Check procedure... failed
   Case "*":
     test_qualifier.hpp:13: Check procedure... failed
   Case "&":
-    test_qualifier.hpp:14: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
     test_qualifier.hpp:14: Check procedure... failed
   Case "unsigned":
     test_qualifier.hpp:15: Check procedure... failed
-  Case "string":
-    test_qualifier.hpp:17: Check token [0]: token mismatch: "Identifier" != "Keyword"... failed
+  Case "char":
     test_qualifier.hpp:17: Check procedure... failed
   Case "5":
     test_qualifier.hpp:20: Check procedure... failed
