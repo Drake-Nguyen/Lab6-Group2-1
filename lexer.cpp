@@ -172,7 +172,7 @@ std::string ending_state_id(int state) {
 }
 
 // lexer machine
-token_323 lexer_323(ifstream &input_file) {
+token_323 lexer_323(istream &input_file) {
 
   token_323 return_token;
   int state = 1;

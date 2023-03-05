@@ -113,7 +113,7 @@ public:
   }
 };
 
-token_323 lexer_323(ifstream &input_file);
+token_323 lexer_323(istream &input_file);
 
 struct symbol_table_element {
   // Identifier   MemoryLocation       Type
