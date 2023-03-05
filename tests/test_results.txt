@@ -1,0 +1,4 @@
+Test qualifier...                               error[ FAILED ]
+  test_qualifier.hpp:14: Check "An error occured. Still in accepting state" != "Keyword"... failed
+  test_qualifier.hpp:15: Check "1233" != "123"... failed
+FAILED: 1 of 1 unit tests has failed.
