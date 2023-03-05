@@ -1,9 +1,3 @@
-Test qualifier_boolean...                       [ FAILED ]
-  Case "true":
-    test_qualifier.hpp:11: Check procedure... failed
-Test qualifier_int...                           [ FAILED ]
-  Case "123":
-    test_qualifier.hpp:15: Check procedure... failed
 Test relop...                                   [ FAILED ]
   Case "!=":
     test_relop.hpp:12: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
@@ -33,4 +27,34 @@ Test condition...                               [ FAILED ]
     test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:34: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:34: Check procedure... failed
+Test id...                                      [ FAILED ]
+  Case "class":
+    test_id.hpp:16: Check procedure... failed
+  Case "":
+    test_id.hpp:17: Check procedure... failed
+  Case "    ":
+    test_id.hpp:20: Check procedure... failed
+  Case "$tring":
+    test_id.hpp:21: Check tokens.size mismatch: 2 != 1... failed
+    test_id.hpp:21: Check token [0]: token mismatch: "Other Separators" != "Identifier"... failed
+    test_id.hpp:21: Check token [0]: lexeme mismatch: "$" != "$tring"... failed
+    test_id.hpp:21: Check erroneous extra token [1]: { token: "Identifier", lexeme: "tring" }... failed
+    test_id.hpp:21: Check procedure... failed
+Test qualifier...                               [ FAILED ]
+  Case "static":
+    test_qualifier.hpp:12: Check procedure... failed
+  Case "*":
+    test_qualifier.hpp:13: Check procedure... failed
+  Case "&":
+    test_qualifier.hpp:14: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
+    test_qualifier.hpp:14: Check procedure... failed
+  Case "unsigned":
+    test_qualifier.hpp:15: Check procedure... failed
+  Case "string":
+    test_qualifier.hpp:17: Check token [0]: token mismatch: "Identifier" != "Keyword"... failed
+    test_qualifier.hpp:17: Check procedure... failed
+  Case "5":
+    test_qualifier.hpp:20: Check procedure... failed
+  Case "true":
+    test_qualifier.hpp:21: Check procedure... failed
 FAILED: 4 of 4 unit tests have failed.
