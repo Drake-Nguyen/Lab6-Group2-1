@@ -79,20 +79,20 @@ bool procedure_IDs(vector<token_323> &all_tokens,
       if (procedure_IDs(all_tokens, loc)) {
         std::string output_str = "<IDs> -> <Identifier> \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
         return_holder = true;
       } else // test failed, wrong gramma, output error message
       {
         loc--;
         loc--;
-        std::cout << "error, expecting <IDs>\n";
+        std::cerr << "error, expecting <IDs>\n";
         return_holder = false;
       }
     } else // if it is not, then is case <IDs> -> <Identifier>
     {
       std::string output_str = "<IDs> -> <Identifier>, <IDs> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
       return_holder = true;
     }
   } else // not this gramma, return false
@@ -142,7 +142,7 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
           std::string output_str = "<Primary> -> <Identifier> ( <IDs> )\n";
           all_tokens[loc_helper].rule_holder.push_back(output_str);
-          // std::cout << output_str;
+          // std::cerr << output_str;
 
           return_holder = true;
         } else {
@@ -150,19 +150,19 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
           loc--;
           loc--;
           return_holder = false;
-          std::cout << "error, expecting ) \n";
+          std::cerr << "error, expecting ) \n";
         }
       } else {
         loc--;
         loc--;
         return_holder = false;
-        std::cout << "error, expecting <IDs> \n";
+        std::cerr << "error, expecting <IDs> \n";
       }
     } else {
 
       std::string output_str = "<Primary> -> <Identifier> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
       return_holder = true;
     }
   } else if (token_holder.token() == "Integer") // <Integer>
@@ -176,7 +176,7 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
     loc++;
     std::string output_str = "<Primary> -> <Integer>  \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "(") //( <Expression> )
@@ -194,18 +194,18 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
         std::string output_str = "<Primary> -> ( <Expression> ) \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting ) \n";
+        std::cerr << "error, expecting ) \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Expression> \n";
+      std::cerr << "error, expecting <Expression> \n";
       return_holder = false;
     }
   } else if (token_holder.token() == "Real") // <Real>
@@ -215,7 +215,7 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Primary> -> <Real> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "true") // True
@@ -230,7 +230,7 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Primary> -> true \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "false") // false
@@ -246,7 +246,7 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Primary> -> false \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
@@ -277,19 +277,19 @@ bool procedure_Factor(vector<token_323> &all_tokens, int &loc) {
 
       std::string output_str = "<Factor> -> -<Primary> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
       loc--;
-      std::cout << "error, expecting <Primary> \n";
+      std::cerr << "error, expecting <Primary> \n";
       return_holder = false;
     }
   } else if (procedure_Primary(all_tokens, loc)) {
 
     std::string output_str = "<Factor> -> <Primary> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
@@ -327,18 +327,18 @@ bool procedure_Term_q(vector<token_323> &all_tokens, int &loc) {
       if (procedure_Term_q(all_tokens, loc)) {
         std::string output_str = "<Term'> -> * <Factor> <Term>' \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Term>' \n";
+        std::cerr << "error, expecting <Term>' \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Factor> \n";
+      std::cerr << "error, expecting <Factor> \n";
       return_holder = false;
     }
   } else if (token_holder.lexeme() == "/") //* <Factor> <Term>'
@@ -356,25 +356,25 @@ bool procedure_Term_q(vector<token_323> &all_tokens, int &loc) {
       if (procedure_Term_q(all_tokens, loc)) {
         std::string output_str = "<Term'> -> / <Factor> <Term>' \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Term>' \n";
+        std::cerr << "error, expecting <Term>' \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Factor> \n";
+      std::cerr << "error, expecting <Factor> \n";
       return_holder = false;
     }
   } else // ϵ
   {
     std::string output_str = "<Term'>  -> ϵ \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   }
@@ -400,12 +400,12 @@ bool procedure_Term(vector<token_323> &all_tokens, int &loc) {
 
       std::string output_str = "<Term> -> <Factor> <Term>' \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
       loc--;
-      std::cout << "error, expecting <Term>' \n";
+      std::cerr << "error, expecting <Term>' \n";
       return_holder = false;
     }
   } else {
@@ -433,12 +433,12 @@ bool procedure_Expression(vector<token_323> &all_tokens, int &loc) {
 
       std::string output_str = "<Expression>  -> <Term> <Expression'> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
       loc--;
-      std::cout << "error, expecting <Expression'> \n";
+      std::cerr << "error, expecting <Expression'> \n";
       return_holder = false;
     }
   } else {
@@ -476,18 +476,18 @@ bool procedure_Expression_q(vector<token_323> &all_tokens, int &loc) {
 
         std::string output_str = "<Expression'>  -> + <Term> <Expression'> \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Expression'> \n";
+        std::cerr << "error, expecting <Expression'> \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Term> \n";
+      std::cerr << "error, expecting <Term> \n";
       return_holder = false;
     }
   } else if (token_holder.lexeme() == "-") //-<Term> < Expression'>
@@ -504,25 +504,25 @@ bool procedure_Expression_q(vector<token_323> &all_tokens, int &loc) {
 
         std::string output_str = "<Expression'>  -> - <Term> <Expression'> \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Expression'> \n";
+        std::cerr << "error, expecting <Expression'> \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Term> \n";
+      std::cerr << "error, expecting <Term> \n";
       return_holder = false;
     }
   } else {
 
     std::string output_str = "<Expression'>  -> ϵ \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   }
@@ -553,7 +553,7 @@ bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Relop> -> == \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "!=") {
@@ -566,7 +566,7 @@ bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Relop> -> != \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == ">") {
@@ -579,7 +579,7 @@ bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Relop> -> > \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "<") {
@@ -592,7 +592,7 @@ bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Relop> -> < \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "<=") {
@@ -610,7 +610,7 @@ bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Relop> -> <= \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "=>") {
@@ -628,7 +628,7 @@ bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Relop> -> => \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
@@ -658,18 +658,18 @@ bool procedure_Condition(vector<token_323> &all_tokens, int &loc) {
         std::string output_str =
             "<Condition> -> <Expression> <Relop> <Expression> \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Expression> \n";
+        std::cerr << "error, expecting <Expression> \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Relop> \n";
+      std::cerr << "error, expecting <Relop> \n";
       return_holder = false;
     }
   } else {
@@ -724,7 +724,7 @@ bool procedure_While(vector<token_323> &all_tokens, int &loc) {
             std::string output_str =
                 "<While> -> while (<Condition>) < Statement > \n";
             all_tokens[loc_helper].rule_holder.push_back(output_str);
-            // std::cout << output_str;
+            // std::cerr << output_str;
 
             return_holder = true;
           } else {
@@ -732,25 +732,25 @@ bool procedure_While(vector<token_323> &all_tokens, int &loc) {
             loc--;
             loc--;
             loc--;
-            std::cout << "error, expecting < Statement > \n";
+            std::cerr << "error, expecting < Statement > \n";
             return_holder = false;
           }
         } else {
           loc--;
           loc--;
           loc--;
-          std::cout << "error, expecting ) \n";
+          std::cerr << "error, expecting ) \n";
           return_holder = false;
         }
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Condition> \n";
+        std::cerr << "error, expecting <Condition> \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting ( \n";
+      std::cerr << "error, expecting ( \n";
       return_holder = false;
     }
   } else {
@@ -814,7 +814,7 @@ bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
 
             std::string output_str = "<Scan> -> get(<IDs>); \n";
             all_tokens[loc_helper].rule_holder.push_back(output_str);
-            // std::cout << output_str;
+            // std::cerr << output_str;
 
             return_holder = true;
           } else {
@@ -822,25 +822,25 @@ bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
             loc--;
             loc--;
             loc--;
-            std::cout << "error, expecting ; \n";
+            std::cerr << "error, expecting ; \n";
             return_holder = false;
           }
         } else {
           loc--;
           loc--;
           loc--;
-          std::cout << "error, expecting ) \n";
+          std::cerr << "error, expecting ) \n";
           return_holder = false;
         }
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <IDs> \n";
+        std::cerr << "error, expecting <IDs> \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting ( \n";
+      std::cerr << "error, expecting ( \n";
       return_holder = false;
     }
   } else {
@@ -890,7 +890,7 @@ bool procedure_Print(vector<token_323> &all_tokens, int &loc) {
 
             std::string output_str = "<Print> -> put(<Expression>); \n";
             all_tokens[loc_helper].rule_holder.push_back(output_str);
-            // std::cout << output_str;
+            // std::cerr << output_str;
 
             return_holder = true;
           } else {
@@ -898,25 +898,25 @@ bool procedure_Print(vector<token_323> &all_tokens, int &loc) {
             loc--;
             loc--;
             loc--;
-            std::cout << "error, expecting ; \n";
+            std::cerr << "error, expecting ; \n";
             return_holder = false;
           }
         } else {
           loc--;
           loc--;
           loc--;
-          std::cout << "error, expecting ) \n";
+          std::cerr << "error, expecting ) \n";
           return_holder = false;
         }
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Expression> \n";
+        std::cerr << "error, expecting <Expression> \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting ( \n";
+      std::cerr << "error, expecting ( \n";
       return_holder = false;
     }
   } else {
@@ -949,7 +949,7 @@ bool procedure_Return(vector<token_323> &all_tokens, int &loc) {
 
       std::string output_str = "<Return> -> return; \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else if (procedure_Expression(all_tokens, loc)) {
@@ -960,18 +960,18 @@ bool procedure_Return(vector<token_323> &all_tokens, int &loc) {
 
         std::string output_str = "<Return> -> return <Expression>; \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting ; \n";
+        std::cerr << "error, expecting ; \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting ; or <Expression> \n";
+      std::cerr << "error, expecting ; or <Expression> \n";
       return_holder = false;
     }
   } else {
@@ -1031,7 +1031,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
               std::string output_str =
                   "<If> -> if (<Condition>) < Statement > fi\n";
               all_tokens[loc_helper].rule_holder.push_back(output_str);
-              // std::cout << output_str;
+              // std::cerr << output_str;
 
               return_holder = true;
             } else if (token_holder.lexeme() ==
@@ -1051,7 +1051,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
                   std::string output_str =
                       "if (<Condition>) < Statement > else  <Statement>  fi \n";
                   all_tokens[loc_helper].rule_holder.push_back(output_str);
-                  // std::cout << output_str;
+                  // std::cerr << output_str;
 
                   return_holder = true;
                 } else {
@@ -1062,7 +1062,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
                   loc--;
                   loc--;
                   loc--;
-                  std::cout << "error, expecting fi \n";
+                  std::cerr << "error, expecting fi \n";
                   return_holder = false;
                 }
               } else {
@@ -1072,7 +1072,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
                 loc--;
                 loc--;
                 loc--;
-                std::cout << "error, expecting < Statement >  \n";
+                std::cerr << "error, expecting < Statement >  \n";
                 return_holder = false;
               }
             } else {
@@ -1081,7 +1081,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
               loc--;
               loc--;
               loc--;
-              std::cout << "error, expecting fi or else  \n";
+              std::cerr << "error, expecting fi or else  \n";
               return_holder = false;
             }
           } else {
@@ -1089,25 +1089,25 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
             loc--;
             loc--;
             loc--;
-            std::cout << "error, expecting < Statement >  \n";
+            std::cerr << "error, expecting < Statement >  \n";
             return_holder = false;
           }
         } else {
           loc--;
           loc--;
           loc--;
-          std::cout << "error, expecting )  \n";
+          std::cerr << "error, expecting )  \n";
           return_holder = false;
         }
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Condition>  \n";
+        std::cerr << "error, expecting <Condition>  \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting ( \n";
+      std::cerr << "error, expecting ( \n";
       return_holder = false;
     }
   } else {
@@ -1154,31 +1154,31 @@ bool procedure_Assign(vector<token_323> &all_tokens, int &loc) {
 
           std::string output_str = "<Identifier> = <Expression>; \n";
           all_tokens[loc_helper].rule_holder.push_back(output_str);
-          // std::cout << output_str;
+          // std::cerr << output_str;
 
           return_holder = true;
         } else {
           loc--;
           loc--;
           loc--;
-          std::cout << "error, expecting ; \n";
+          std::cerr << "error, expecting ; \n";
           return_holder = false;
         }
 
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Expression> \n";
+        std::cerr << "error, expecting <Expression> \n";
         return_holder = false;
       }
     } else {
 
-      std::cout << "error, expecting = \n";
-      std::cout << token_holder.lexeme() << "\n";
+      std::cerr << "error, expecting = \n";
+      std::cerr << token_holder.lexeme() << "\n";
       token_holder = all_tokens[loc + 1];
-      std::cout << token_holder.lexeme() << "\n";
+      std::cerr << token_holder.lexeme() << "\n";
       token_holder = all_tokens[loc - 1];
-      std::cout << token_holder.lexeme() << "\n";
+      std::cerr << token_holder.lexeme() << "\n";
       return_holder = false;
       loc--;
     }
@@ -1214,18 +1214,18 @@ bool procedure_Compound(vector<token_323> &all_tokens, int &loc) {
 
         std::string output_str = "<Compound> -> { < Statement List> } \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting } \n";
+        std::cerr << "error, expecting } \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting < Statement List> \n";
+      std::cerr << "error, expecting < Statement List> \n";
       return_holder = false;
     }
   } else {
@@ -1254,7 +1254,7 @@ bool procedure_Statement(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Statement> -> <Compound> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (procedure_Assign(all_tokens, loc)) // <Assign>
@@ -1262,7 +1262,7 @@ bool procedure_Statement(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Statement> -> <Assign> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (procedure_If(all_tokens, loc)) // <If>
@@ -1270,7 +1270,7 @@ bool procedure_Statement(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Statement> -> <If>  \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (procedure_Return(all_tokens, loc)) // <Return>
@@ -1278,7 +1278,7 @@ bool procedure_Statement(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Statement> -> <Return> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (procedure_Print(all_tokens, loc)) //<Print>
@@ -1286,7 +1286,7 @@ bool procedure_Statement(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Statement> -> <Print> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (procedure_Scan(all_tokens, loc)) // <Scan>
@@ -1294,14 +1294,14 @@ bool procedure_Statement(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Statement> -> <Scan> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (procedure_While(all_tokens, loc)) //<While>
   {
     std::string output_str = "<Statement> -> <While> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
@@ -1331,13 +1331,13 @@ bool procedure_Statement_List(vector<token_323> &all_tokens, int &loc) {
       std::string output_str =
           "<Statement List> -> <Statement> <Statement List>\n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
       std::string output_str = "<Statement List> -> <Statement> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     }
@@ -1367,12 +1367,12 @@ bool procedure_Declaration(vector<token_323> &all_tokens, int &loc) {
 
       std::string output_str = "<Declaration> -> <Qualifier > <IDs> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
       loc--;
-      std::cout << "error, expecting <IDs> \n";
+      std::cerr << "error, expecting <IDs> \n";
       return_holder = false;
     }
   } else {
@@ -1407,20 +1407,20 @@ bool procedure_Declaration_List(vector<token_323> &all_tokens, int &loc) {
         std::string output_str =
             "<Declaration List> -> <Declaration>; <Declaration List> \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
 
         std::string output_str = "<Declaration List> -> <Declaration>; \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       }
     } else {
       loc--;
-      std::cout << "error, expecting ; \n";
+      std::cerr << "error, expecting ; \n";
       return_holder = false;
     }
   } else {
@@ -1447,13 +1447,13 @@ bool procedure_Opt_Declaration_List(vector<token_323> &all_tokens, int &loc) {
 
     std::string output_str = "<Opt Declaration List> -> <Declaration List> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
     std::string output_str = "<Opt Declaration List> -> <Empty> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   }
@@ -1486,18 +1486,18 @@ bool procedure_Body(vector<token_323> &all_tokens, int &loc) {
 
         std::string output_str = "<Body> -> { < Statement List> } \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting } \n";
+        std::cerr << "error, expecting } \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting < Statement List> \n";
+      std::cerr << "error, expecting < Statement List> \n";
       return_holder = false;
     }
   } else {
@@ -1529,7 +1529,7 @@ bool procedure_Qualifier(vector<token_323> &all_tokens,
 
     std::string output_str = "<Qualifier> -> int \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "boolean") {
@@ -1538,7 +1538,7 @@ bool procedure_Qualifier(vector<token_323> &all_tokens,
 
     std::string output_str = "<Qualifier> -> boolean \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else if (token_holder.lexeme() == "real") {
@@ -1547,7 +1547,7 @@ bool procedure_Qualifier(vector<token_323> &all_tokens,
 
     std::string output_str = "<Qualifier> -> real \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
@@ -1578,12 +1578,12 @@ bool procedure_Parameter(vector<token_323> &all_tokens,
 
       std::string output_str = "<Parameter> -> <IDs> <Qualifier> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
       loc--;
-      std::cout << "error, expecting <Qualifier> \n";
+      std::cerr << "error, expecting <Qualifier> \n";
       return_holder = false;
     }
   } else {
@@ -1616,19 +1616,19 @@ bool procedure_Parameter_List(vector<token_323> &all_tokens, int &loc) {
         std::string output_str =
             "<Parameter List> -> <Parameter>, <Parameter List> \n";
         all_tokens[loc_helper].rule_holder.push_back(output_str);
-        // std::cout << output_str;
+        // std::cerr << output_str;
 
         return_holder = true;
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting <Parameter List> \n";
+        std::cerr << "error, expecting <Parameter List> \n";
         return_holder = false;
       }
     } else {
       std::string output_str = "<Parameter List> -> <Parameter> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     }
@@ -1655,13 +1655,13 @@ bool procedure_Opt_Parameter_List(vector<token_323> &all_tokens, int &loc) {
   if (procedure_Parameter_List(all_tokens, loc)) {
     std::string output_str = "<Opt Parameter List> -> <Parameter List> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
     std::string output_str = "<Opt Parameter List> -> <Empty> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   }
@@ -1710,7 +1710,7 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
                     "<Function> -> function <Identifier> ( <Opt Parameter "
                     "List> ) < Opt Declaration List > <Body> \n";
                 all_tokens[loc_helper].rule_holder.push_back(output_str);
-                // std::cout << output_str;
+                // std::cerr << output_str;
 
                 return_holder = true;
               } else {
@@ -1720,7 +1720,7 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
                 loc--;
                 loc--;
                 loc--;
-                std::cout << "error, expecting <Body> \n";
+                std::cerr << "error, expecting <Body> \n";
                 return_holder = false;
               }
             } else {
@@ -1729,7 +1729,7 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
               loc--;
               loc--;
               loc--;
-              std::cout << "error, expecting < Opt Declaration List > \n";
+              std::cerr << "error, expecting < Opt Declaration List > \n";
               return_holder = false;
             }
           } else {
@@ -1737,25 +1737,25 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
             loc--;
             loc--;
             loc--;
-            std::cout << "error, expecting ) \n";
+            std::cerr << "error, expecting ) \n";
             return_holder = false;
           }
         } else {
           loc--;
           loc--;
           loc--;
-          std::cout << "error, expecting <Opt Parameter List> \n";
+          std::cerr << "error, expecting <Opt Parameter List> \n";
           return_holder = false;
         }
       } else {
         loc--;
         loc--;
-        std::cout << "error, expecting ( \n";
+        std::cerr << "error, expecting ( \n";
         return_holder = false;
       }
     } else {
       loc--;
-      std::cout << "error, expecting <Identifier>\n";
+      std::cerr << "error, expecting <Identifier>\n";
       return_holder = false;
     }
   } else {
@@ -1763,7 +1763,7 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
   }
 
   if (return_holder == true) {
-    std::cout << "Error, Function is not supported by simplified Rat20F\n";
+    std::cerr << "Error, Function is not supported by simplified Rat20F\n";
     return_holder = false;
   }
   return return_holder;
@@ -1790,14 +1790,14 @@ bool procedure_Function_Definitions(vector<token_323> &all_tokens, int &loc) {
       std::string output_str =
           "<Function Definitions> -> <Function Definitions>\n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     } else {
 
       std::string output_str = "<Function Definitions> -> <Function>\n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
-      // std::cout << output_str;
+      // std::cerr << output_str;
 
       return_holder = true;
     }
@@ -1829,14 +1829,14 @@ bool procedure_Opt_Function_Definitions(vector<token_323> &all_tokens,
     std::string output_str =
         "<Opt Function Definitions> -> <Function Definitions> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   } else {
 
     std::string output_str = "<Opt Function Definitions> -> <Empty> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
-    // std::cout << output_str;
+    // std::cerr << output_str;
 
     return_holder = true;
   }
@@ -1860,23 +1860,23 @@ bool procedure_Rat20F(vector<token_323> &all_tokens, int &loc) {
   token_323 token_holder;
   token_holder = all_tokens[loc];
   if (procedure_Opt_Function_Definitions(all_tokens, loc)) {
-    // std::cout << "\n" << "test seg 1" << "\n\n";
+    // std::cerr << "\n" << "test seg 1" << "\n\n";
     token_holder = all_tokens[loc];
     if (token_holder.lexeme() == "$$") {
-      // std::cout << "\n" << "$$" << "\n\n";
-      // std::cout << "\n" << "test seg 2" << "\n\n";
+      // std::cerr << "\n" << "$$" << "\n\n";
+      // std::cerr << "\n" << "test seg 2" << "\n\n";
       // token_holder.token_print_helper();
       loc++;
       if (procedure_Opt_Declaration_List(all_tokens, loc)) {
-        // std::cout << "\n" << "test seg 3" << "\n\n";
-        // std::cout << "\n" << all_tokens[loc].lexeme() << all_tokens[loc -
+        // std::cerr << "\n" << "test seg 3" << "\n\n";
+        // std::cerr << "\n" << all_tokens[loc].lexeme() << all_tokens[loc -
         // 1].lexeme() << "\n" << all_tokens[loc + 1].lexeme() << "\n" <<
         // "\n\n";
         if (procedure_Statement_List(all_tokens, loc)) {
-          // std::cout << "\n" << "test seg 4" << "\n\n";
+          // std::cerr << "\n" << "test seg 4" << "\n\n";
           token_holder = all_tokens[loc];
           if (token_holder.lexeme() == "$$") {
-            // std::cout << "\n" << "test seg 5" << "\n\n";
+            // std::cerr << "\n" << "test seg 5" << "\n\n";
             // token_holder.token_print_helper();
             loc++;
             if (loc >= all_tokens.size()) {
@@ -1885,7 +1885,7 @@ bool procedure_Rat20F(vector<token_323> &all_tokens, int &loc) {
                   "<Rat20F> -> <Opt Function Definitions>   $$  <Opt "
                   "Declaration List>  <Statement List>  $$ \n";
               all_tokens[loc_helper].rule_holder.push_back(output_str);
-              // std::cout << output_str;
+              // std::cerr << output_str;
 
               return true;
             } else {
@@ -1894,7 +1894,7 @@ bool procedure_Rat20F(vector<token_323> &all_tokens, int &loc) {
               // loc--;
               // loc--;
               // loc--;
-              std::cout << "\n"
+              std::cerr << "\n"
                         << "should end here"
                         << "\n\n";
               procedure_Rat20F(all_tokens, loc);
@@ -1905,8 +1905,8 @@ bool procedure_Rat20F(vector<token_323> &all_tokens, int &loc) {
             loc--;
             loc--;
             return_holder = false;
-            std::cout << "error, expecting $$ \n";
-            // std::cout << "\n" << all_tokens[loc].lexeme() << "\n" <<
+            std::cerr << "error, expecting $$ \n";
+            // std::cerr << "\n" << all_tokens[loc].lexeme() << "\n" <<
             // all_tokens[loc -1].lexeme() << "\n"<< all_tokens[loc+1].lexeme()
             // << "\n" << "\n\n";
           }
@@ -1915,21 +1915,21 @@ bool procedure_Rat20F(vector<token_323> &all_tokens, int &loc) {
           loc--;
           loc--;
           return_holder = false;
-          std::cout << "\nerror, expecting <Statement List> \n\n";
+          std::cerr << "\nerror, expecting <Statement List> \n\n";
         }
       } else {
         loc--;
         loc--;
         return_holder = false;
-        std::cout << "\nerror, expecting <Opt Declaration List> \n\n";
+        std::cerr << "\nerror, expecting <Opt Declaration List> \n\n";
       }
     } else {
       loc--;
       return_holder = false;
-      std::cout << "\nerror, expecting $$ \n\n";
+      std::cerr << "\nerror, expecting $$ \n\n";
     }
   } else {
-    std::cout << "\nerror, expecting <Opt Function Definitions> \n\n";
+    std::cerr << "\nerror, expecting <Opt Function Definitions> \n\n";
     return_holder = false;
   }
 

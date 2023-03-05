@@ -39,15 +39,21 @@ static vector<token_323> parseTokens(std::string input) {
   return tokens;
 }
 
+static std::string quote(std::string s) {
+  std::stringstream ss;
+  ss << std::quoted(s);
+  return ss.str();
+}
+
 static void test_equal_(std::string a, std::string b, const char *file,
                         int line, const std::string what = "") {
   if (a != b) {
-    std::stringstream ss;
+    std::string err;
     if (what != "") {
-      ss << what << ": ";
+      err = what + ": ";
     }
-    ss << std::quoted(a) << " != " << std::quoted(b);
-    acutest_check_(false, file, line, "%s", ss.str().c_str());
+    err += quote(a) + " != " + quote(b);
+    acutest_check_(false, file, line, "%s", err.c_str());
   }
 }
 
@@ -75,9 +81,7 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
                  std::string input, std::initializer_list<ExpectToken> expects,
                  const char *file, int line) {
 
-  std::stringstream caseName;
-  caseName << std::quoted(input);
-  TEST_CASE(caseName.str().c_str());
+  TEST_CASE(quote(input).c_str());
 
   auto tokens = parseTokens(input);
   test_equal_(tokens.size(), expects.size(), file, line,
@@ -86,10 +90,30 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
   auto it = expects.begin();
   for (size_t i = 0; i < min(tokens.size(), expects.size()); i++) {
     test_equal_(tokens[i].token(), it->token, file, line,
-                "token " + to_string(i) + ": token mismatch");
+                "token [" + to_string(i) + "]: token mismatch");
     test_equal_(tokens[i].lexeme(), it->lexeme, file, line,
-                "token " + to_string(i) + ": lexeme mismatch");
+                "token [" + to_string(i) + "]: lexeme mismatch");
     it++;
+  }
+
+  if (tokens.size() > expects.size()) {
+    TEST_MSG("found %ld extra tokens:", tokens.size() - expects.size());
+    for (size_t i = expects.size(); i < tokens.size(); i++) {
+      auto v = tokens[i];
+      acutest_check_(false, file, line,
+                     "erroneous extra token [%ld]: { token: %s, lexeme: %s }",
+                     i, quote(v.token()).c_str(), quote(v.lexeme()).c_str());
+    }
+  }
+
+  if (tokens.size() < expects.size()) {
+    TEST_MSG("missing %ld tokens:", expects.size() - tokens.size());
+    for (size_t i = tokens.size(); i < expects.size(); i++) {
+      auto v = tokens[i];
+      acutest_check_(false, file, line,
+                     "erroneous missing token [%ld]: { token: %s, lexeme: %s }",
+                     i, quote(v.token()).c_str(), quote(v.lexeme()).c_str());
+    }
   }
 
   int loc = 0;
