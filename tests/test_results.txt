@@ -6,5 +6,27 @@ Test qualifier_int...                           [ FAILED ]
     test_qualifier.hpp:15: Check procedure... failed
 Test relop...                                   [ FAILED ]
   Case "!=":
-    test_relop.hpp:12: Check token 0: token mismatch: "Other Separators" != "Operator"... failed
-FAILED: 3 of 3 unit tests have failed.
+    test_relop.hpp:12: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
+Test condition...                               [ FAILED ]
+  Case "true == true":
+    test_condition.hpp:31: Check procedure... failed
+  Case "true!=false":
+    test_condition.hpp:32: Check token [1]: token mismatch: "Other Separators" != "Operator"... failed
+  Case "true != false":
+    test_condition.hpp:32: Check token [2]: token mismatch: "Other Separators" != "Operator"... failed
+    test_condition.hpp:32: Check procedure... failed
+  Case "123<345":
+    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+  Case "123 < 345":
+    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check procedure... failed
+  Case "456>123":
+    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+  Case "456 > 123":
+    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check procedure... failed
+FAILED: 4 of 4 unit tests have failed.
