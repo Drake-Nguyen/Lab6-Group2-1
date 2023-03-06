@@ -20,20 +20,30 @@
 static vector<token_323> parseTokens(std::string input) {
   // lexer_323 is hopelessly broken and does not treat EOF right. We can add a
   // whitespace to prevent EOF from being treated as an error.
-  std::stringstream ss(input + " ");
-
+  std::stringstream ss(input + "\n");
   std::vector<token_323> tokens;
-  while (true) {
+
+  // Prevent lexer_323 from hanging indefinitely.
+  int max = 200 + input.size();
+  int i = 0;
+  while (i < max) {
     auto token = lexer_323(ss);
     if (token.token() == "none") {
       break;
     }
     tokens.push_back(token);
+    i++;
   }
 
-  // Ignore the last few tokens, which are whitespaces.
-  while (tokens.back().token() == "Other Separators" &&
-         tokens.back().lexeme() == " ") {
+  if (i == max) {
+    throw std::runtime_error("lexer_323 is broken");
+  }
+
+  // Ignore the last few tokens, which are whitespaces or <none>s.
+  while (
+      (tokens.back().token() == "none" && tokens.back().lexeme() == "none") ||
+      (tokens.back().token() == "Other Separators" &&
+       tokens.back().lexeme() == "\n")) {
     tokens.pop_back();
   }
 
@@ -43,7 +53,14 @@ static vector<token_323> parseTokens(std::string input) {
 static std::string quote(std::string s) {
   std::stringstream ss;
   ss << std::quoted(s);
-  return ss.str();
+  s = ss.str();
+
+  std::string e(s);
+  for (auto i = e.find('\n'); i != std::string::npos; i = e.find('\n')) {
+    e.replace(i, 1, "\\n");
+  }
+
+  return e;
 }
 
 static void test_equal_(std::string a, std::string b, const char *file,
@@ -101,16 +118,15 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
 
     for (size_t i = expects.size(); i < tokens.size(); i++) {
       auto v = tokens[i];
-      acutest_check_(false, file, line,
-                     "erroneous extra token [%ld]: { token: %s, lexeme: %s }",
+      acutest_check_(false, file, line, "erroneous extra token [%ld]: {%s, %s}",
                      i, quote(v.token()).c_str(), quote(v.lexeme()).c_str());
     }
 
     for (size_t i = tokens.size(); i < expects.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line,
-                     "erroneous missing token [%ld]: { token: %s, lexeme: %s }",
-                     i, quote(v.token()).c_str(), quote(v.lexeme()).c_str());
+                     "erroneous missing token [%ld]: {%s, %s}", i,
+                     quote(v.token()).c_str(), quote(v.lexeme()).c_str());
     }
   }
 
