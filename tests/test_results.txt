@@ -80,4 +80,13 @@ Test primary...                                 [ FAILED ]
     test_primary.hpp:21: Check procedure... failed
   Case "    ":
     test_primary.hpp:22: Check procedure... failed
-FAILED: 6 of 6 unit tests have failed.
+Test expression...                              [ FAILED ]
+  Case "":
+    test_expression.hpp:11: Check procedure... failed
+  Case "int a = b;":
+    test_expression.hpp:13: Check procedure... failed
+  Case "int a;":
+    test_expression.hpp:14: Check procedure... failed
+  Case "a+=10":
+    test_expression.hpp:15: Check procedure... failed
+FAILED: 7 of 7 unit tests have failed.
