@@ -53,3 +53,15 @@ factors.
 
 In terms of the inputs of static, int, and char, those would have been lexed properly
 under qualifiers to my knowledge but the tests return errors in those cases. 
+
+## Expression
+Uncertian of the failure of the test cases. Although the test cases were a failure,
+there was a single test case that passed alone, but did not show if combined with other 
+test cases.
+
+For the tests cases, it should have been lexed properly as there was no expected fail test
+cases.
+
+## Parameter
+Similar to Expression test cases. Uncertain of failure clause with no expected failure test
+cases. Test cases should have been lexed properly. No successful test case unlike Expression.
