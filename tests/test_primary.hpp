@@ -17,7 +17,7 @@ static void test_primary(void)
     test(procedure_Primary, "temp+i", {{"Identifier", "temp"}, {"Operator", "+"}, {"Identifier", "i"}}, CURRENT_LOCATION);
     test(procedure_Primary, "", {}, CURRENT_LOCATION);
     test(procedure_Primary, "3.14", {{"Real", "3.14"}}, CURRENT_LOCATION);
-    test(procedure_Primary, "6.022e23", {{"Real", "6.022e23"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "6.0222331231123146546", {{"Real", "6.0222331231123146546"}}, CURRENT_LOCATION);
     test(procedure_Primary, "1.0E-5", {{"Real", "1.0E-5"}}, CURRENT_LOCATION);
     test(procedure_Primary, "    ", {}, CURRENT_LOCATION);
     test(procedure_Primary, "true", {{"Keyword", "true"}}, CURRENT_LOCATION);
