@@ -7,6 +7,7 @@
 #include "./test_assign.hpp"
 #include "./test_primary.hpp"
 #include "./test_expression.hpp"
+#include "./test_parameter.hpp"
 
 TEST_LIST = {
     {"relop", test_relop},
@@ -16,5 +17,6 @@ TEST_LIST = {
     {"assign", test_assign},
     {"primary", test_primary},
     {"expression", test_expression},
+    {"parameters", test_parameter},
     {},
 };
