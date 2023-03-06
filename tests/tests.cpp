@@ -5,6 +5,7 @@
 #include "./test_qualifier.hpp"
 #include "./test_relop.hpp"
 #include "./test_assign.hpp"
+#include "./test_primary.hpp"
 
 TEST_LIST = {
     {"relop", test_relop},
@@ -12,5 +13,6 @@ TEST_LIST = {
     {"id", test_id},
     {"qualifier", test_qualifier},
     {"assign", test_assign},
+    {"primary", test_primary},
     {},
 };

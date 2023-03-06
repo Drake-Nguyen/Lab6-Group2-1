@@ -1,0 +1,76 @@
+Test relop...                                   [ FAILED ]
+  Case "!=":
+    test_relop.hpp:12: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
+  Case ">=":
+    test_relop.hpp:16: Check tokens.size mismatch: 2 != 1... failed
+    test_relop.hpp:16: Check token [0]: lexeme mismatch: ">" != ">="... failed
+    test_relop.hpp:16: Check erroneous extra token [1]: { token: "Operator", lexeme: "=" }... failed
+Test condition...                               [ FAILED ]
+  Case "true == true":
+    test_condition.hpp:31: Check procedure... failed
+  Case "true!=false":
+    test_condition.hpp:32: Check token [1]: token mismatch: "Other Separators" != "Operator"... failed
+  Case "true != false":
+    test_condition.hpp:32: Check token [2]: token mismatch: "Other Separators" != "Operator"... failed
+    test_condition.hpp:32: Check procedure... failed
+  Case "123<345":
+    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+  Case "123 < 345":
+    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check procedure... failed
+  Case "456>123":
+    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+  Case "456 > 123":
+    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check procedure... failed
+Test id...                                      [ FAILED ]
+  Case "class":
+    test_id.hpp:16: Check procedure... failed
+  Case "":
+    test_id.hpp:17: Check procedure... failed
+  Case "    ":
+    test_id.hpp:19: Check procedure... failed
+  Case "$tring":
+    test_id.hpp:20: Check tokens.size mismatch: 2 != 1... failed
+    test_id.hpp:20: Check token [0]: token mismatch: "Other Separators" != "Identifier"... failed
+    test_id.hpp:20: Check token [0]: lexeme mismatch: "$" != "$tring"... failed
+    test_id.hpp:20: Check erroneous extra token [1]: { token: "Identifier", lexeme: "tring" }... failed
+    test_id.hpp:20: Check procedure... failed
+Test qualifier...                               [ FAILED ]
+  Case "static":
+    test_qualifier.hpp:12: Check procedure... failed
+  Case "*":
+    test_qualifier.hpp:13: Check procedure... failed
+  Case "&":
+    test_qualifier.hpp:14: Check procedure... failed
+  Case "unsigned":
+    test_qualifier.hpp:15: Check procedure... failed
+  Case "char":
+    test_qualifier.hpp:17: Check procedure... failed
+  Case "5":
+    test_qualifier.hpp:20: Check procedure... failed
+  Case "true":
+    test_qualifier.hpp:21: Check procedure... failed
+Test assign...                                  [ FAILED ]
+  Case "a = 123;":
+    test_assign.hpp:12: Check procedure... failed
+  Case "":
+    test_assign.hpp:15: Check procedure... failed
+  Case "a = ;":
+    test_assign.hpp:16: Check procedure... failed
+  Case "a = 123":
+    test_assign.hpp:17: Check procedure... failed
+  Case "a 123;":
+    test_assign.hpp:18: Check procedure... failed
+  Case "123 = a;":
+    test_assign.hpp:19: Check procedure... failed
+Test primary...                                 [ FAILED ]
+  Case "":
+    test_primary.hpp:18: Check procedure... failed
+  Case "    ":
+    test_primary.hpp:20: Check procedure... failed
+FAILED: 6 of 6 unit tests have failed.

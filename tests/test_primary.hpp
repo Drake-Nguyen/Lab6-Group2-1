@@ -11,12 +11,13 @@ static void test_primary(void)
 {
 
     // test (procedure_Primary, "",{}, CURRENT_LOCATION);
-    test(procedure_Primary, "a", {{"Identifier", "a"}}, CURRENT_LOCATION);
-    test(procedure_Primary, "a,b", {{"Identifier", "a"}, {"Separator", ","}, {"Identifier", "b"}}, CURRENT_LOCATION);
-    test(procedure_Primary, "a+B", {{"Identifier", "a"}, {"Operator", "+"}, {"Identifier", "B"}}, CURRENT_LOCATION);
-    test(procedure_Primary, "class", {{"Keyword", "class"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "temp", {{"Identifier", "temp"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "10", {{"Integer", "10"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "Temp integer", {{"Identifier", "Temp"}, {"Other Separators", " "}, {"Identifier", "integer"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "temp+i", {{"Identifier", "temp"}, {"Operator", "+"}, {"Identifier", "i"}}, CURRENT_LOCATION);
     test(procedure_Primary, "", {}, CURRENT_LOCATION);
-    test(procedure_Primary, "a b", {{"Identifier", "a"}, {"Other Separators", " "}, {"Identifier", "b"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "3.14", {{"Real", "3.14"}}, CURRENT_LOCATION);
     test(procedure_Primary, "    ", {}, CURRENT_LOCATION);
-    test(procedure_Primary, "$tring", {{"Identifier", "$tring"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "true", {{"Keyword", "true"}}, CURRENT_LOCATION);
+    test(procedure_Primary, "false", {{"Keyword", "false"}}, CURRENT_LOCATION);
 }
