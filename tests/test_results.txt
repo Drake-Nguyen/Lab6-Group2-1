@@ -71,6 +71,16 @@ Test assign...                                  [ FAILED ]
 Test primary...                                 [ FAILED ]
   Case "":
     test_primary.hpp:18: Check procedure... failed
-  Case "    ":
+  Case "6.022e23":
+    test_primary.hpp:20: Check token [0]: token mismatch: "Invalid Token" != "Real"... failed
     test_primary.hpp:20: Check procedure... failed
+  Case "1.0E-5":
+    test_primary.hpp:21: Check tokens.size mismatch: 3 != 1... failed
+    test_primary.hpp:21: Check token [0]: token mismatch: "Invalid Token" != "Real"... failed
+    test_primary.hpp:21: Check token [0]: lexeme mismatch: "1.0E" != "1.0E-5"... failed
+    test_primary.hpp:21: Check erroneous extra token [1]: { token: "Operator", lexeme: "-" }... failed
+    test_primary.hpp:21: Check erroneous extra token [2]: { token: "Integer", lexeme: "5" }... failed
+    test_primary.hpp:21: Check procedure... failed
+  Case "    ":
+    test_primary.hpp:22: Check procedure... failed
 FAILED: 6 of 6 unit tests have failed.
