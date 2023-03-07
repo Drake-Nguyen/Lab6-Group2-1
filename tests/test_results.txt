@@ -1,41 +1,129 @@
 Test relop...                                   [ FAILED ]
-  Case "==":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+  Case "!=":
+    test_relop.hpp:12: Check token [0]: token mismatch: "Other Separators" != "Operator"... failed
+  Case ">=":
+    test_relop.hpp:16: Check tokens.size mismatch: 2 != 1... failed
+    test_relop.hpp:16: Check token [0]: lexeme mismatch: ">" != ">="... failed
+    test_relop.hpp:16: Check erroneous extra token [1]: {"Operator", "="}... failed
 Test condition...                               [ FAILED ]
-  Case "true==true":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+  Case "true == true":
+    test_condition.hpp:31: Check procedure... failed
+  Case "true!=false":
+    test_condition.hpp:32: Check token [1]: token mismatch: "Other Separators" != "Operator"... failed
+  Case "true != false":
+    test_condition.hpp:32: Check token [2]: token mismatch: "Other Separators" != "Operator"... failed
+    test_condition.hpp:32: Check procedure... failed
+  Case "123<345":
+    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+  Case "123 < 345":
+    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:33: Check procedure... failed
+  Case "456>123":
+    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+  Case "456 > 123":
+    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:34: Check procedure... failed
 Test id...                                      [ FAILED ]
-  Case "a":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+  Case "class":
+    test_id.hpp:16: Check procedure... failed
+  Case "":
+    test_id.hpp:17: Check procedure... failed
+  Case "    ":
+    test_id.hpp:19: Check procedure... failed
+  Case "$tring":
+    test_id.hpp:20: Check tokens.size mismatch: 2 != 1... failed
+    test_id.hpp:20: Check token [0]: token mismatch: "Other Separators" != "Identifier"... failed
+    test_id.hpp:20: Check token [0]: lexeme mismatch: "$" != "$tring"... failed
+    test_id.hpp:20: Check erroneous extra token [1]: {"Identifier", "tring"}... failed
+    test_id.hpp:20: Check procedure... failed
 Test qualifier...                               [ FAILED ]
   Case "static":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+    test_qualifier.hpp:12: Check procedure... failed
+  Case "*":
+    test_qualifier.hpp:13: Check procedure... failed
+  Case "&":
+    test_qualifier.hpp:14: Check procedure... failed
+  Case "unsigned":
+    test_qualifier.hpp:15: Check procedure... failed
+  Case "char":
+    test_qualifier.hpp:17: Check procedure... failed
+  Case "5":
+    test_qualifier.hpp:20: Check procedure... failed
+  Case "true":
+    test_qualifier.hpp:21: Check procedure... failed
 Test assign...                                  [ FAILED ]
   Case "a = 123;":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+    test_assign.hpp:12: Check procedure... failed
+  Case "":
+    test_assign.hpp:15: Check procedure... failed
+  Case "a = ;":
+    test_assign.hpp:16: Check procedure... failed
+  Case "a = 123":
+    test_assign.hpp:17: Check procedure... failed
+  Case "a 123;":
+    test_assign.hpp:18: Check procedure... failed
+  Case "123 = a;":
+    test_assign.hpp:19: Check procedure... failed
 Test primary...                                 [ FAILED ]
-  Case "temp":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+  Case "":
+    test_primary.hpp:18: Check procedure... failed
+  Case "1.0E-5":
+    test_primary.hpp:21: Check tokens.size mismatch: 3 != 1... failed
+    test_primary.hpp:21: Check token [0]: token mismatch: "Invalid Token" != "Real"... failed
+    test_primary.hpp:21: Check token [0]: lexeme mismatch: "1.0E" != "1.0E-5"... failed
+    test_primary.hpp:21: Check erroneous extra token [1]: {"Operator", "-"}... failed
+    test_primary.hpp:21: Check erroneous extra token [2]: {"Integer", "5"}... failed
+    test_primary.hpp:21: Check procedure... failed
+  Case "    ":
+    test_primary.hpp:22: Check procedure... failed
 Test expression...                              [ FAILED ]
   Case "":
     Threw std::exception... failed
       std::exception::what(): std::bad_alloc
 Test parameters...                              [ FAILED ]
   Case "a()":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+    test_parameter.hpp:11: Check procedure... failed
+  Case "a(int x, int y)":
+    test_parameter.hpp:12: Check procedure... failed
+  Case "a(10)":
+    test_parameter.hpp:13: Check procedure... failed
 Test term...                                    [ FAILED ]
-  Case "x":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
+  Case "3z/4":
+    test_term.hpp:17: Check procedure... failed
+  Case "3zz z / 4":
+    test_term.hpp:19: Check procedure... failed
 Test return...                                  [ FAILED ]
-  Case "return;":
-    Threw std::exception... failed
-      std::exception::what(): lexer_323 is broken
-FAILED: 10 of 10 unit tests have failed.
+  Case "return ;":
+    test_return.hpp:14: Check procedure... failed
+  Case "return":
+    test_return.hpp:15: Check procedure... failed
+  Case "return 2*x+3;":
+    test_return.hpp:17: Check procedure... failed
+  Case "return true;":
+    test_return.hpp:19: Check procedure... failed
+  Case "return x > 0;":
+    test_return.hpp:21: Check procedure... failed
+  Case "return x+1, y*2, z;":
+    test_return.hpp:23: Check procedure... failed
+Test declaration...                             [ FAILED ]
+  Case "int x;":
+    test_declaration.hpp:12: Check procedure... failed
+  Case "float x, y, z;":
+    test_declaration.hpp:13: Check procedure... failed
+  Case "char c, d;":
+    test_declaration.hpp:14: Check procedure... failed
+  Case "int 123;":
+    test_declaration.hpp:17: Check procedure... failed
+  Case "bool x;":
+    test_declaration.hpp:18: Check procedure... failed
+  Case "int x,;":
+    test_declaration.hpp:19: Check procedure... failed
+  Case "float x y z;":
+    test_declaration.hpp:20: Check procedure... failed
+  Case "char ,d;":
+    test_declaration.hpp:21: Check procedure... failed
+FAILED: 11 of 11 unit tests have failed.
