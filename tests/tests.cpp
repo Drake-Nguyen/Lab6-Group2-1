@@ -9,6 +9,7 @@
 #include "./test_expression.hpp"
 #include "./test_parameter.hpp"
 #include "./test_term.hpp"
+#include "./test_return.hpp"
 
 TEST_LIST = {
     {"relop", test_relop},
@@ -20,5 +21,6 @@ TEST_LIST = {
     {"expression", test_expression},
     {"parameters", test_parameter},
     {"term", test_term},
+    {"return", test_return},
     {},
 };
