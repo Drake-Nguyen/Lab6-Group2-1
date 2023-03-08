@@ -130,6 +130,14 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
     }
   }
 
+  // Omit all space separators because no procedure functions like them.
+  tokens.erase(std::remove_if(tokens.begin(), tokens.end(),
+                              [](token_323 t) {
+                                return t.token() == "Other Separators" &&
+                                       t.lexeme() == " ";
+                              }),
+               tokens.end());
+
   int loc = 0;
   try {
     bool res = procedure(tokens, loc);

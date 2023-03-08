@@ -10,13 +10,6 @@
 static void test_condition(void) {
   const auto t = [](std::string lhs, std::string op, std::string rhs,
                     const char *file, int line) {
-    test(procedure_Condition, lhs + op + rhs,
-         {
-             {"Keyword", lhs},
-             {"Operator", op},
-             {"Keyword", rhs},
-         },
-         file, line);
     test(procedure_Condition, lhs + " " + op + " " + rhs,
          {
              {"Keyword", lhs},

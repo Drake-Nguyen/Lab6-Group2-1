@@ -6,27 +6,14 @@ Test relop...                                   [ FAILED ]
     test_relop.hpp:16: Check token [0]: lexeme mismatch: ">" != ">="... failed
     test_relop.hpp:16: Check erroneous extra token [1]: {"Operator", "="}... failed
 Test condition...                               [ FAILED ]
-  Case "true == true":
-    test_condition.hpp:31: Check exception: error, expecting <Relop> ... failed
-  Case "true!=false":
-    test_condition.hpp:32: Check token [1]: token mismatch: "Other Separators" != "Operator"... failed
   Case "true != false":
-    test_condition.hpp:32: Check token [2]: token mismatch: "Other Separators" != "Operator"... failed
-    test_condition.hpp:32: Check exception: error, expecting <Relop> ... failed
-  Case "123<345":
-    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
-    test_condition.hpp:33: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:25: Check token [2]: token mismatch: "Other Separators" != "Operator"... failed
   Case "123 < 345":
-    test_condition.hpp:33: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
-    test_condition.hpp:33: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
-    test_condition.hpp:33: Check exception: error, expecting <Relop> ... failed
-  Case "456>123":
-    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
-    test_condition.hpp:34: Check token [2]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:26: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:26: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
   Case "456 > 123":
-    test_condition.hpp:34: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
-    test_condition.hpp:34: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
-    test_condition.hpp:34: Check exception: error, expecting <Relop> ... failed
+    test_condition.hpp:27: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:27: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
 Test id...                                      [ FAILED ]
   Case "class":
     test_id.hpp:16: Check procedure... failed
@@ -56,14 +43,12 @@ Test qualifier...                               [ FAILED ]
   Case "true":
     test_qualifier.hpp:21: Check procedure... failed
 Test assign...                                  [ FAILED ]
-  Case "a = 123;":
-    test_assign.hpp:12: Check exception: error, expecting = ... failed
   Case "":
     test_assign.hpp:15: Check procedure... failed
   Case "a = ;":
-    test_assign.hpp:16: Check exception: error, expecting = ... failed
+    test_assign.hpp:16: Check exception: error, expecting <Expression> ... failed
   Case "a = 123":
-    test_assign.hpp:17: Check exception: error, expecting = ... failed
+    test_assign.hpp:17: Check exception: error, expecting ; ... failed
   Case "a 123;":
     test_assign.hpp:18: Check exception: error, expecting = ... failed
   Case "123 = a;":
@@ -97,21 +82,13 @@ Test term...                                    [ FAILED ]
   Case "3zz z / 4":
     test_term.hpp:19: Check procedure... failed
 Test return...                                  [ FAILED ]
-  Case "return ;":
-    test_return.hpp:14: Check exception: error, expecting ; or <Expression> ... failed
   Case "return":
     test_return.hpp:15: Check exception: error, expecting ; or <Expression> ... failed
-  Case "return 2*x+3;":
-    test_return.hpp:17: Check exception: error, expecting ; or <Expression> ... failed
-  Case "return true;":
-    test_return.hpp:19: Check exception: error, expecting ; or <Expression> ... failed
   Case "return x > 0;":
-    test_return.hpp:21: Check exception: error, expecting ; or <Expression> ... failed
+    test_return.hpp:21: Check exception: error, expecting ; ... failed
   Case "return x+1, y*2, z;":
-    test_return.hpp:23: Check exception: error, expecting ; or <Expression> ... failed
+    test_return.hpp:23: Check exception: error, expecting ; ... failed
 Test declaration...                             [ FAILED ]
-  Case "int x;":
-    test_declaration.hpp:12: Check exception: error, expecting <IDs> ... failed
   Case "float x, y, z;":
     test_declaration.hpp:13: Check procedure... failed
   Case "char c, d;":
@@ -121,7 +98,7 @@ Test declaration...                             [ FAILED ]
   Case "bool x;":
     test_declaration.hpp:18: Check procedure... failed
   Case "int x,;":
-    test_declaration.hpp:19: Check exception: error, expecting <IDs> ... failed
+    test_declaration.hpp:19: Check exception: error, expecting <IDs>... failed
   Case "float x y z;":
     test_declaration.hpp:20: Check procedure... failed
   Case "char ,d;":
