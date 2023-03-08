@@ -83,10 +83,7 @@ bool procedure_IDs(vector<token_323> &all_tokens,
         return_holder = true;
       } else // test failed, wrong gramma, output error message
       {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <IDs>");
-        return_holder = false;
       }
     } else // if it is not, then is case <IDs> -> <Identifier>
     {
@@ -147,16 +144,9 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
           return_holder = true;
         } else {
-          loc--;
-          loc--;
-          loc--;
-          return_holder = false;
           throw std::logic_error("error, expecting )");
         }
       } else {
-        loc--;
-        loc--;
-        return_holder = false;
         throw std::logic_error("error, expecting <IDs>");
       }
     } else {
@@ -199,15 +189,10 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting )");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Expression>");
-      return_holder = false;
     }
   } else if (token_holder.token() == "Real") // <Real>
   {
@@ -282,9 +267,7 @@ bool procedure_Factor(vector<token_323> &all_tokens, int &loc) {
 
       return_holder = true;
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Primary>");
-      return_holder = false;
     }
   } else if (procedure_Primary(all_tokens, loc)) {
 
@@ -332,15 +315,10 @@ bool procedure_Term_q(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Term>'");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Factor>");
-      return_holder = false;
     }
   } else if (token_holder.lexeme() == "/") //* <Factor> <Term>'
   {
@@ -361,15 +339,10 @@ bool procedure_Term_q(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Term>'");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Factor>");
-      return_holder = false;
     }
   } else // ϵ
   {
@@ -405,9 +378,7 @@ bool procedure_Term(vector<token_323> &all_tokens, int &loc) {
 
       return_holder = true;
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Term>'");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -438,9 +409,7 @@ bool procedure_Expression(vector<token_323> &all_tokens, int &loc) {
 
       return_holder = true;
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Expression'>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -481,15 +450,10 @@ bool procedure_Expression_q(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Expression'>");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Term>");
-      return_holder = false;
     }
   } else if (token_holder.lexeme() == "-") //-<Term> < Expression'>
   {
@@ -509,15 +473,10 @@ bool procedure_Expression_q(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Expression'>");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Term>");
-      return_holder = false;
     }
   } else {
 
@@ -663,15 +622,10 @@ bool procedure_Condition(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Expression>");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Relop>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -729,30 +683,16 @@ bool procedure_While(vector<token_323> &all_tokens, int &loc) {
 
             return_holder = true;
           } else {
-            loc--;
-            loc--;
-            loc--;
-            loc--;
             throw std::logic_error("error, expecting < Statement >");
-            return_holder = false;
           }
         } else {
-          loc--;
-          loc--;
-          loc--;
           throw std::logic_error("error, expecting )");
-          return_holder = false;
         }
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Condition>");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting (");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -819,30 +759,16 @@ bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
 
             return_holder = true;
           } else {
-            loc--;
-            loc--;
-            loc--;
-            loc--;
             throw std::logic_error("error, expecting ;");
-            return_holder = false;
           }
         } else {
-          loc--;
-          loc--;
-          loc--;
           throw std::logic_error("error, expecting )");
-          return_holder = false;
         }
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <IDs>");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting (");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -895,30 +821,16 @@ bool procedure_Print(vector<token_323> &all_tokens, int &loc) {
 
             return_holder = true;
           } else {
-            loc--;
-            loc--;
-            loc--;
-            loc--;
             throw std::logic_error("error, expecting ;");
-            return_holder = false;
           }
         } else {
-          loc--;
-          loc--;
-          loc--;
           throw std::logic_error("error, expecting )");
-          return_holder = false;
         }
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Expression>");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting (");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -965,15 +877,10 @@ bool procedure_Return(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting ;");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting ; or <Expression>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1056,60 +963,25 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
 
                   return_holder = true;
                 } else {
-                  loc--;
-                  loc--;
-                  loc--;
-                  loc--;
-                  loc--;
-                  loc--;
-                  loc--;
                   throw std::logic_error("error, expecting fi");
-                  return_holder = false;
                 }
               } else {
-                loc--;
-                loc--;
-                loc--;
-                loc--;
-                loc--;
-                loc--;
                 throw std::logic_error("error, expecting < Statement > ");
-                return_holder = false;
               }
             } else {
-              loc--;
-              loc--;
-              loc--;
-              loc--;
-              loc--;
               throw std::logic_error("error, expecting fi or else ");
-              return_holder = false;
             }
           } else {
-            loc--;
-            loc--;
-            loc--;
-            loc--;
             throw std::logic_error("error, expecting < Statement > ");
-            return_holder = false;
           }
         } else {
-          loc--;
-          loc--;
-          loc--;
           throw std::logic_error("error, expecting ) ");
-          return_holder = false;
         }
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Condition> ");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting (");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1159,18 +1031,11 @@ bool procedure_Assign(vector<token_323> &all_tokens, int &loc) {
 
           return_holder = true;
         } else {
-          loc--;
-          loc--;
-          loc--;
           throw std::logic_error("error, expecting ;");
-          return_holder = false;
         }
 
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Expression>");
-        return_holder = false;
       }
     } else {
 
@@ -1181,7 +1046,6 @@ bool procedure_Assign(vector<token_323> &all_tokens, int &loc) {
       token_holder = all_tokens[loc - 1];
       std::cerr << token_holder.lexeme() << "\n";
       return_holder = false;
-      loc--;
     }
   } else {
     return_holder = false;
@@ -1219,15 +1083,10 @@ bool procedure_Compound(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting }");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting < Statement List>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1372,9 +1231,7 @@ bool procedure_Declaration(vector<token_323> &all_tokens, int &loc) {
 
       return_holder = true;
     } else {
-      loc--;
       throw std::logic_error("error, expecting <IDs>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1420,9 +1277,7 @@ bool procedure_Declaration_List(vector<token_323> &all_tokens, int &loc) {
         return_holder = true;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting ;");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1491,15 +1346,10 @@ bool procedure_Body(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting }");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting < Statement List>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1583,9 +1433,7 @@ bool procedure_Parameter(vector<token_323> &all_tokens,
 
       return_holder = true;
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Qualifier>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1621,10 +1469,7 @@ bool procedure_Parameter_List(vector<token_323> &all_tokens, int &loc) {
 
         return_holder = true;
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting <Parameter List>");
-        return_holder = false;
       }
     } else {
       std::string output_str = "<Parameter List> -> <Parameter> \n";
@@ -1715,50 +1560,24 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
 
                 return_holder = true;
               } else {
-                loc--;
-                loc--;
-                loc--;
-                loc--;
-                loc--;
-                loc--;
                 throw std::logic_error("error, expecting <Body>");
-                return_holder = false;
               }
             } else {
-              loc--;
-              loc--;
-              loc--;
-              loc--;
-              loc--;
               throw std::logic_error(
                   "error, expecting < Opt Declaration List >");
               return_holder = false;
             }
           } else {
-            loc--;
-            loc--;
-            loc--;
-            loc--;
             throw std::logic_error("error, expecting )");
-            return_holder = false;
           }
         } else {
-          loc--;
-          loc--;
-          loc--;
           throw std::logic_error("error, expecting <Opt Parameter List>");
-          return_holder = false;
         }
       } else {
-        loc--;
-        loc--;
         throw std::logic_error("error, expecting (");
-        return_holder = false;
       }
     } else {
-      loc--;
       throw std::logic_error("error, expecting <Identifier>");
-      return_holder = false;
     }
   } else {
     return_holder = false;
@@ -1892,48 +1711,28 @@ bool procedure_Rat20F(vector<token_323> &all_tokens, int &loc) {
 
               return true;
             } else {
-              // loc--;
-              // loc--;
-              // loc--;
-              // loc--;
-              // loc--;
               std::cerr << "\n"
                         << "should end here"
                         << "\n\n";
               procedure_Rat20F(all_tokens, loc);
             }
           } else {
-            loc--;
-            loc--;
-            loc--;
-            loc--;
-            return_holder = false;
             throw std::logic_error("error, expecting $$");
             // std::cerr << "\n" << all_tokens[loc].lexeme() << "\n" <<
             // all_tokens[loc -1].lexeme() << "\n"<< all_tokens[loc+1].lexeme()
             // << "\n" << "\n\n";
           }
         } else {
-          loc--;
-          loc--;
-          loc--;
-          return_holder = false;
           throw std::logic_error("error, expecting <Statement List>");
         }
       } else {
-        loc--;
-        loc--;
-        return_holder = false;
         throw std::logic_error("error, expecting <Opt Declaration List>");
       }
     } else {
-      loc--;
-      return_holder = false;
       throw std::logic_error("error, expecting $$");
     }
   } else {
     throw std::logic_error("error, expecting <Opt Function Definitions>");
-    return_holder = false;
   }
 
   return return_holder;

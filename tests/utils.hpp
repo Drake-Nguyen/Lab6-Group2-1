@@ -144,11 +144,10 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
     bool res = procedure(tokens, location);
     acutest_check_(res, file, line, "%s", "procedure");
   } catch (const std::logic_error &e) {
-    auto tok = tokens[location];
     acutest_check_(false, file, line,
-                   "procedure: syntax error at token [%d] ({%s, %s}): %s",
-                   location, quote(tok.token()).c_str(),
-                   quote(tok.lexeme()).c_str(), e.what());
+                   "procedure: syntax error near token [%d] ({%s, %s}): %s",
+                   location, quote(tokens.at(location).token()).c_str(),
+                   quote(tokens.at(location).lexeme()).c_str(), e.what());
   } catch (const std::exception &e) {
     acutest_check_(false, file, line, "procedure: unexpected exception: %s",
                    e.what());
