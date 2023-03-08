@@ -16,21 +16,25 @@ that they might be expected behavior.
 
 ## Condition
 
-For Condition, any cases with whitespace in between the tokens are not
-evaluated correctly. For example, `a > b` is lexed properly to have whitespaces
-in-between the tokens, but the procedure function does not evaluate it
-correctly.
+Some of Condition's test cases failed:
 
-For the other test cases:
-
-- `true!=false` wasn't lexed properly: a whitespace was inserted between `true`
-  and `!=` for some reason. This evaluates correctly, however.
-- `123<345` wasn't lexed properly: the lexer considered `123` and `345` to be
+- `true != false` wasn't lexed properly: a whitespace was inserted between
+  `true` and `!=` for some reason. This evaluates correctly, however.
+- `123 < 345` wasn't lexed properly: the lexer considered `123` and `345` to be
   keyword tokens and not numbers. This appears to evaluate correctly.
-	- This is the same for `456>123`.
+	- This is the same for `456 > 123`.
 
 Conditions with `>=` and `<=` were not included in the tests, because they would
 yield similar results to Relop's `>=` and `<=` test cases.
+
+## If
+
+For If, I split all test inputs into two categories: ones that don't have
+`else`, and ones that do. Within each of these categories, I tested all
+combinations of `<Statement>` tokens within an `<If>` token. I also tested
+nested `<If>`s.
+
+This is the first test suite that actually passes all of its tests! 🎉
 
 ## Identifier
 
