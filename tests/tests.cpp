@@ -13,6 +13,7 @@
 #include "./test_relop.hpp"
 #include "./test_return.hpp"
 #include "./test_term.hpp"
+#include "./test_while.hpp"
 
 TEST_LIST = {
     {"relop", test_relop},
@@ -28,5 +29,6 @@ TEST_LIST = {
     {"return", test_return},
     {"declaration", test_declaration},
     {"parameter_list", test_parameter_list},
+    {"while", test_while},
     {},
 };
