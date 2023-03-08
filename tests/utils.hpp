@@ -5,6 +5,7 @@
 #include <initializer_list>
 #include <iomanip>
 #include <map>
+#include <optional>
 #include <type_traits>
 #include <vector>
 
@@ -64,9 +65,13 @@ static std::string quote(std::string s) {
   return e;
 }
 
+static std::string boolstr(bool v) { return v ? "true" : "false"; }
+
 static void test_equal_(std::string a, std::string b, const char *file,
                         int line, const std::string what = "") {
-  if (a != b) {
+  if (a == b) {
+    acutest_check_(true, file, line, nullptr);
+  } else {
     std::string err;
     if (what != "") {
       err = what + ": ";
@@ -81,12 +86,19 @@ template <
     typename T2, class = typename std::enable_if_t<std::is_integral_v<T2>>>
 void test_equal_(T1 a, T2 b, const char *file, int line,
                  const std::string what = "") {
-  if (a != b) {
+  if (a == b) {
+    acutest_check_(true, file, line, nullptr);
+  } else {
     std::string err;
     if (what != "") {
       err = what + ": ";
     }
-    err += std::to_string(a) + " != " + std::to_string(b);
+    if ((a & ~0b1) == 0 && (b & ~0b1) == 0) {
+      // If both are 0 or 1, print them as bools.
+      err += boolstr(a) + " != " + boolstr(b);
+    } else {
+      err += std::to_string(a) + " != " + std::to_string(b);
+    }
     acutest_check_(false, file, line, "%s", err.c_str());
   }
 }
@@ -96,20 +108,22 @@ struct ExpectToken {
   std::string lexeme;
 };
 
-static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
-                 std::string input, std::initializer_list<ExpectToken> expects,
-                 const char *file, int line) {
+static void
+test_impl(std::function<bool(std::vector<token_323> &, int &)> procedure,
+          std::string input, std::initializer_list<ExpectToken> expectTokens,
+          bool expectSuccess, std::optional<std::string> expectException,
+          const char *file, int line) {
 
   TEST_CASE(quote(input).c_str());
 
   auto tokens = parseTokens(input);
 
-  if (expects.size() != 0) {
-    test_equal_(tokens.size(), expects.size(), file, line,
+  if (expectTokens.size() != 0) {
+    test_equal_(tokens.size(), expectTokens.size(), file, line,
                 "tokens.size mismatch");
 
-    auto it = expects.begin();
-    for (size_t i = 0; i < min(tokens.size(), expects.size()); i++) {
+    auto it = expectTokens.begin();
+    for (size_t i = 0; i < min(tokens.size(), expectTokens.size()); i++) {
       test_equal_(tokens[i].token(), it->token, file, line,
                   "token [" + to_string(i) + "]: token mismatch");
       test_equal_(tokens[i].lexeme(), it->lexeme, file, line,
@@ -117,13 +131,13 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
       it++;
     }
 
-    for (size_t i = expects.size(); i < tokens.size(); i++) {
+    for (size_t i = expectTokens.size(); i < tokens.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line, "erroneous extra token [%ld]: {%s, %s}",
                      i, quote(v.token()).c_str(), quote(v.lexeme()).c_str());
     }
 
-    for (size_t i = tokens.size(); i < expects.size(); i++) {
+    for (size_t i = tokens.size(); i < expectTokens.size(); i++) {
       auto v = tokens[i];
       acutest_check_(false, file, line,
                      "erroneous missing token [%ld]: {%s, %s}", i,
@@ -142,21 +156,60 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
   int location = 0;
   try {
     bool res = procedure(tokens, location);
-    acutest_check_(res, file, line, "%s", "procedure");
+    test_equal_(res, expectSuccess, file, line, "procedure result mismatch");
   } catch (const std::logic_error &e) {
-    std::stringstream msg;
-    if (location < tokens.size()) {
-      msg << " "
-          << "near token [" << location << "] "
-          << "({" << std::quoted(tokens.at(location).token()) << ", "
-          << std::quoted(tokens.at(location).lexeme()) << "})";
-    } else if (location == tokens.size()) {
-      msg << " at the end of the input";
+    if (expectSuccess) {
+      std::stringstream msg;
+      msg << "procedure: syntax error";
+      if (location < tokens.size()) {
+        msg << " "
+            << "near token [" << location << "] "
+            << "({" << std::quoted(tokens.at(location).token()) << ", "
+            << std::quoted(tokens.at(location).lexeme()) << "})";
+      } else if (location == tokens.size()) {
+        msg << " at the end of the input";
+      }
+      acutest_check_(false, file, line, "%s: %s", msg.str().c_str(), e.what());
+    } else {
+      if (expectException != std::nullopt) {
+        test_equal_(e.what(), expectException.value(), file, line,
+                    "exception mismatch");
+      }
+      acutest_check_(true, file, line, "procedure: expected logic_error");
     }
-    acutest_check_(false, file, line, "procedure: syntax error%s: %s",
-                   msg.str().c_str(), e.what());
   } catch (const std::exception &e) {
     acutest_check_(false, file, line, "procedure: unexpected exception: %s",
                    e.what());
   }
+}
+
+// test_pass tests that the given procedure function accepts the given input.
+static void
+test_pass(std::function<bool(std::vector<token_323> &, int &)> procedure,
+          std::string input, std::initializer_list<ExpectToken> expectTokens,
+          const char *file, int line) {
+
+  test_impl(procedure, input, expectTokens, true, std::nullopt, file, line);
+}
+
+// test calls test_pass. It remains for backward compatibility.
+const auto test = test_pass;
+
+// test_fail tests that the given procedure function rejects the given input
+// with the given exception.
+static void
+test_fail(std::function<bool(std::vector<token_323> &, int &)> procedure,
+          std::string input, std::initializer_list<ExpectToken> expectTokens,
+          std::optional<string> expectException, const char *file, int line) {
+
+  test_impl(procedure, input, expectTokens, false, expectException, file, line);
+}
+
+// test_fail overloads the above test_fail without an expected exception.
+static void
+test_fail(std::function<bool(std::vector<token_323> &, int &)> procedure,
+          std::string input, std::initializer_list<ExpectToken> expectTokens,
+          const char *file, int line) {
+
+  test_impl(procedure, input, expectTokens, false, std::nullopt, file, line);
 }

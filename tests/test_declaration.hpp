@@ -14,9 +14,9 @@ static void test_declaration(void) {
   test(procedure_Declaration, "char c, d;", {}, CURRENT_LOCATION);
 
   // invalid declarations
-  test(procedure_Declaration, "int 123;", {}, CURRENT_LOCATION);
-  test(procedure_Declaration, "bool x;", {}, CURRENT_LOCATION);
-  test(procedure_Declaration, "int x,;", {}, CURRENT_LOCATION);
-  test(procedure_Declaration, "float x y z;", {}, CURRENT_LOCATION);
-  test(procedure_Declaration, "char ,d;", {}, CURRENT_LOCATION);
+  test_fail(procedure_Declaration, "int 123;", {}, CURRENT_LOCATION);
+  test_fail(procedure_Declaration, "bool x;", {}, CURRENT_LOCATION);
+  test_fail(procedure_Declaration, "int x,;", {}, CURRENT_LOCATION);
+  test_fail(procedure_Declaration, "float x y z;", {}, CURRENT_LOCATION);
+  test_fail(procedure_Declaration, "char ,d;", {}, CURRENT_LOCATION);
 }
