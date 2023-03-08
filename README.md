@@ -37,6 +37,12 @@ as the third argument:
 test(procedure_Relop, "==", {{"Operator", "=="}}, CURRENT_LOCATION);
 ```
 
+When testing for a failing case, use `test_fail`:
+
+```hpp
+test_fail(procedure_Relop, "=!", {}, CURRENT_LOCATION);
+```
+
 Refer to the existing tests for more examples.
 
 ## Cleaning
