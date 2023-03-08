@@ -65,3 +65,10 @@ cases.
 ## Parameter
 Similar to Expression test cases. Uncertain of failure clause with no expected failure test
 cases. Test cases should have been lexed properly. No successful test case unlike Expression.
+
+## Parameter List
+
+For the parameter list, all tests were returned with an error expecting the `<Qualifier>` when
+all statements should be correct. The error could be due to my own input using `a()` to create
+the parameter list with inputs as arguments or that parameter list input clashing with something
+inside the procedure_Parameter_List.
