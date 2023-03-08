@@ -131,6 +131,10 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
   }
 
   int loc = 0;
-  bool res = procedure(tokens, loc);
-  acutest_check_(res, file, line, "%s", "procedure");
+  try {
+    bool res = procedure(tokens, loc);
+    acutest_check_(res, file, line, "%s", "procedure");
+  } catch (std::exception &e) {
+    acutest_check_(false, file, line, "exception: %s", e.what());
+  }
 }
