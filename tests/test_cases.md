@@ -38,9 +38,11 @@ This is the first test suite that actually passes all of its tests! 🎉
 
 ## Identifier
 
-In the case of Identifiers, whitespace or empty inputs would return errors. A 
+In the case of Identifiers, the tests besides the ones that had input of whitespace or
+empty input successfully lexed. Whitespace or empty inputs would return errors. A 
 possible example for this situation is identifying a class but the class wouldn't
-have a space between two words in its name and leaving behind an error.
+have a space between two words in its name and leaving behind an error. This can also
+be the case when the user cannot name their potential function with an empty input.
 
 As for the other errors, 
 
@@ -53,7 +55,7 @@ As for the other errors,
 
 For Qualifiers, it was a really big unsure for why the errors were appearing. This could
 be due to the way the inputs were put into the procedure_Qualifier or potentially other 
-factors.
+factors. Through an updated test, static would have been a valid input for a qualifier
 
 In terms of the inputs of static, int, and char, those would have been lexed properly
 under qualifiers to my knowledge but the tests return errors in those cases. 

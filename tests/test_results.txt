@@ -15,19 +15,7 @@ Test condition...                               [ FAILED ]
     test_condition.hpp:27: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:27: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
 Test if...                                      [ OK ]
-Test id...                                      [ FAILED ]
-  Case "class":
-    test_id.hpp:16: Check procedure result mismatch: false != true... failed
-  Case "":
-    test_id.hpp:17: Check procedure result mismatch: false != true... failed
-  Case "    ":
-    test_id.hpp:19: Check procedure result mismatch: false != true... failed
-  Case "$tring":
-    test_id.hpp:20: Check tokens.size mismatch: 2 != 1... failed
-    test_id.hpp:20: Check token [0]: token mismatch: "Other Separators" != "Identifier"... failed
-    test_id.hpp:20: Check token [0]: lexeme mismatch: "$" != "$tring"... failed
-    test_id.hpp:20: Check erroneous extra token [1]: {"Identifier", "tring"}... failed
-    test_id.hpp:20: Check procedure result mismatch: false != true... failed
+Test id...                                      [ OK ]
 Test qualifier...                               [ FAILED ]
   Case "static":
     test_qualifier.hpp:12: Check procedure result mismatch: false != true... failed
@@ -69,7 +57,7 @@ Test primary...                                 [ FAILED ]
 Test expression...                              [ FAILED ]
   Case "":
     Threw std::exception... failed
-      std::exception::what(): basic_string::_M_create
+      std::exception::what(): std::bad_alloc
 Test parameters...                              [ FAILED ]
   Case "a()":
     test_parameter.hpp:11: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
@@ -102,10 +90,9 @@ Test parameter_list...                          [ FAILED ]
   Case "a(boo)":
     test_parameter_list.hpp:13: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "a($)":
-    test_parameter_list.hpp:14: Check token [2]: token mismatch: "Other Separators" != "Identifier"... failed
     test_parameter_list.hpp:14: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "a(int,char)":
     test_parameter_list.hpp:16: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "a(204,string)":
     test_parameter_list.hpp:18: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-FAILED: 12 of 13 unit tests have failed.
+FAILED: 11 of 13 unit tests have failed.
