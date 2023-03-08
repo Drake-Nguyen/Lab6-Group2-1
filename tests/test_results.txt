@@ -126,4 +126,18 @@ Test declaration...                             [ FAILED ]
     test_declaration.hpp:20: Check procedure... failed
   Case "char ,d;":
     test_declaration.hpp:21: Check procedure... failed
-FAILED: 11 of 11 unit tests have failed.
+Test parameter_list...                          [ FAILED ]
+  Case "a()":
+    test_parameter_list.hpp:11: Check procedure... failed
+  Case "a(1001)":
+    test_parameter_list.hpp:12: Check procedure... failed
+  Case "a(boo)":
+    test_parameter_list.hpp:13: Check procedure... failed
+  Case "a($)":
+    test_parameter_list.hpp:14: Check token [2]: token mismatch: "Other Separators" != "Identifier"... failed
+    test_parameter_list.hpp:14: Check procedure... failed
+  Case "a(int,char)":
+    test_parameter_list.hpp:16: Check procedure... failed
+  Case "a(204,string)":
+    test_parameter_list.hpp:18: Check procedure... failed
+FAILED: 12 of 12 unit tests have failed.

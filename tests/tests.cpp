@@ -11,6 +11,7 @@
 #include "./test_term.hpp"
 #include "./test_return.hpp"
 #include "./test_declaration.hpp"
+#include "./test_parameter_list.hpp"
 
 TEST_LIST = {
     {"relop", test_relop},
@@ -24,5 +25,6 @@ TEST_LIST = {
     {"term", test_term},
     {"return", test_return},
     {"declaration", test_declaration},
+    {"parameter_list", test_parameter_list},
     {},
 };
