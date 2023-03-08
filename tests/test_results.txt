@@ -84,4 +84,5 @@ Test parameter_list...                          [ FAILED ]
   Case "a(204,string)":
     test_parameter_list.hpp:18: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
 Test while...                                   [ OK ]
-FAILED: 12 of 14 unit tests have failed.
+Test statement...                               [ OK ]
+FAILED: 12 of 15 unit tests have failed.

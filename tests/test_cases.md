@@ -85,3 +85,8 @@ As long as they were in the correct order the then they were accepted, even when
 there are multiple `<Statement>`s involved. Also tested nested while loops, if
 statements, and other `<Statement>` categories which works as long as there as
 all the previous categories are accepted.
+
+## Statement
+Testing all cases for statement (compound, assign, if, return, print, scan, while).
+As long as test cases fall within the categories for each statement cases will
+be passed.
