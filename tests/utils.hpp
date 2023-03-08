@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "../lexer.hpp"
+#include "../procedure_functions.h"
 
 #include "../include/acutest.h"
 #define macro TEST_NO_MAIN
@@ -138,11 +139,18 @@ static void test(std::function<bool(std::vector<token_323> &, int &)> procedure,
                               }),
                tokens.end());
 
-  int loc = 0;
+  int location = 0;
   try {
-    bool res = procedure(tokens, loc);
+    bool res = procedure(tokens, location);
     acutest_check_(res, file, line, "%s", "procedure");
-  } catch (std::exception &e) {
-    acutest_check_(false, file, line, "exception: %s", e.what());
+  } catch (const std::logic_error &e) {
+    auto tok = tokens[location];
+    acutest_check_(false, file, line,
+                   "procedure: syntax error at token [%d] ({%s, %s}): %s",
+                   location, quote(tok.token()).c_str(),
+                   quote(tok.lexeme()).c_str(), e.what());
+  } catch (const std::exception &e) {
+    acutest_check_(false, file, line, "procedure: unexpected exception: %s",
+                   e.what());
   }
 }
