@@ -15,10 +15,7 @@ Test condition...                               [ FAILED ]
     test_condition.hpp:27: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:27: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
 Test if...                                      [ OK ]
-Test id...                                      [ FAILED ]
-  Case "":
-    Threw std::exception... failed
-      std::exception::what(): std::bad_alloc
+Test id...                                      [ OK ]
 Test qualifier...                               [ FAILED ]
   Case "static":
     test_qualifier.hpp:12: Check procedure result mismatch: false != true... failed
@@ -36,16 +33,31 @@ Test qualifier...                               [ FAILED ]
     test_qualifier.hpp:21: Check procedure result mismatch: false != true... failed
 Test assign...                                  [ FAILED ]
   Case "":
-    Threw std::exception... failed
-      std::exception::what(): std::bad_alloc
+    test_assign.hpp:15: Check procedure result mismatch: false != true... failed
+  Case "a = ;":
+    test_assign.hpp:16: Check procedure: syntax error near token [2] ({"Separator", ";"}): error, expecting <Expression>... failed
+  Case "a = 123":
+    test_assign.hpp:17: Check procedure: syntax error at the end of the input: error, expecting ;... failed
+  Case "a 123;":
+    test_assign.hpp:18: Check procedure: syntax error near token [1] ({"Integer", "123"}): error, expecting =... failed
+  Case "123 = a;":
+    test_assign.hpp:19: Check procedure result mismatch: false != true... failed
 Test primary...                                 [ FAILED ]
   Case "":
-    Threw std::exception... failed
-      std::exception::what(): std::bad_alloc
+    test_primary.hpp:18: Check procedure result mismatch: false != true... failed
+  Case "1.0E-5":
+    test_primary.hpp:21: Check tokens.size mismatch: 3 != 1... failed
+    test_primary.hpp:21: Check token [0]: token mismatch: "Invalid Token" != "Real"... failed
+    test_primary.hpp:21: Check token [0]: lexeme mismatch: "1.0E" != "1.0E-5"... failed
+    test_primary.hpp:21: Check erroneous extra token [1]: {"Operator", "-"}... failed
+    test_primary.hpp:21: Check erroneous extra token [2]: {"Integer", "5"}... failed
+    test_primary.hpp:21: Check procedure result mismatch: false != true... failed
+  Case "    ":
+    test_primary.hpp:22: Check procedure result mismatch: false != true... failed
 Test expression...                              [ FAILED ]
   Case "":
     Threw std::exception... failed
-      std::exception::what(): std::bad_alloc
+      std::exception::what(): basic_string::_M_create
 Test parameters...                              [ FAILED ]
   Case "a()":
     test_parameter.hpp:11: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
@@ -83,6 +95,9 @@ Test parameter_list...                          [ FAILED ]
     test_parameter_list.hpp:16: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "a(204,string)":
     test_parameter_list.hpp:18: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-Test while...                                   [ OK ]
+Test while...                                   [ FAILED ]
+  Case "":
+    Threw std::exception... failed
+      std::exception::what(): basic_string::_M_construct null not valid
 Test statement...                               [ OK ]
 FAILED: 12 of 15 unit tests have failed.
