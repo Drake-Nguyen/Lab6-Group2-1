@@ -51,27 +51,32 @@ This is the first test suite that actually passes all of its tests! 🎉
 
 ## Identifier
 
-In the case of Identifiers, the tests besides the ones that had input of whitespace or
-empty input successfully lexed. Whitespace or empty inputs would return errors. A
-possible example for this situation is identifying a class but the class wouldn't
-have a space between two words in its name and leaving behind an error. This can also
-be the case when the user cannot name their potential function with an empty input.
+These test cases would be enough as it includes the potential inputs that could be applied
+to the Identifier token. It went through the possible names whether it be a single character
+or even a whole string like the word apple to make sure it would be able to run properly. 
+There were still some failed cases that were expected however:
 
-As for the other errors,
+- `class` as an input failed due to it being a reserved word for C++ so it cannot be used
 
-- `class` was not lexed properly most likely due to it being a reserved word in terms
-  of C++.
-- `$tring` also returned an error due to the invalid character '$'  being seen as a
-  separator while assuming the Identifier was the rest of the string 'tring'.
+- `empty` or an empty input would also fail due to it not being able to be used as 
+  the function would not be able to lex properly.
+  
+- `whitespace` or just a space input would not lex properly for a similar reason to `empty`
+
+A possible example for the situation regarding the empty and whitespaceis identifying 
+a class but the class wouldn't have a space between two words in its name and leaving 
+behind an error. This can also be the case when the user cannot name their potential 
+function with an empty input.
 
 ## Qualifiers
 
-For Qualifiers, it was a really big unsure for why the errors were appearing. This could
-be due to the way the inputs were put into the procedure_Qualifier or potentially other
-factors. Through an updated test, static would have been a valid input for a qualifier
+For Qualifiers, the inputs `int`, `boolean`, and `real` lexed properly through the tests. Outside of
+these three tests, there were issues outside of that with: 
 
-In terms of the inputs of static, int, and char, those would have been lexed properly
-under qualifiers to my knowledge but the tests return errors in those cases.
+-`static` should be able to successfully lex as a qualifier but most likely failed due to not being
+included inside of the possible inputs inside the original procedure.
+
+-`char` would be in a similar situation as static in this case on why it failed to lex properly.
 
 ## Expression
 Uncertian of the failure of the test cases. Although the test cases were a failure,
