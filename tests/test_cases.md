@@ -108,3 +108,9 @@ all the previous categories are accepted.
 Testing all cases for statement (compound, assign, if, return, print, scan, while).
 As long as test cases fall within the categories for each statement cases will
 be passed.
+
+## Assign
+The first test case is testing a valid assignment statement, where the variable "a" is assigned the value of 123. This is a basic test case to ensure that the procedure_Assign function is working as expected when given valid input. The next five test cases are testing various scenarios that would result in an invalid assignment statement. 
+
+## Declaration
+The first three test cases are testing valid variable declarations in C++. The first test case is declaring an integer variable "x". The second test case is declaring three floating-point variables "x", "y", and "z". The third test case is declaring two character variables "c" and "d". These test cases ensure that the procedure_Declaration function is working as expected when given valid input.
