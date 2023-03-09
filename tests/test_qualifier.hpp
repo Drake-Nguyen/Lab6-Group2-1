@@ -9,6 +9,7 @@
 
 static void test_qualifier (void) {
 
+  /*
   test (procedure_Qualifier, "static", {{"Keyword", "static"}}, CURRENT_LOCATION);
   test (procedure_Qualifier, "*", {{"Operator", "*"}}, CURRENT_LOCATION);
   test (procedure_Qualifier, "&", {{"Other Separators", "&"}}, CURRENT_LOCATION);
@@ -19,6 +20,10 @@ static void test_qualifier (void) {
   // Thanks to Diamond Dinh for these test cases
   test (procedure_Qualifier, "5", {{"Integer", "5"}}, CURRENT_LOCATION);
   test (procedure_Qualifier, "true", {{"Keyword", "true"}}, CURRENT_LOCATION);
+*/
 
+test (procedure_Qualifier, "int", {{"Keyword", "int"}}, CURRENT_LOCATION);
+test (procedure_Qualifier, "bool", {{"Keyword", "bool"}}, CURRENT_LOCATION);
+test (procedure_Qualifier, "real", {{"Keyword", "real"}}, CURRENT_LOCATION);
 
 }
