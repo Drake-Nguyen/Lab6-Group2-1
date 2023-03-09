@@ -35,5 +35,8 @@ TEST_LIST = {
     {"declaration", test_declaration},
     {"parameter_list", test_parameter_list},
     {"while", test_while},
+    {"print", test_print},
+    {"scan", test_scan},
+    {"compound", test_compound},
     {},
 };
