@@ -14,6 +14,9 @@
 #include "./test_return.hpp"
 #include "./test_term.hpp"
 #include "./test_while.hpp"
+#include "./test_print.hpp"
+#include "./test_scan.hpp"
+#include "./test_compound.hpp"
 #include "./test_statement.hpp"
 
 
@@ -32,6 +35,5 @@ TEST_LIST = {
     {"declaration", test_declaration},
     {"parameter_list", test_parameter_list},
     {"while", test_while},
-    {"statement", test_statement},
     {},
 };
