@@ -114,3 +114,12 @@ The first test case is testing a valid assignment statement, where the variable 
 
 ## Declaration
 The first three test cases are testing valid variable declarations in C++. The first test case is declaring an integer variable "x". The second test case is declaring three floating-point variables "x", "y", and "z". The third test case is declaring two character variables "c" and "d". These test cases ensure that the procedure_Declaration function is working as expected when given valid input.
+
+## Print
+For this procedure the valid tests have proper notation for printing. using "put();". The first test case checks for the proper printing of one variable. The second function checks for the correct way to print two variables. The third function checks for the right printing of an expression. The fail test checks for correct notation.
+
+## Scan
+The scan procedure checks for the proper notation for scanning for variables. The proper function used it "get();". Similiar to the print procedure the the test functions in scan check the right notatoin for the get functions. The fail tests check for proper notation.
+
+## Compound
+This procedure checks for the right notation for having a compound of statements inside "{}". The first test checks a compound that initializes a and b, conatins an if else statement that return true and false. The second test checks for a compound that contains a while loop with a condition, a get function, and a put function. The third procedure has an if statement with a condition that returns a bool. The fail tests check for correct notation.
