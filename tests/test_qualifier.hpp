@@ -23,7 +23,7 @@ static void test_qualifier (void) {
 */
 
 test (procedure_Qualifier, "int", {{"Keyword", "int"}}, CURRENT_LOCATION);
-test (procedure_Qualifier, "bool", {{"Keyword", "bool"}}, CURRENT_LOCATION);
+test (procedure_Qualifier, "boolean", {{"Keyword", "boolean"}}, CURRENT_LOCATION);
 test (procedure_Qualifier, "real", {{"Keyword", "real"}}, CURRENT_LOCATION);
 
 }
