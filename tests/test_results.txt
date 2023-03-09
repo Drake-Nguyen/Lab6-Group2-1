@@ -43,7 +43,7 @@ Test primary...                                 [ FAILED ]
 Test expression...                              [ FAILED ]
   Case "":
     Threw std::exception... failed
-      std::exception::what(): std::bad_alloc
+      std::exception::what(): basic_string::_M_create
 Test parameters...                              [ FAILED ]
   Case "a()":
     test_parameter.hpp:11: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
@@ -69,6 +69,18 @@ Test declaration...                             [ FAILED ]
   Case "char c, d;":
     test_declaration.hpp:14: Check procedure result mismatch: false != true... failed
 Test parameter_list...                          [ FAILED ]
+  Case "a()":
+    test_parameter_list.hpp:12: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a(1001)":
+    test_parameter_list.hpp:13: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a(boo)":
+    test_parameter_list.hpp:14: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a($)":
+    test_parameter_list.hpp:15: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a(int,char)":
+    test_parameter_list.hpp:17: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a(204,string)":
+    test_parameter_list.hpp:19: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "int x,int y":
     test_parameter_list.hpp:23: Check procedure result mismatch: false != true... failed
   Case "boolean x,real y":

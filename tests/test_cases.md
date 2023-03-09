@@ -78,6 +78,9 @@ included inside of the possible inputs inside the original procedure.
 
 -`char` would be in a similar situation as static in this case on why it failed to lex properly.
 
+All five of these test cases would have been enough through covering potential qualifiers along with
+the different inputs that can be put into the procedure_Qualifier.
+
 ## Expression
 Uncertian of the failure of the test cases. Although the test cases were a failure,
 there was a single test case that passed alone, but did not show if combined with other
@@ -92,10 +95,15 @@ cases. Test cases should have been lexed properly. No successful test case unlik
 
 ## Parameter List
 
-For the parameter list, all tests were returned with an error expecting the `<Qualifier>` when
-all statements should be correct. The error could be due to my own input using `a()` to create
-the parameter list with inputs as arguments or that parameter list input clashing with something
-inside the procedure_Parameter_List.
+For the parameter list, all tests were returned with an error, and currently unsure why 
+these things would return and error stating that false != true. This could potentially
+be due to the inputs that was used but it was assumed based on reading the function
+that the input would look something like "int x, int y' or something similar. 
+
+The test cases currently are enough because it covered a good combination of the potential
+inputs that would be put into the parameter_list following the different assumed
+input types.
+
 
 ## While
 For While, test cases were valid when all required categories were inputted.
