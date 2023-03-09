@@ -14,7 +14,7 @@ static void test_term(void)
     test(procedure_Term, "x", {{"Identifier", "x"}}, CURRENT_LOCATION);
     test(procedure_Term, "2*y", {{"Integer", "2"}, {"Operator", "*"}, {"Identifier", "y"}}, CURRENT_LOCATION);
     test(procedure_Term, "3*z/4", {{"Integer", "3"}, {"Operator", "*"}, {"Identifier", "z"}, {"Operator", "/"}, {"Integer", "4"}}, CURRENT_LOCATION);
-    test(procedure_Term, "3 z/4", {{"Integer", "3"}, {"Other Separators", " "}, {"Identifier", "z"}{"Operator", "/"}, {"Integer", "4"}}, CURRENT_LOCATION);
+    test(procedure_Term, "3z/4", {{"Invalid Token", "3z"}, {"Operator", "/"}, {"Integer", "4"}}, CURRENT_LOCATION);
     test(procedure_Term, "3 z / 4", {{"Integer", "3"}, {"Other Separators", " "}, {"Identifier", "z"}, {"Other Separators", " "}, {"Operator", "/"}, {"Other Separators", " "}, {"Integer", "4"}}, CURRENT_LOCATION);
     test(procedure_Term, "3zz z / 4", {{"Invalid Token", "3zz"}, {"Other Separators", " "}, {"Identifier", "z"}, {"Other Separators", " "}, {"Operator", "/"}, {"Other Separators", " "}, {"Integer", "4"}}, CURRENT_LOCATION);
     test(procedure_Term, "2.5*x", {{"Real", "2.5"}, {"Operator", "*"}, {"Identifier", "x"}}, CURRENT_LOCATION);

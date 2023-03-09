@@ -66,15 +66,8 @@ Test parameters...                              [ FAILED ]
   Case "a(10)":
     test_parameter.hpp:13: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
 Test term...                                    [ FAILED ]
-  Case "3 z/4":
-    test_term.hpp:17: Check tokens.size mismatch: 5 != 4... failed
-    test_term.hpp:17: Check token [0]: token mismatch: "Integer" != "Interger"... failed
-    test_term.hpp:17: Check token [0]: lexeme mismatch: "3" != "z"... failed
-    test_term.hpp:17: Check token [2]: token mismatch: "Identifier" != "Operator"... failed
-    test_term.hpp:17: Check token [2]: lexeme mismatch: "z" != "/"... failed
-    test_term.hpp:17: Check token [3]: token mismatch: "Operator" != "Integer"... failed
-    test_term.hpp:17: Check token [3]: lexeme mismatch: "/" != "4"... failed
-    test_term.hpp:17: Check erroneous extra token [4]: {"Integer", "4"}... failed
+  Case "3z/4":
+    test_term.hpp:17: Check procedure result mismatch: false != true... failed
   Case "3zz z / 4":
     test_term.hpp:19: Check procedure result mismatch: false != true... failed
 Test return...                                  [ FAILED ]

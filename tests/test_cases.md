@@ -1,5 +1,18 @@
 # Test Cases
 
+## Primary
+
+For Primary, the empty string '' and " " tests are expected to fail based on the grammar rule. However, there was one case that was not expected to fail. The test case "1.0E-5" is used to test real numbers. The lexer read the token size as 3 instead of 1. The token was read as "1.0", "E" and "-5". Overall, the primary test cases are working as intended, with the exception of real numbers that involve characters.
+
+## Term
+
+For Term, the program fails when the testing `3z/4`. It seems that the Lexer is recognizing 3z as an ivalid token rahter than a term itself. It seems the it needs to be separated with a `*` to be recognized as a term. 
+
+`3zz z / 4` failed as beacause `3zz` is not considered a term rather an invalid token.
+
+## Return
+The test cases for the return statement have failed. The first test case "return" expects an expression or `;` after the keyword, but since there is none, it expectably failed. In the second test case `return x > 0;`, the parser fails to recognize it as a valid return statement due to a syntax error near the operator ">" and expects a semicolon instead, there is probably something wrong with the procedure_condition function. Finally, the third test case `return x+1, y*2, z;` also encounters a syntax error due to the unexpected comma separator, which causes the parser to expect a semicolon instead.
+
 ## Relop
 
 For Relop, there's not many notable cases.
