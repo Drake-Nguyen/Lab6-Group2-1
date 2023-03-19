@@ -32,15 +32,8 @@ are used.
 */
 
 #include "procedure_functions.h"
-#include <algorithm>
-#include <cctype>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
 using namespace std;
+
 
 // a helper function to help recognize identifier
 bool identifier_helper(token_323 input_token) {
