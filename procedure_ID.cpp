@@ -1,13 +1,6 @@
 
-#include <algorithm>
-#include <cctype>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-using namespace stdl; 
+#include "procedure_functions.h"
+using namespace std; 
 
 bool procedure_IDs(vector<token_323> &all_tokens,
                    int &loc) // procedure for <IDs>
