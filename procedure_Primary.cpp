@@ -2,6 +2,8 @@
 #include "procedure_functions.h"
 using namespace std;
 
+procedureIDs for_id3;
+
 bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
@@ -29,7 +31,7 @@ bool procedure_Primary(vector<token_323> &all_tokens, int &loc) {
     {
       // token_holder.token_print_helper();
       loc++;
-      if (procedure_IDs(all_tokens, loc)) //<IDs>
+      if (for_id3.procedure_IDs(all_tokens, loc)) //<IDs>
       {
         token_holder = all_tokens[loc];
         if (token_holder.lexeme() == ")") //)

@@ -1,5 +1,7 @@
 #include "procedure_functions.h"
 using namespace std;
+
+procedureIDs for_id1;
 // R12. <Declaration> -> <Qualifier > <IDs>
 //---------------------------------------------------------------------------------------------------
 bool procedure_Declaration(vector<token_323> &all_tokens, int &loc) {
@@ -16,7 +18,7 @@ bool procedure_Declaration(vector<token_323> &all_tokens, int &loc) {
   token_holder = all_tokens[loc];
   if (procedure_Qualifier(all_tokens, loc)) {
     token_holder = all_tokens[loc];
-    if (procedure_IDs(all_tokens, loc)) {
+    if (for_id1.procedure_IDs(all_tokens, loc)) {
 
       std::string output_str = "<Declaration> -> <Qualifier > <IDs> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);

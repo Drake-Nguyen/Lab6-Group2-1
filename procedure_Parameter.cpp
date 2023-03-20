@@ -1,5 +1,7 @@
 #include "procedure_functions.h"
 using namespace std;
+
+procedureIDs for_id2;
 // R7. <Parameter> -> <IDs >  <Qualifier>
 //---------------------------------------------------------------------------------------------------
 bool procedure_Parameter(vector<token_323> &all_tokens,
@@ -16,7 +18,7 @@ bool procedure_Parameter(vector<token_323> &all_tokens,
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_IDs(all_tokens, loc)) {
+  if (for_id2.procedure_IDs(all_tokens, loc)) {
     if (procedure_Qualifier(all_tokens, loc)) {
 
       std::string output_str = "<Parameter> -> <IDs> <Qualifier> \n";

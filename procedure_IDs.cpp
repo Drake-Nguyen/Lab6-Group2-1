@@ -1,22 +1,12 @@
 #include "procedure_functions.h"
-#include <cctype>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
 using namespace std;
 
-class  procedureIDs  {
-    private:
 
-    public: 
 
         // R13. <IDs> -> <Identifier> | <Identifier>, <IDs>
         //---------------------------------------------------------------------------------------------------
 
-        bool procedure_IDs(vector<token_323> &all_tokens,
+        bool procedureIDs::procedure_IDs(vector<token_323> &all_tokens,
                    int &loc) // procedure for <IDs>
         {
         int loc_helper = loc;
@@ -63,4 +53,3 @@ class  procedureIDs  {
         return return_holder;
         }
 
-};

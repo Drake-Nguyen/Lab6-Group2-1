@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "lexer.hpp"
 
+
 bool identifier_helper(token_323 input_token);
 
 // R28. <Primary> :: = <Identifier> | <Integer> | <Identifier>  (<IDs>) |
@@ -76,7 +77,12 @@ bool procedure_Statement_List(vector<token_323> &all_tokens, int &loc);
 
 // R13. <IDs> :: = <Identifier> | <Identifier>, <IDs>
 //---------------------------------------------------------------------------------------------------
-bool procedure_IDs(vector<token_323> &all_tokens, int &loc);
+
+class procedureIDs {
+  public:
+      bool procedure_IDs(vector<token_323> &all_tokens, int &loc);
+
+};
 
 // R12. <Declaration> :: = <Qualifier > <IDs>
 //---------------------------------------------------------------------------------------------------

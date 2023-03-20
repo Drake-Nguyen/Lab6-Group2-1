@@ -1,5 +1,7 @@
 #include "procedure_functions.h"
 using namespace std;
+
+procedureIDs for_id4;
 // R21. <Scan> -> get( <IDs> );
 //---------------------------------------------------------------------------------------------------
 bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
@@ -23,7 +25,7 @@ bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
       loc++;
       token_holder = all_tokens[loc];
       int j = loc;
-      if (procedure_IDs(all_tokens, loc)) {
+      if (for_id4.procedure_IDs(all_tokens, loc)) {
         // instruction for scan
         instruction_table temp;
         temp.new_instruction("STDIN", "nil");
