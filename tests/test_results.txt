@@ -70,21 +70,21 @@ Test declaration...                             [ FAILED ]
     test_declaration.hpp:14: Check procedure result mismatch: false != true... failed
 Test parameter_list...                          [ FAILED ]
   Case "a()":
-    test_parameter_list.hpp:12: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-  Case "a(1001)":
-    test_parameter_list.hpp:13: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-  Case "a(boo)":
     test_parameter_list.hpp:14: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-  Case "a($)":
+  Case "a(1001)":
     test_parameter_list.hpp:15: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-  Case "a(int,char)":
+  Case "a(boo)":
+    test_parameter_list.hpp:16: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a($)":
     test_parameter_list.hpp:17: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
-  Case "a(204,string)":
+  Case "a(int,char)":
     test_parameter_list.hpp:19: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+  Case "a(204,string)":
+    test_parameter_list.hpp:21: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "int x,int y":
-    test_parameter_list.hpp:23: Check procedure result mismatch: false != true... failed
+    test_parameter_list.hpp:25: Check procedure result mismatch: false != true... failed
   Case "boolean x,real y":
-    test_parameter_list.hpp:24: Check procedure result mismatch: false != true... failed
+    test_parameter_list.hpp:26: Check procedure result mismatch: false != true... failed
 Test while...                                   [ FAILED ]
   Case "":
     Threw std::exception... failed

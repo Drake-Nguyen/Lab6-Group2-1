@@ -1,21 +1,9 @@
 #include "procedure_functions.h"
-#include <cctype>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
 using namespace std;
 
-class procedureParameterList {
-
-  private: 
-
-  public: 
         // R6. <Parameter List>  -> <Parameter> | <Parameter>, <Parameter List>
         //---------------------------------------------------------------------------------------------------
-        bool procedure_Parameter_List(vector<token_323> &all_tokens, int &loc) {
+        bool procedureParameterList::procedure_Parameter_List(vector<token_323> &all_tokens, int &loc) {
         // save current location of reading token, and location of rule_holder vector
         // to help push rule if rule is used
         int loc_helper = loc;
@@ -55,4 +43,4 @@ class procedureParameterList {
         }
         return return_holder;
         }
-};
+
