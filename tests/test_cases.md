@@ -11,7 +11,7 @@ For Term, the program fails when the testing `3z/4`. It seems that the Lexer is 
 `3zz z / 4` failed as beacause `3zz` is not considered a term rather an invalid token.
 
 ## Return
-The test cases for the return statement have failed. The first test case "return" expects an expression or `;` after the keyword, but since there is none, it expectably failed. In the second test case `return x > 0;`, the parser fails to recognize it as a valid return statement due to a syntax error near the operator ">" and expects a semicolon instead, there is probably something wrong with the procedure_condition function. Finally, the third test case `return x+1, y*2, z;` also encounters a syntax error due to the unexpected comma separator, which causes the parser to expect a semicolon instead.
+The test cases for the return statement have failed. The first test case "return" expects an expression or `;` after the keyword, but since there is none, it expectably failed. In the second test case `return x > 0;`, the parser fails to recognize it as a valid return statement due to a syntax error near the operator ">" and expects a semicolon instead, there is probably something wrong with the procedurecondition function. Finally, the third test case `return x+1, y*2, z;` also encounters a syntax error due to the unexpected comma separator, which causes the parser to expect a semicolon instead.
 
 ## Relop
 
@@ -79,7 +79,7 @@ included inside of the possible inputs inside the original procedure.
 -`char` would be in a similar situation as static in this case on why it failed to lex properly.
 
 All five of these test cases would have been enough through covering potential qualifiers along with
-the different inputs that can be put into the procedure_Qualifier.
+the different inputs that can be put into the procedureQualifier.
 
 ## Expression
 Uncertian of the failure of the test cases. Although the test cases were a failure,
@@ -118,10 +118,10 @@ As long as test cases fall within the categories for each statement cases will
 be passed.
 
 ## Assign
-The first test case is testing a valid assignment statement, where the variable "a" is assigned the value of 123. This is a basic test case to ensure that the procedure_Assign function is working as expected when given valid input. The next five test cases are testing various scenarios that would result in an invalid assignment statement. 
+The first test case is testing a valid assignment statement, where the variable "a" is assigned the value of 123. This is a basic test case to ensure that the procedureAssign function is working as expected when given valid input. The next five test cases are testing various scenarios that would result in an invalid assignment statement. 
 
 ## Declaration
-The first three test cases are testing valid variable declarations in C++. The first test case is declaring an integer variable "x". The second test case is declaring three floating-point variables "x", "y", and "z". The third test case is declaring two character variables "c" and "d". These test cases ensure that the procedure_Declaration function is working as expected when given valid input.
+The first three test cases are testing valid variable declarations in C++. The first test case is declaring an integer variable "x". The second test case is declaring three floating-point variables "x", "y", and "z". The third test case is declaring two character variables "c" and "d". These test cases ensure that the procedureDeclaration function is working as expected when given valid input.
 
 ## Print
 For this procedure the valid tests have proper notation for printing. using "put();". The first test case checks for the proper printing of one variable. The second function checks for the correct way to print two variables. The third function checks for the right printing of an expression. The fail test checks for correct notation.

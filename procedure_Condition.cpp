@@ -2,7 +2,7 @@
 using namespace std;
 // R23. <Condition> -> <Expression>  <Relop>   <Expression>
 //---------------------------------------------------------------------------------------------------
-bool procedure_Condition(vector<token_323> &all_tokens, int &loc) {
+bool procedureCondition(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -14,9 +14,9 @@ bool procedure_Condition(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Expression(all_tokens, loc)) {
-    if (procedure_Relop(all_tokens, loc)) {
-      if (procedure_Expression(all_tokens, loc)) {
+  if (procedureExpression(all_tokens, loc)) {
+    if (procedureRelop(all_tokens, loc)) {
+      if (procedureExpression(all_tokens, loc)) {
 
         std::string output_str =
             "<Condition> -> <Expression> <Relop> <Expression> \n";

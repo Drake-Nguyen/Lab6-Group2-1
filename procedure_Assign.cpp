@@ -2,7 +2,7 @@
 using namespace std;
 // R17. <Assign> -> <Identifier> = <Expression>;
 //---------------------------------------------------------------------------------------------------
-bool procedure_Assign(vector<token_323> &all_tokens, int &loc) {
+bool procedureAssign(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -14,7 +14,7 @@ bool procedure_Assign(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (identifier_helper(token_holder)) {
+  if (identifierHelper(token_holder)) {
     // id saved
     string temp_token = token_holder.lexeme();
 
@@ -25,7 +25,7 @@ bool procedure_Assign(vector<token_323> &all_tokens, int &loc) {
     if (token_holder.lexeme() == "=") {
       // token_holder.token_print_helper();
       loc++;
-      if (procedure_Expression(all_tokens, loc)) {
+      if (procedureExpression(all_tokens, loc)) {
         token_holder = all_tokens[loc];
         // add popm instruction
         instruction_table temp_ins;

@@ -9,14 +9,14 @@
 
 static void test_declaration(void) {
   // valid declarations
-  test(procedure_Declaration, "int x;", {}, CURRENT_LOCATION);
-  test(procedure_Declaration, "float x, y, z;", {}, CURRENT_LOCATION);
-  test(procedure_Declaration, "char c, d;", {}, CURRENT_LOCATION);
+  test(procedureDeclaration, "int x;", {}, CURRENT_LOCATION);
+  test(procedureDeclaration, "float x, y, z;", {}, CURRENT_LOCATION);
+  test(procedureDeclaration, "char c, d;", {}, CURRENT_LOCATION);
 
   // invalid declarations
-  test_fail(procedure_Declaration, "int 123;", {}, CURRENT_LOCATION);
-  test_fail(procedure_Declaration, "bool x;", {}, CURRENT_LOCATION);
-  test_fail(procedure_Declaration, "int x,;", {}, CURRENT_LOCATION);
-  test_fail(procedure_Declaration, "float x y z;", {}, CURRENT_LOCATION);
-  test_fail(procedure_Declaration, "char ,d;", {}, CURRENT_LOCATION);
+  test_fail(procedureDeclaration, "int 123;", {}, CURRENT_LOCATION);
+  test_fail(procedureDeclaration, "bool x;", {}, CURRENT_LOCATION);
+  test_fail(procedureDeclaration, "int x,;", {}, CURRENT_LOCATION);
+  test_fail(procedureDeclaration, "float x y z;", {}, CURRENT_LOCATION);
+  test_fail(procedureDeclaration, "char ,d;", {}, CURRENT_LOCATION);
 }

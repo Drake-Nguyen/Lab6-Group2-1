@@ -4,7 +4,7 @@ using namespace std;
         // R13. <IDs> -> <Identifier> | <Identifier>, <IDs>
         //---------------------------------------------------------------------------------------------------
 
-        bool procedureIDs::procedure_IDs(vector<token_323> &all_tokens,
+        bool procedureIDs::procedureIDs(vector<token_323> &all_tokens,
                    int &loc) // procedure for <IDs>
         {
         int loc_helper = loc;
@@ -16,7 +16,7 @@ using namespace std;
         bool return_holder = false;
         token_323 token_holder;
         token_holder = all_tokens[loc]; // get token from collection
-        if (identifier_helper(token_holder)) {
+        if (identifierHelper(token_holder)) {
             // token_holder.token_print_helper();
             loc++;
 
@@ -27,7 +27,7 @@ using namespace std;
             // token_holder.token_print_helper();
             loc++;
 
-            if (procedure_IDs(all_tokens, loc)) {
+            if (procedureIDs(all_tokens, loc)) {
                 std::string output_str = "<IDs> -> <Identifier> \n";
                 all_tokens[loc_helper].rule_holder.push_back(output_str);
                 // std::cerr << output_str;

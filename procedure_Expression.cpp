@@ -2,7 +2,7 @@
 using namespace std;
 // R25. <Expression>  -> <Term> <Expression'>
 //---------------------------------------------------------------------------------------------------
-bool procedure_Expression(vector<token_323> &all_tokens, int &loc) {
+bool procedureExpression(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -14,8 +14,8 @@ bool procedure_Expression(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Term(all_tokens, loc)) {
-    if (procedure_Expression_q(all_tokens, loc)) {
+  if (procedureTerm(all_tokens, loc)) {
+    if (procedureExpression_q(all_tokens, loc)) {
 
       std::string output_str = "<Expression>  -> <Term> <Expression'> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);

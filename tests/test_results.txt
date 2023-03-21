@@ -43,7 +43,7 @@ Test primary...                                 [ FAILED ]
 Test expression...                              [ FAILED ]
   Case "":
     Threw std::exception... failed
-      std::exception::what(): basic_string::_M_create
+      std::exception::what(): std::bad_alloc
 Test parameters...                              [ FAILED ]
   Case "a()":
     test_parameter.hpp:11: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed

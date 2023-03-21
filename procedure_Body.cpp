@@ -2,7 +2,7 @@
 using namespace std;
 // R9. <Body>  -> { < Statement List> }
 //---------------------------------------------------------------------------------------------------
-bool procedure_Body(vector<token_323> &all_tokens, int &loc) {
+bool procedureBody(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -18,7 +18,7 @@ bool procedure_Body(vector<token_323> &all_tokens, int &loc) {
     // token_holder.token_print_helper();
     loc++;
     token_holder = all_tokens[loc];
-    if (procedure_Statement_List(all_tokens, loc)) {
+    if (procedureStatementList(all_tokens, loc)) {
       token_holder = all_tokens[loc];
       if (token_holder.lexeme() == "}") {
         // token_holder.token_print_helper();

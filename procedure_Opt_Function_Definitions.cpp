@@ -2,7 +2,7 @@
 using namespace std;
 // R2. <Opt Function Definitions> -> <Function Definitions> | <Empty>
 //---------------------------------------------------------------------------------------------------
-bool procedure_Opt_Function_Definitions(vector<token_323> &all_tokens,
+bool procedureOptFunctionDefinitions(vector<token_323> &all_tokens,
                                         int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
@@ -15,7 +15,7 @@ bool procedure_Opt_Function_Definitions(vector<token_323> &all_tokens,
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Function_Definitions(all_tokens, loc)) {
+  if (procedureFunctionDefinitions(all_tokens, loc)) {
 
     std::string output_str =
         "<Opt Function Definitions> -> <Function Definitions> \n";

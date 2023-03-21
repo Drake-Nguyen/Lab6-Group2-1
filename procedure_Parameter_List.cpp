@@ -3,7 +3,7 @@ using namespace std;
 
         // R6. <Parameter List>  -> <Parameter> | <Parameter>, <Parameter List>
         //---------------------------------------------------------------------------------------------------
-        bool procedureParameterList::procedure_Parameter_List(vector<token_323> &all_tokens, int &loc) {
+        bool procedureParameterList::procedureParameterList(vector<token_323> &all_tokens, int &loc) {
         // save current location of reading token, and location of rule_holder vector
         // to help push rule if rule is used
         int loc_helper = loc;
@@ -15,12 +15,12 @@ using namespace std;
         bool return_holder = false;
         token_323 token_holder;
         token_holder = all_tokens[loc];
-        if (procedure_Parameter(all_tokens, loc)) {
+        if (procedureParameter(all_tokens, loc)) {
             token_holder = all_tokens[loc];
             if (token_holder.lexeme() == ",") {
             // token_holder.token_print_helper();
             loc++;
-            if (procedure_Parameter_List(all_tokens, loc)) {
+            if (procedureParameterList(all_tokens, loc)) {
 
                 std::string output_str =
                     "<Parameter List> -> <Parameter>, <Parameter List> \n";

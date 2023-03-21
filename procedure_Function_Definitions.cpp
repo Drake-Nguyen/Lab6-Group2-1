@@ -2,7 +2,7 @@
 using namespace std;
 // R3. <Function Definitions>  -> <Function> | <Function> <Function Definitions>
 //---------------------------------------------------------------------------------------------------
-bool procedure_Function_Definitions(vector<token_323> &all_tokens, int &loc) {
+bool procedureFunctionDefinitions(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -14,9 +14,9 @@ bool procedure_Function_Definitions(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Function(all_tokens, loc)) // if <function>?
+  if (procedureFunction(all_tokens, loc)) // if <function>?
   {
-    if (procedure_Function_Definitions(all_tokens, loc)) {
+    if (procedureFunctionDefinitions(all_tokens, loc)) {
 
       std::string output_str =
           "<Function Definitions> -> <Function Definitions>\n";

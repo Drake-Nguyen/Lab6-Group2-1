@@ -3,7 +3,7 @@ using namespace std;
 
     // R8. <Qualifier> -> int | boolean | real
     //---------------------------------------------------------------------------------------------------
-    bool procedureQualifier::procedure_Qualifier(vector<token_323> &all_tokens,
+    bool procedureQualifier::procedureQualifier(vector<token_323> &all_tokens,
                          int &loc) // procedure for <Qualifier>
     {
       // save current location of reading token, and location of rule_holder vector
