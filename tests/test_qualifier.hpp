@@ -15,8 +15,8 @@ test ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure
 test ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "boolean", {{"Keyword", "boolean"}}, CURRENT_LOCATION);
 test ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "real", {{"Keyword", "real"}}, CURRENT_LOCATION);
 
-//test_fail (procedure_Qualifier, "static", {{"Keyword", "static"}}, CURRENT_LOCATION);
-//test_fail (procedure_Qualifier, "char", {{"Keyword", "char"}}, CURRENT_LOCATION);
+test_fail ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "static", {{"Keyword", "static"}}, CURRENT_LOCATION);
+test_fail ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "char", {{"Keyword", "char"}}, CURRENT_LOCATION);
 
 }
 
