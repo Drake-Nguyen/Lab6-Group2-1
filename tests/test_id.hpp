@@ -18,9 +18,9 @@ static void test_id (void) {
    test ([&ids](std::vector<token_323>& tokens, int& index) {return ids.procedure_IDs(tokens, index);}, "a+B", {{"Identifier", "a"}, {"Operator", "+"}, {"Identifier", "B"}}, CURRENT_LOCATION);
    test ([&ids](std::vector<token_323>& tokens, int& index) {return ids.procedure_IDs(tokens, index);}, "a b", {{"Identifier", "a"}, {"Other Separators", " "}, {"Identifier", "b"}}, CURRENT_LOCATION);
    
-   //test_fail (procedure_IDs::procedure_IDs, &testID, "    ", {}, CURRENT_LOCATION);
-   //test_fail (procedure_IDs::procedure_IDs, &testID, "class", {{"Keyword", "class"}}, CURRENT_LOCATION);
-   //test_fail (procedure_IDs::procedure_IDs, &testID, "", {}, CURRENT_LOCATION);
+   test_fail ([&ids](std::vector<token_323>& tokens, int& index) {return ids.procedure_IDs(tokens, index);}, "    ", {}, CURRENT_LOCATION);
+   test_fail ([&ids](std::vector<token_323>& tokens, int& index) {return ids.procedure_IDs(tokens, index);}, "class", {{"Keyword", "class"}}, CURRENT_LOCATION);
+   test_fail ([&ids](std::vector<token_323>& tokens, int& index) {return ids.procedure_IDs(tokens, index);}, "", {}, CURRENT_LOCATION);
    //test_fail (procedure_IDs, "$tring", {{"Identifier", "$tring"}}, CURRENT_LOCATION);
    
 }
