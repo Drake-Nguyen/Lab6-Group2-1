@@ -1,8 +1,6 @@
 #include "procedure_functions.h"
 using namespace std;
 
-
-
         // R13. <IDs> -> <Identifier> | <Identifier>, <IDs>
         //---------------------------------------------------------------------------------------------------
 

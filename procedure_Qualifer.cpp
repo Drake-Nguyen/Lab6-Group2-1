@@ -1,22 +1,9 @@
 #include "procedure_functions.h"
-#include <cctype>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
 using namespace std;
 
-class procedureQualifier {
-
-  private:
-
-  public: 
-    
     // R8. <Qualifier> -> int | boolean | real
     //---------------------------------------------------------------------------------------------------
-    bool procedure_Qualifier(vector<token_323> &all_tokens,
+    bool procedureQualifier::procedure_Qualifier(vector<token_323> &all_tokens,
                          int &loc) // procedure for <Qualifier>
     {
       // save current location of reading token, and location of rule_holder vector
@@ -65,7 +52,7 @@ class procedureQualifier {
       return return_holder;
     }
 
-};
+
 
 
 

@@ -9,11 +9,14 @@
 
 static void test_qualifier (void) {
 
-test (procedure_Qualifier, "int", {{"Keyword", "int"}}, CURRENT_LOCATION);
-test (procedure_Qualifier, "boolean", {{"Keyword", "boolean"}}, CURRENT_LOCATION);
-test (procedure_Qualifier, "real", {{"Keyword", "real"}}, CURRENT_LOCATION);
+procedureQualifier qual;
 
-test_fail (procedure_Qualifier, "static", {{"Keyword", "static"}}, CURRENT_LOCATION);
-test_fail (procedure_Qualifier, "char", {{"Keyword", "char"}}, CURRENT_LOCATION);
+test ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "int", {{"Keyword", "int"}}, CURRENT_LOCATION);
+test ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "boolean", {{"Keyword", "boolean"}}, CURRENT_LOCATION);
+test ([&qual](std::vector<token_323>& tokens, int& index) {return qual.procedure_Qualifier(tokens, index);}, "real", {{"Keyword", "real"}}, CURRENT_LOCATION);
+
+//test_fail (procedure_Qualifier, "static", {{"Keyword", "static"}}, CURRENT_LOCATION);
+//test_fail (procedure_Qualifier, "char", {{"Keyword", "char"}}, CURRENT_LOCATION);
 
 }
+

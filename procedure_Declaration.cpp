@@ -2,6 +2,7 @@
 using namespace std;
 
 procedureIDs for_id1;
+procedureQualifier for_qual1;
 // R12. <Declaration> -> <Qualifier > <IDs>
 //---------------------------------------------------------------------------------------------------
 bool procedure_Declaration(vector<token_323> &all_tokens, int &loc) {
@@ -16,7 +17,7 @@ bool procedure_Declaration(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Qualifier(all_tokens, loc)) {
+  if (for_qual1.procedure_Qualifier(all_tokens, loc)) {
     token_holder = all_tokens[loc];
     if (for_id1.procedure_IDs(all_tokens, loc)) {
 
