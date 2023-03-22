@@ -88,7 +88,7 @@ bool procedureDeclaration(vector<token_323> &all_tokens, int &loc);
 // R11. <Declaration List>  : = <Declaration>; | <Declaration>; <Declaration
 // List>
 //---------------------------------------------------------------------------------------------------
-bool procedureDeclaration_List(vector<token_323> &all_tokens, int &loc);
+bool procedureDeclarationList(vector<token_323> &all_tokens, int &loc);
 
 // R10. <Opt Declaration List> :: = <Declaration List> | <Empty>
 //---------------------------------------------------------------------------------------------------

@@ -4,7 +4,7 @@ using namespace std;
         // R13. <IDs> -> <Identifier> | <Identifier>, <IDs>
         //---------------------------------------------------------------------------------------------------
 
-        bool procedureIDs::procedureIDs(vector<token_323> &all_tokens,
+        bool procedureIDs(vector<token_323> &all_tokens,
                    int &loc) // procedure for <IDs>
         {
         int loc_helper = loc;

@@ -3,7 +3,7 @@ using namespace std;
 
         // R6. <Parameter List>  -> <Parameter> | <Parameter>, <Parameter List>
         //---------------------------------------------------------------------------------------------------
-        bool procedureParameterList::procedureParameterList(vector<token_323> &all_tokens, int &loc) {
+        bool procedureParameterList(vector<token_323> &all_tokens, int &loc) {
         // save current location of reading token, and location of rule_holder vector
         // to help push rule if rule is used
         int loc_helper = loc;

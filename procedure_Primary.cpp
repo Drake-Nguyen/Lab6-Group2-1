@@ -1,56 +1,47 @@
 #include "procedure_functions.h"
 using namespace std;
 
-procedureIDs for_id3;
+//procedureIDs for_id3;
 
-bool is_identifier(const token_323& token) {
-  return token.token() == "Identifier";
-}
-
-bool is_integer(const token_323& token) {
-  return token.token() == "Integer";
-}
-
-bool is_real(const token_323& token) {
-  return token.token() == "Real";
-}
-
-bool is_true(const token_323& token) {
-  return token.lexeme() == "true";
-}
-
-bool is_false(const token_323& token) {
-  return token.lexeme() == "false";
-}
-
-void push_instruction(const string& op, const string& operand,
-                      vector<instruction_table>& instructions) {
-  instruction_table temp_ins;
-  temp_ins.new_instruction(op, operand);
-  instructions.push_back(temp_ins);
-}
-
-bool procedurePrimary(vector<token_323>& all_tokens, int& loc) {
+bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
+  // save current location of reading token, and location of rule_holder vector
+  // to help push rule if rule is used
   int loc_helper = loc;
   int rule_helper = all_tokens[loc].rule_holder.size();
-  auto& rule_holder = all_tokens[loc_helper].rule_holder;
-  auto& instructions = all_tokens[0].all_instructions;
+  std::vector<std::string>::iterator it =
+      all_tokens[loc_helper].rule_holder.begin();
 
-  token_323 token_holder = all_tokens[loc];
+  // get token and test rule
   bool return_holder = false;
+  token_323 token_holder;
+  token_holder = all_tokens[loc];
+  if (token_holder.token() == "Identifier") //<Identifier>
+  {
 
-  if (is_identifier(token_holder)) {
-    push_instruction("PUSHM", token_holder.lexeme(), instructions);
+    // instruction pushm
+    instruction_table temp_ins;
+    temp_ins.new_instruction("PUSHM", token_holder.lexeme());
+    all_tokens[0].all_instructions.push_back(temp_ins);
 
+    // token_holder.token_print_helper();
     loc++;
     token_holder = all_tokens[loc];
-    if (token_holder.lexeme() == "(") {
+    if (token_holder.lexeme() == "(") //(
+    {
+      // token_holder.token_print_helper();
       loc++;
-      if (for_id3.procedureIDs(all_tokens, loc)) {
+      if (procedureIDs(all_tokens, loc)) //<IDs>
+      {
         token_holder = all_tokens[loc];
-        if (token_holder.lexeme() == ")") {
+        if (token_holder.lexeme() == ")") //)
+        {
+          // token_holder.token_print_helper();
           loc++;
-          rule_holder.push_back("<Primary> -> <Identifier> ( <IDs> )\n");
+
+          std::string output_str = "<Primary> -> <Identifier> ( <IDs> )\n";
+          all_tokens[loc_helper].rule_holder.push_back(output_str);
+          // std::cerr << output_str;
+
           return_holder = true;
         } else {
           throw std::logic_error("error, expecting )");
@@ -59,22 +50,43 @@ bool procedurePrimary(vector<token_323>& all_tokens, int& loc) {
         throw std::logic_error("error, expecting <IDs>");
       }
     } else {
-      rule_holder.push_back("<Primary> -> <Identifier> \n");
+
+      std::string output_str = "<Primary> -> <Identifier> \n";
+      all_tokens[loc_helper].rule_holder.push_back(output_str);
+      // std::cerr << output_str;
       return_holder = true;
     }
-  } else if (is_integer(token_holder)) {
-    push_instruction("PUSHI", token_holder.lexeme(), instructions);
+  } else if (token_holder.token() == "Integer") // <Integer>
+  {
+    // instruction pushi
+    instruction_table temp_ins;
+    temp_ins.new_instruction("PUSHI", token_holder.lexeme());
+    all_tokens[0].all_instructions.push_back(temp_ins);
 
+    // token_holder.token_print_helper();
     loc++;
-    rule_holder.push_back("<Primary> -> <Integer>  \n");
+    std::string output_str = "<Primary> -> <Integer>  \n";
+    all_tokens[loc_helper].rule_holder.push_back(output_str);
+    // std::cerr << output_str;
+
     return_holder = true;
-  } else if (token_holder.lexeme() == "(") {
+  } else if (token_holder.lexeme() == "(") //( <Expression> )
+  {
+
+    // token_holder.token_print_helper();
     loc++;
-    if (procedureExpression(all_tokens, loc)) {
+    if (procedureExpression(all_tokens, loc)) //<Expression>
+    {
       token_holder = all_tokens[loc];
-      if (token_holder.lexeme() == ")") {
+      if (token_holder.lexeme() == ")") // )
+      {
+        // token_holder.token_print_helper();
         loc++;
-        rule_holder.push_back("<Primary> -> ( <Expression> ) \n");
+
+        std::string output_str = "<Primary> -> ( <Expression> ) \n";
+        all_tokens[loc_helper].rule_holder.push_back(output_str);
+        // std::cerr << output_str;
+
         return_holder = true;
       } else {
         throw std::logic_error("error, expecting )");
@@ -82,25 +94,49 @@ bool procedurePrimary(vector<token_323>& all_tokens, int& loc) {
     } else {
       throw std::logic_error("error, expecting <Expression>");
     }
-  } else if (is_real(token_holder)) {
+  } else if (token_holder.token() == "Real") // <Real>
+  {
+    // token_holder.token_print_helper();
     loc++;
-    rule_holder.push_back("<Primary> -> <Real> \n");
-    return_holder = true;
-  } else if (is_true(token_holder)) {
-    push_instruction("PUSHI", "1", instructions);
 
-    loc++;
-    rule_holder.push_back("<Primary> -> true \n");
-    return_holder = true;
-  } else if (is_false(token_holder)) {
-    push_instruction("PUSHI", "0", instructions);
+    std::string output_str = "<Primary> -> <Real> \n";
+    all_tokens[loc_helper].rule_holder.push_back(output_str);
+    // std::cerr << output_str;
 
+    return_holder = true;
+  } else if (token_holder.lexeme() == "true") // True
+  {
+    // instruction push true
+    instruction_table temp_ins;
+    temp_ins.new_instruction("PUSHI", "1");
+    all_tokens[0].all_instructions.push_back(temp_ins);
+
+    // token_holder.token_print_helper();
     loc++;
-    rule_holder.push_back("<Primary> -> false \n");
+
+    std::string output_str = "<Primary> -> true \n";
+    all_tokens[loc_helper].rule_holder.push_back(output_str);
+    // std::cerr << output_str;
+
+    return_holder = true;
+  } else if (token_holder.lexeme() == "false") // false
+  {
+
+    // instruction push true
+    instruction_table temp_ins;
+    temp_ins.new_instruction("PUSHI", "0");
+    all_tokens[0].all_instructions.push_back(temp_ins);
+
+    // token_holder.token_print_helper();
+    loc++;
+
+    std::string output_str = "<Primary> -> false \n";
+    all_tokens[loc_helper].rule_holder.push_back(output_str);
+    // std::cerr << output_str;
+
     return_holder = true;
   } else {
     return_holder = false;
   }
-
   return return_holder;
 }

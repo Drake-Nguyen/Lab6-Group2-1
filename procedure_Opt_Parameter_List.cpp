@@ -16,7 +16,7 @@ bool procedureOptParameterList(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (for_paramlist.procedureParameterList(all_tokens, loc)) {
+  if (procedureParameterList(all_tokens, loc)) {
     std::string output_str = "<Opt Parameter List> -> <Parameter List> \n";
     all_tokens[loc_helper].rule_holder.push_back(output_str);
     // std::cerr << output_str;
