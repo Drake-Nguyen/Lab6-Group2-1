@@ -19,8 +19,6 @@ static void test_while(void) {
   test(procedure_While, "while(1==1){x=y; return true;}", {}, CURRENT_LOCATION);
   test(procedure_While, "while(1==1)if(x!=y)return; fi", {}, CURRENT_LOCATION);
 
-
-
   // invalid assignments
   test_fail(procedure_While, "", {}, CURRENT_LOCATION);
   test_fail(procedure_While, "while(", {}, CURRENT_LOCATION);

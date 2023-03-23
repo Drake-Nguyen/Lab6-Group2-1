@@ -1,6 +1,7 @@
 #include "../include/acutest.h"
 
 #include "./test_assign.hpp"
+#include "./test_compound.hpp"
 #include "./test_condition.hpp"
 #include "./test_declaration.hpp"
 #include "./test_expression.hpp"
@@ -9,16 +10,14 @@
 #include "./test_parameter.hpp"
 #include "./test_parameter_list.hpp"
 #include "./test_primary.hpp"
+#include "./test_print.hpp"
 #include "./test_qualifier.hpp"
 #include "./test_relop.hpp"
 #include "./test_return.hpp"
+#include "./test_scan.hpp"
+#include "./test_statement.hpp"
 #include "./test_term.hpp"
 #include "./test_while.hpp"
-#include "./test_print.hpp"
-#include "./test_scan.hpp"
-#include "./test_compound.hpp"
-#include "./test_statement.hpp"
-
 
 TEST_LIST = {
     {"relop", test_relop},
