@@ -76,17 +76,11 @@ bool procedureStatementList(vector<token_323> &all_tokens, int &loc);
 
 // R13. <IDs> :: = <Identifier> | <Identifier>, <IDs>
 //---------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-class procedureIDs {
-public:
-  bool procedure_IDs(vector<token_323> &all_tokens, int &loc);
-};
-=======
+
 
 bool procedureIDs(vector<token_323> &all_tokens, int &loc);
 
 
->>>>>>> changingToCamelCase
 
 // R12. <Declaration> :: = <Qualifier > <IDs>
 //---------------------------------------------------------------------------------------------------
@@ -107,15 +101,10 @@ bool procedureBody(vector<token_323> &all_tokens, int &loc);
 
 // R8. <Qualifier> :: = int | boolean | real
 //---------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-class procedureQualifier {
-public:
-  bool procedure_Qualifier(vector<token_323> &all_tokens, int &loc);
-};
-=======
+
 bool procedureQualifier(vector<token_323> &all_tokens, int &loc);
 
->>>>>>> changingToCamelCase
+
 
 // R7. <Parameter> :: = <IDs >  <Qualifier>
 //---------------------------------------------------------------------------------------------------
@@ -123,16 +112,10 @@ bool procedureParameter(vector<token_323> &all_tokens, int &loc);
 
 // R6. <Parameter List>  :: = <Parameter> | <Parameter>, <Parameter List>
 //---------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-class procedureParameterList {
-public:
-  bool procedure_Parameter_List(vector<token_323> &all_tokens, int &loc);
-};
-=======
+
 
 bool procedureParameterList(vector<token_323> &all_tokens, int &loc);
 
->>>>>>> changingToCamelCase
 
 // R5. <Opt Parameter List> :: = <Parameter List> | <Empty>
 //---------------------------------------------------------------------------------------------------
