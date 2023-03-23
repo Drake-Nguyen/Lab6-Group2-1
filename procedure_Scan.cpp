@@ -1,8 +1,8 @@
 #include "procedure_functions.h"
 using namespace std;
 
-//procedureIDs for_id4;
-// R21. <Scan> -> get( <IDs> );
+// procedureIDs for_id4;
+//  R21. <Scan> -> get( <IDs> );
 //---------------------------------------------------------------------------------------------------
 bool procedureScan(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector

@@ -38,5 +38,4 @@ static void test_print(void) {
   test_fail(procedureScan, "put(a;", {}, CURRENT_LOCATION);
   test_fail(procedureScan, "put a+b);", {}, CURRENT_LOCATION);
   test_fail(procedureScan, "put a,b;", {}, CURRENT_LOCATION);
-
 }

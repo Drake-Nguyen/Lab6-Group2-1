@@ -6,7 +6,7 @@ using namespace std;
 // R7. <Parameter> -> <IDs >  <Qualifier>
 //---------------------------------------------------------------------------------------------------
 bool procedureParameter(vector<token_323> &all_tokens,
-                         int &loc) // procedure for <Parameter>
+                        int &loc) // procedure for <Parameter>
 {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used

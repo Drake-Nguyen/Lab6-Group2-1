@@ -1,17 +1,17 @@
 #include "procedure_functions.h"
 using namespace std;
 
-    // R8. <Qualifier> -> int | boolean | real
-    //---------------------------------------------------------------------------------------------------
-    bool procedureQualifier(vector<token_323> &all_tokens,
-                         int &loc) // procedure for <Qualifier>
-    {
-      // save current location of reading token, and location of rule_holder vector
-      // to help push rule if rule is used
-      int loc_helper = loc;
-      int rule_helper = all_tokens[loc].rule_holder.size();
-      std::vector<std::string>::iterator it =
-          all_tokens[loc_helper].rule_holder.begin();
+// R8. <Qualifier> -> int | boolean | real
+//---------------------------------------------------------------------------------------------------
+bool procedureQualifier(vector<token_323> &all_tokens,
+                        int &loc) // procedure for <Qualifier>
+{
+  // save current location of reading token, and location of rule_holder vector
+  // to help push rule if rule is used
+  int loc_helper = loc;
+  int rule_helper = all_tokens[loc].rule_holder.size();
+  std::vector<std::string>::iterator it =
+      all_tokens[loc_helper].rule_holder.begin();
 
   // get token and test rule
   bool return_holder = false;

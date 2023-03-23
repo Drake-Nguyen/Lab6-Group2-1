@@ -9,7 +9,6 @@
 
 static void test_primary(void) {
 
-
   // test (procedurePrimary, "",{}, CURRENT_LOCATION);
   test(procedurePrimary, "temp", {{"Identifier", "temp"}}, CURRENT_LOCATION);
   test(procedurePrimary, "10", {{"Integer", "10"}}, CURRENT_LOCATION);
@@ -29,5 +28,4 @@ static void test_primary(void) {
   test(procedurePrimary, "    ", {}, CURRENT_LOCATION);
   test(procedurePrimary, "true", {{"Keyword", "true"}}, CURRENT_LOCATION);
   test(procedurePrimary, "false", {{"Keyword", "false"}}, CURRENT_LOCATION);
-
 }

@@ -11,7 +11,7 @@ bool procedureTerm(vector<token_323> &all_tokens, int &loc) {
       all_tokens[loc_helper].rule_holder.begin();
 
   // get token and test rule
-  
+
   token_323 token_holder;
   token_holder = all_tokens[loc];
   if (procedureFactor(all_tokens, loc)) {
@@ -21,10 +21,9 @@ bool procedureTerm(vector<token_323> &all_tokens, int &loc) {
       all_tokens[loc_helper].rule_holder.push_back(output_str);
       // std::cerr << output_str;
 
-      
     } else {
       throw std::logic_error("error, expecting <Term>'");
     }
-  } 
+  }
   return false;
 }

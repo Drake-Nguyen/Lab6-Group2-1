@@ -11,7 +11,7 @@ bool procedureReturn(vector<token_323> &all_tokens, int &loc) {
       all_tokens[loc_helper].rule_holder.begin();
 
   // get token and test rule
-  
+
   token_323 token_holder;
   token_holder = all_tokens[loc];
   if (token_holder.lexeme() == "return") {
@@ -26,7 +26,6 @@ bool procedureReturn(vector<token_323> &all_tokens, int &loc) {
       all_tokens[loc_helper].rule_holder.push_back(output_str);
       // std::cerr << output_str;
 
-     
     } else if (procedureExpression(all_tokens, loc)) {
       token_holder = all_tokens[loc];
       if (token_holder.lexeme() == ";") {
@@ -37,13 +36,12 @@ bool procedureReturn(vector<token_323> &all_tokens, int &loc) {
         all_tokens[loc_helper].rule_holder.push_back(output_str);
         // std::cerr << output_str;
 
-        
       } else {
         throw std::logic_error("error, expecting ;");
       }
     } else {
       throw std::logic_error("error, expecting ; or <Expression>");
     }
-  } 
+  }
   return false;
 }
