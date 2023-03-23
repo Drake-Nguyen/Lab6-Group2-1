@@ -2,7 +2,7 @@
 using namespace std;
 // R22. <While> -> while (<Condition>) < Statement >
 //---------------------------------------------------------------------------------------------------
-bool procedure_While(vector<token_323> &all_tokens, int &loc) {
+bool procedureWhile(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -27,7 +27,7 @@ bool procedure_While(vector<token_323> &all_tokens, int &loc) {
       // token_holder.token_print_helper();
       loc++;
       token_holder = all_tokens[loc];
-      if (procedure_Condition(all_tokens, loc)) {
+      if (procedureCondition(all_tokens, loc)) {
         token_holder = all_tokens[loc];
         if (token_holder.lexeme() == ")") {
           // jump after cmp
@@ -37,7 +37,7 @@ bool procedure_While(vector<token_323> &all_tokens, int &loc) {
 
           // token_holder.token_print_helper();
           loc++;
-          if (procedure_Statement(all_tokens, loc)) {
+          if (procedureStatement(all_tokens, loc)) {
             // jmp
             instruction_table temp_ins;
             temp_ins.new_instruction("JUMP", "last label");

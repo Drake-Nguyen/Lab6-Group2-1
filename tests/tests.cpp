@@ -32,7 +32,7 @@ TEST_LIST = {
     {"term", test_term},
     {"return", test_return},
     {"declaration", test_declaration},
-    {"parameter_list", test_parameter_list},
+    {"parameter_list", test_Parameterlist},
     {"while", test_while},
     {"print", test_print},
     {"scan", test_scan},

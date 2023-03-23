@@ -8,14 +8,14 @@
 #include <sstream>
 
 static void test_relop(void) {
-  test(procedure_Relop, "==", {{"Operator", "=="}}, CURRENT_LOCATION);
-  test(procedure_Relop, "!=", {{"Operator", "!="}}, CURRENT_LOCATION);
-  test(procedure_Relop, "<", {{"Operator", "<"}}, CURRENT_LOCATION);
-  test(procedure_Relop, "<=", {{"Operator", "<="}}, CURRENT_LOCATION);
-  test(procedure_Relop, ">", {{"Operator", ">"}}, CURRENT_LOCATION);
-  test(procedure_Relop, ">=", {{"Operator", ">="}}, CURRENT_LOCATION);
+  test(procedureRelop, "==", {{"Operator", "=="}}, CURRENT_LOCATION);
+  test(procedureRelop, "!=", {{"Operator", "!="}}, CURRENT_LOCATION);
+  test(procedureRelop, "<", {{"Operator", "<"}}, CURRENT_LOCATION);
+  test(procedureRelop, "<=", {{"Operator", "<="}}, CURRENT_LOCATION);
+  test(procedureRelop, ">", {{"Operator", ">"}}, CURRENT_LOCATION);
+  test(procedureRelop, ">=", {{"Operator", ">="}}, CURRENT_LOCATION);
 
-  test_fail(procedure_Relop, "=!", {}, CURRENT_LOCATION);
-  test_fail(procedure_Relop, "!", {}, CURRENT_LOCATION);
-  test_fail(procedure_Relop, "=", {}, CURRENT_LOCATION);
+  test_fail(procedureRelop, "=!", {}, CURRENT_LOCATION);
+  test_fail(procedureRelop, "!", {}, CURRENT_LOCATION);
+  test_fail(procedureRelop, "=", {}, CURRENT_LOCATION);
 }

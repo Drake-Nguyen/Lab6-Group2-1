@@ -4,7 +4,7 @@ using namespace std;
 // R18. <If> -> if (<Condition>) < Statement > fi | if (<Condition>) < Statement
 // > else  <Statement>  fi
 //---------------------------------------------------------------------------------------------------
-bool procedure_If(vector<token_323> &all_tokens, int &loc) {
+bool procedureIf(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -26,7 +26,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
       // token_holder.token_print_helper();
       loc++;
       token_holder = all_tokens[loc];
-      if (procedure_Condition(all_tokens, loc)) //<Condition>
+      if (procedureCondition(all_tokens, loc)) //<Condition>
       {
         token_holder = all_tokens[loc];
         if (token_holder.lexeme() == ")") //  )
@@ -37,7 +37,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
 
           // token_holder.token_print_helper();
           loc++;
-          if (procedure_Statement(all_tokens, loc)) // < Statement >
+          if (procedureStatement(all_tokens, loc)) // < Statement >
           {
             instruction_table temp_ins;
             temp_ins.new_instruction("LABEL", "nil");
@@ -61,7 +61,7 @@ bool procedure_If(vector<token_323> &all_tokens, int &loc) {
             {
               // token_holder.token_print_helper();
               loc++;
-              if (procedure_Statement(all_tokens, loc)) //<Statement>
+              if (procedureStatement(all_tokens, loc)) //<Statement>
               {
                 token_holder = all_tokens[loc];
                 if (token_holder.lexeme() == "fi") // fi

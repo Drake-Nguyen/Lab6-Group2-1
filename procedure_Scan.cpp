@@ -1,10 +1,10 @@
 #include "procedure_functions.h"
 using namespace std;
 
-procedureIDs for_id4;
+//procedureIDs for_id4;
 // R21. <Scan> -> get( <IDs> );
 //---------------------------------------------------------------------------------------------------
-bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
+bool procedureScan(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -25,7 +25,7 @@ bool procedure_Scan(vector<token_323> &all_tokens, int &loc) {
       loc++;
       token_holder = all_tokens[loc];
       int j = loc;
-      if (for_id4.procedure_IDs(all_tokens, loc)) {
+      if (procedureIDs(all_tokens, loc)) {
         // instruction for scan
         instruction_table temp;
         temp.new_instruction("STDIN", "nil");

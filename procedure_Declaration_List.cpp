@@ -3,7 +3,7 @@ using namespace std;
 // R11. <Declaration List>  : = <Declaration>; | <Declaration>; <Declaration
 // List>
 //---------------------------------------------------------------------------------------------------
-bool procedure_Declaration_List(vector<token_323> &all_tokens, int &loc) {
+bool procedureDeclarationList(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -15,13 +15,13 @@ bool procedure_Declaration_List(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Declaration(all_tokens, loc)) {
+  if (procedureDeclaration(all_tokens, loc)) {
     token_holder = all_tokens[loc];
     if (token_holder.lexeme() == ";") {
       // token_holder.token_print_helper();
       loc++;
       token_holder = all_tokens[loc];
-      if (procedure_Declaration_List(all_tokens, loc)) {
+      if (procedureDeclarationList(all_tokens, loc)) {
 
         std::string output_str =
             "<Declaration List> -> <Declaration>; <Declaration List> \n";

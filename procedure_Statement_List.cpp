@@ -2,7 +2,7 @@
 using namespace std;
 // R14. <Statement List> -> <Statement> | <Statement> <Statement List>
 //---------------------------------------------------------------------------------------------------
-bool procedure_Statement_List(vector<token_323> &all_tokens, int &loc) {
+bool procedureStatementList(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -14,9 +14,9 @@ bool procedure_Statement_List(vector<token_323> &all_tokens, int &loc) {
   bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
-  if (procedure_Statement(all_tokens, loc)) {
+  if (procedureStatement(all_tokens, loc)) {
     token_holder = all_tokens[loc];
-    if (procedure_Statement_List(all_tokens, loc)) {
+    if (procedureStatementList(all_tokens, loc)) {
 
       std::string output_str =
           "<Statement List> -> <Statement> <Statement List>\n";

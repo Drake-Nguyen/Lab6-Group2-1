@@ -8,6 +8,7 @@
 #include <sstream>
 
 static void test_scan(void) {
+<<<<<<< HEAD
   test(procedure_Scan, "get(a);",
        {{"Function", "get"},
         {"Seperator", "("},
@@ -37,4 +38,5 @@ static void test_scan(void) {
   test_fail(procedure_Scan, "get a;", {}, CURRENT_LOCATION);
   test_fail(procedure_Scan, "get a+b;", {}, CURRENT_LOCATION);
   test_fail(procedure_Scan, "get a,b;", {}, CURRENT_LOCATION);
+
 }

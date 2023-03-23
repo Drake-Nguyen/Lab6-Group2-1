@@ -7,6 +7,7 @@
 #include <map>
 #include <sstream>
 
+
 static void test_return(void) {
   // Test empty return statement
   test(procedure_Return, "return;", {{"Keyword", "return"}, {"Separator", ";"}},
@@ -61,4 +62,5 @@ static void test_return(void) {
         {"Identifier", "z"},
         {"Separator", ";"}},
        CURRENT_LOCATION);
+
 }

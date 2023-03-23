@@ -2,7 +2,7 @@
 using namespace std;
 // R24. <Relop> -> ==   |   !=    | > | <    |  <=   | = >
 //---------------------------------------------------------------------------------------------------
-bool procedure_Relop(vector<token_323> &all_tokens, int &loc) {
+bool procedureRelop(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;

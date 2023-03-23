@@ -2,7 +2,7 @@
 using namespace std;
 // R19. <Return> -> return; | return <Expression>;
 //---------------------------------------------------------------------------------------------------
-bool procedure_Return(vector<token_323> &all_tokens, int &loc) {
+bool procedureReturn(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -27,7 +27,7 @@ bool procedure_Return(vector<token_323> &all_tokens, int &loc) {
       // std::cerr << output_str;
 
       return_holder = true;
-    } else if (procedure_Expression(all_tokens, loc)) {
+    } else if (procedureExpression(all_tokens, loc)) {
       token_holder = all_tokens[loc];
       if (token_holder.lexeme() == ";") {
         // token_holder.token_print_helper();

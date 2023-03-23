@@ -10,9 +10,9 @@
 #include <map>
 #include <sstream>
 
-static void test_body(void) {
-  test(procedure_Body, "{", {{"Separators", "{"}}, CURRENT_LOCATION);
-  test(procedure_Body, "}", {{"Separators", "}"}}, CURRENT_LOCATION);
-  test(procedure_Body, "void main() {int x = 0; }", {}, CURRENT_LOCATION);
-  test(procedure_Body, "void addNum(){ return(a+b); }", {}, CURRENT_LOCATION);
+static void test_body(void){
+    test(procedureBody, "{",{{"Separators","{"}}, CURRENT_LOCATION );
+    test(procedureBody, "}",{{"Separators","}"}}, CURRENT_LOCATION );
+    test(procedureBody, "void main() {int x = 0; }" , {}, CURRENT_LOCATION);
+    test(procedureBody, "void addNum(){ return(a+b); }", {} , CURRENT_LOCATION);
 }

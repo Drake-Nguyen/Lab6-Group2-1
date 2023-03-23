@@ -4,7 +4,7 @@ using namespace std;
 // Declaration List >   <Body>
 //---------------------------------------------------------------------------------------------------
 // tbf
-bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
+bool procedureFunction(vector<token_323> &all_tokens, int &loc) {
   // save current location of reading token, and location of rule_holder vector
   // to help push rule if rule is used
   int loc_helper = loc;
@@ -20,7 +20,7 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
     // token_holder.token_print_helper();
     loc++;
     token_holder = all_tokens[loc];
-    if (identifier_helper(token_holder)) {
+    if (identifierHelper(token_holder)) {
       // token_holder.token_print_helper();
       loc++;
       token_holder = all_tokens[loc];
@@ -28,15 +28,15 @@ bool procedure_Function(vector<token_323> &all_tokens, int &loc) {
         // token_holder.token_print_helper();
         loc++;
         token_holder = all_tokens[loc];
-        if (procedure_Opt_Parameter_List(all_tokens, loc)) {
+        if (procedureOptParameterList(all_tokens, loc)) {
           token_holder = all_tokens[loc];
           if (token_holder.lexeme() == ")") {
             // token_holder.token_print_helper();
             loc++;
             token_holder = all_tokens[loc];
-            if (procedure_Opt_Declaration_List(all_tokens, loc)) {
+            if (procedureOptDeclarationList(all_tokens, loc)) {
               token_holder = all_tokens[loc];
-              if (procedure_Body(all_tokens, loc)) {
+              if (procedureBody(all_tokens, loc)) {
 
                 std::string output_str =
                     "<Function> -> function <Identifier> ( <Opt Parameter "
