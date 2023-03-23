@@ -11,8 +11,8 @@
 #include <sstream>
 
 static void test_body(void){
-    test(procedureBody, "{",{{"Separators","{"}}, CURRENT_LOCATION );
-    test(procedureBody, "}",{{"Separators","}"}}, CURRENT_LOCATION );
-    test(procedureBody, "void main() {int x = 0; }" , {}, CURRENT_LOCATION);
-    test(procedureBody, "void addNum(){ return(a+b); }", {} , CURRENT_LOCATION);
+test(procedureBody, "{",{{"Separators","{"}}, CURRENT_LOCATION );
+test(procedureBody, "}",{{"Separators","}"}}, CURRENT_LOCATION );
+test(procedureBody, "void main() {int x = 0; }" , {}, CURRENT_LOCATION);
+test(procedureBody, "void addNum(){ return(a+b); }", {} , CURRENT_LOCATION);
 }
