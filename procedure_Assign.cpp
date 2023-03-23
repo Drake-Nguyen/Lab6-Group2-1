@@ -11,7 +11,7 @@ bool procedureAssign(vector<token_323> &all_tokens, int &loc) {
       all_tokens[loc_helper].rule_holder.begin();
 
   // get token and test rule
-  bool return_holder = false;
+  //bool return_holder = false;
   token_323 token_holder;
   token_holder = all_tokens[loc];
   if (identifierHelper(token_holder)) {
@@ -40,7 +40,7 @@ bool procedureAssign(vector<token_323> &all_tokens, int &loc) {
           all_tokens[loc_helper].rule_holder.push_back(output_str);
           // std::cerr << output_str;
 
-          return_holder = true;
+          //return_holder = true;
         } else {
           throw std::logic_error("error, expecting ;");
         }
@@ -56,10 +56,9 @@ bool procedureAssign(vector<token_323> &all_tokens, int &loc) {
       std::cerr << token_holder.lexeme() << "\n";
       token_holder = all_tokens[loc - 1];
       std::cerr << token_holder.lexeme() << "\n";
-      return_holder = false;
+      //return_holder = false;
     }
-  } else {
-    return_holder = false;
-  }
-  return return_holder;
+  } 
+  
+  return false;
 }
