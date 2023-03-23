@@ -4,9 +4,9 @@ using namespace std;
         // R13. <IDs> -> <Identifier> | <Identifier>, <IDs>
         //---------------------------------------------------------------------------------------------------
 
-        bool procedureIDs(vector<token_323> &all_tokens,
-                   int &loc) // procedure for <IDs>
-        {
+    bool procedureIDs(vector<token_323> &all_tokens,
+                int &loc) // procedure for <IDs>
+    {
         int loc_helper = loc;
         int rule_helper = all_tokens[loc].rule_holder.size();
         std::vector<std::string>::iterator it =
@@ -49,5 +49,5 @@ using namespace std;
             {}
         }
         return return_holder;
-        }
+    }
 

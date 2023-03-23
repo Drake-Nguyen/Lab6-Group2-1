@@ -15,7 +15,7 @@ bool procedureTerm(vector<token_323> &all_tokens, int &loc) {
   token_323 token_holder;
   token_holder = all_tokens[loc];
   if (procedureFactor(all_tokens, loc)) {
-    if (procedureTerm_q(all_tokens, loc)) {
+    if (procedureTermq(all_tokens, loc)) {
 
       std::string output_str = "<Term> -> <Factor> <Term>' \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);

@@ -14,7 +14,7 @@ bool procedureFactor(vector<token_323> &all_tokens, int &loc);
 
 // R26.1 <Term'> :: = * <Factor> <Term>' | / <Factor> <Term>' | ϵ
 //---------------------------------------------------------------------------------------------------
-bool procedureTerm_q(vector<token_323> &all_tokens, int &loc);
+bool procedureTermq(vector<token_323> &all_tokens, int &loc);
 
 // R26. <Term>    :: = <Factor> <Term>'
 //---------------------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ bool procedureExpression(vector<token_323> &all_tokens, int &loc);
 
 // R25.1 <Expression'>  :: = ϵ | +<Term> <Expression'>  | -<Term> <Expression'>
 //---------------------------------------------------------------------------------------------------
-bool procedureExpression_q(vector<token_323> &all_tokens, int &loc);
+bool procedureExpressionq(vector<token_323> &all_tokens, int &loc);
 
 // R24. <Relop> :: = ==   |   !=    | > | <    |  <=   | = >
 //---------------------------------------------------------------------------------------------------
