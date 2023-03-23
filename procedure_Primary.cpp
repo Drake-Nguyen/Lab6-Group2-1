@@ -12,7 +12,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
       all_tokens[loc_helper].rule_holder.begin();
 
   // get token and test rule
-  bool return_holder = false;
+  
   token_323 token_holder;
   token_holder = all_tokens[loc];
   if (token_holder.token() == "Identifier") //<Identifier>
@@ -42,7 +42,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
           all_tokens[loc_helper].rule_holder.push_back(output_str);
           // std::cerr << output_str;
 
-          return_holder = true;
+          
         } else {
           throw std::logic_error("error, expecting )");
         }
@@ -54,7 +54,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
       std::string output_str = "<Primary> -> <Identifier> \n";
       all_tokens[loc_helper].rule_holder.push_back(output_str);
       // std::cerr << output_str;
-      return_holder = true;
+     
     }
   } else if (token_holder.token() == "Integer") // <Integer>
   {
@@ -69,7 +69,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
     all_tokens[loc_helper].rule_holder.push_back(output_str);
     // std::cerr << output_str;
 
-    return_holder = true;
+    
   } else if (token_holder.lexeme() == "(") //( <Expression> )
   {
 
@@ -87,7 +87,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
         all_tokens[loc_helper].rule_holder.push_back(output_str);
         // std::cerr << output_str;
 
-        return_holder = true;
+        
       } else {
         throw std::logic_error("error, expecting )");
       }
@@ -103,7 +103,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
     all_tokens[loc_helper].rule_holder.push_back(output_str);
     // std::cerr << output_str;
 
-    return_holder = true;
+    
   } else if (token_holder.lexeme() == "true") // True
   {
     // instruction push true
@@ -118,7 +118,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
     all_tokens[loc_helper].rule_holder.push_back(output_str);
     // std::cerr << output_str;
 
-    return_holder = true;
+    
   } else if (token_holder.lexeme() == "false") // false
   {
 
@@ -134,9 +134,7 @@ bool procedurePrimary(vector<token_323> &all_tokens, int &loc) {
     all_tokens[loc_helper].rule_holder.push_back(output_str);
     // std::cerr << output_str;
 
-    return_holder = true;
-  } else {
-    return_holder = false;
-  }
-  return return_holder;
+    
+  } 
+  return false;
 }

@@ -14,10 +14,38 @@ Test condition...                               [ FAILED ]
   Case "456 > 123":
     test_condition.hpp:27: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:27: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
-Test if...                                      [ OK ]
+Test if...                                      [ FAILED ]
+  Case "if (1 == 1) { return; } fi":
+    test_if.hpp:14: Check procedure: syntax error at the end of the input: error, expecting =... failed
+  Case "if (1 == 1) { return; a = b; } fi":
+    test_if.hpp:15: Check procedure: syntax error at the end of the input: error, expecting =... failed
+  Case "if (1 == 1) { a = b; } fi":
+    test_if.hpp:16: Check procedure: syntax error near token [11] ({"Separator", "}"}): error, expecting < Statement List>... failed
+  Case "if (1 == 1) a = b; fi":
+    test_if.hpp:19: Check procedure: syntax error near token [10] ({"Identifier", "fi"}): error, expecting < Statement > ... failed
+  Case "if (1 == 1) if (0 == 1) a = b; fi fi":
+    test_if.hpp:23: Check procedure: syntax error near token [16] ({"Identifier", "fi"}): error, expecting < Statement > ... failed
+  Case "if (1 == 1) { if (0 == 1) return; fi } fi":
+    test_if.hpp:25: Check procedure: syntax error at the end of the input: error, expecting =... failed
+  Case "if (1 == 1) while (0 == 1) a = b; fi":
+    test_if.hpp:38: Check procedure: syntax error near token [16] ({"Identifier", "fi"}): error, expecting < Statement >... failed
+  Case "if (1 == 1) { return; } else { return false; } fi":
+    test_if.hpp:44: Check procedure: syntax error near token [10] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+  Case "if (1 == 1) { return; a = b; } else { return false; } fi":
+    test_if.hpp:46: Check procedure: syntax error near token [14] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+  Case "if (1 == 1) { a = b; } else { return false; } fi":
+    test_if.hpp:48: Check procedure: syntax error near token [11] ({"Separator", "}"}): error, expecting < Statement List>... failed
+  Case "if (1 == 1) a = b; else a = c; fi":
+    test_if.hpp:51: Check procedure: syntax error near token [10] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+  Case "if (1 == 1) if (0 == 1) a = b; else a = c; fi fi":
+    test_if.hpp:55: Check procedure: syntax error near token [16] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+  Case "if (1 == 1) while (0 == 1) a = b; else while (1 == 1) a = c; :
+    test_if.hpp:72: Check procedure: syntax error near token [16] ({"Keyword", "else"}): error, expecting < Statement >... failed
 Test id...                                      [ OK ]
 Test qualifier...                               [ OK ]
 Test assign...                                  [ FAILED ]
+  Case "a = 123;":
+    test_assign.hpp:12: Check procedure result mismatch: false != true... failed
   Case "":
     test_assign.hpp:15: Check procedure result mismatch: false != true... failed
   Case "a = ;":
@@ -64,6 +92,8 @@ Test return...                                  [ FAILED ]
   Case "return x+1, y*2, z;":
     test_return.hpp:23: Check procedure: syntax error near token [4] ({"Separator", ","}): error, expecting ;... failed
 Test declaration...                             [ FAILED ]
+  Case "int x;":
+    test_declaration.hpp:12: Check procedure result mismatch: false != true... failed
   Case "float x, y, z;":
     test_declaration.hpp:13: Check procedure result mismatch: false != true... failed
   Case "char c, d;":
@@ -86,6 +116,10 @@ Test parameter_list...                          [ FAILED ]
   Case "boolean x,real y":
     test_parameter_list.hpp:37: Check procedure result mismatch: false != true... failed
 Test while...                                   [ FAILED ]
+  Case "while(1==1)a=b;":
+    test_while.hpp:16: Check procedure: syntax error at the end of the input: error, expecting < Statement >... failed
+  Case "while(1==1){x=y; return true;}":
+    test_while.hpp:19: Check procedure: syntax error at the end of the input: error, expecting < Statement >... failed
   Case "":
     Threw std::exception... failed
       std::exception::what(): basic_string::_M_construct null not valid
@@ -181,7 +215,7 @@ Test compound...                                [ FAILED ]
     test_compound.hpp:19: Check token [17]: token mismatch: "Separator" != "Seperator"... failed
     test_compound.hpp:19: Check token [18]: token mismatch: "Separator" != "Seperator"... failed
     test_compound.hpp:19: Check token [18]: lexeme mismatch: "}" != ";"... failed
-    test_compound.hpp:19: Check procedure: syntax error at the end of the input: error, expecting }... failed
+    test_compound.hpp:19: Check procedure: syntax error at the end of the input: error, expecting < Statement >... failed
   Case "{if(a<b){a=a+1;return true;}":
     test_compound.hpp:22: Check tokens.size mismatch: 19 != 18... failed
     test_compound.hpp:22: Check token [0]: token mismatch: "Separator" != "Statemment"... failed
@@ -221,5 +255,5 @@ Test compound...                                [ FAILED ]
     test_compound.hpp:22: Check token [17]: token mismatch: "Separator" != "Seperator"... failed
     test_compound.hpp:22: Check token [17]: lexeme mismatch: ";" != "}"... failed
     test_compound.hpp:22: Check erroneous extra token [18]: {"Separator", "}"}... failed
-    test_compound.hpp:22: Check procedure: syntax error at the end of the input: error, expecting fi or else ... failed
-FAILED: 14 of 17 unit tests have failed.
+    test_compound.hpp:22: Check procedure: syntax error at the end of the input: error, expecting < Statement > ... failed
+FAILED: 15 of 17 unit tests have failed.
