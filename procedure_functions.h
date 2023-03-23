@@ -77,9 +77,8 @@ bool procedure_Statement_List(vector<token_323> &all_tokens, int &loc);
 // R13. <IDs> :: = <Identifier> | <Identifier>, <IDs>
 //---------------------------------------------------------------------------------------------------
 class procedureIDs {
-  public:
-      bool procedure_IDs(vector<token_323> &all_tokens, int &loc);
-
+public:
+  bool procedure_IDs(vector<token_323> &all_tokens, int &loc);
 };
 
 // R12. <Declaration> :: = <Qualifier > <IDs>
@@ -102,9 +101,8 @@ bool procedure_Body(vector<token_323> &all_tokens, int &loc);
 // R8. <Qualifier> :: = int | boolean | real
 //---------------------------------------------------------------------------------------------------
 class procedureQualifier {
-    public:
-    bool procedure_Qualifier(vector<token_323> &all_tokens, int &loc);
-
+public:
+  bool procedure_Qualifier(vector<token_323> &all_tokens, int &loc);
 };
 
 // R7. <Parameter> :: = <IDs >  <Qualifier>
@@ -114,9 +112,8 @@ bool procedure_Parameter(vector<token_323> &all_tokens, int &loc);
 // R6. <Parameter List>  :: = <Parameter> | <Parameter>, <Parameter List>
 //---------------------------------------------------------------------------------------------------
 class procedureParameterList {
-    public:
-        bool procedure_Parameter_List(vector<token_323> &all_tokens, int &loc);
-
+public:
+  bool procedure_Parameter_List(vector<token_323> &all_tokens, int &loc);
 };
 
 // R5. <Opt Parameter List> :: = <Parameter List> | <Empty>
