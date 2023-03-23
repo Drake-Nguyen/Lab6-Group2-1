@@ -9,10 +9,10 @@
 
 
 static void test_parameter(void) {
-  test(procedure_Parameter, "a()",
+  test(procedureParameter, "a()",
        {{"Identifier", "a"}, {"Separator", "("}, {"Separator", ")"}},
        CURRENT_LOCATION);
-  test(procedure_Parameter, "a(int x, int y)",
+  test(procedureParameter, "a(int x, int y)",
        {{"Identifier", "a"},
         {"Separator", "("},
         {"Keyword", "int"},
@@ -25,7 +25,7 @@ static void test_parameter(void) {
         {"Identifier", "y"},
         {"Separator", ")"}},
        CURRENT_LOCATION);
-  test(procedure_Parameter, "a(10)",
+  test(procedureParameter, "a(10)",
        {{"Identifier", "a"},
         {"Separator", "("},
         {"Integer", "10"},

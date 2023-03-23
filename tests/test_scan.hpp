@@ -8,15 +8,15 @@
 #include <sstream>
 
 static void test_scan(void) {
-<<<<<<< HEAD
-  test(procedure_Scan, "get(a);",
+
+  test(procedureScan, "get(a);",
        {{"Function", "get"},
         {"Seperator", "("},
         {"Identifier", "a"},
         {"Seperator", ")"},
         {"Seperator", ";"}},
        CURRENT_LOCATION);
-  test(procedure_Scan, "get(a,b);",
+  test(procedureScan, "get(a,b);",
        {{"Function", "get"},
         {"Seperator", "("},
         {"Identifier", "a"},
@@ -25,7 +25,7 @@ static void test_scan(void) {
         {"Seperator", ")"},
         {"Seperator", ";"}},
        CURRENT_LOCATION);
-  test(procedure_Scan, "get(a+b);",
+  test(procedureScan, "get(a+b);",
        {{"Function", "get"},
         {"Seperator", "("},
         {"Identifier", "a"},
@@ -35,8 +35,8 @@ static void test_scan(void) {
         {"Seperator", ";"}},
        CURRENT_LOCATION);
 
-  test_fail(procedure_Scan, "get a;", {}, CURRENT_LOCATION);
-  test_fail(procedure_Scan, "get a+b;", {}, CURRENT_LOCATION);
-  test_fail(procedure_Scan, "get a,b;", {}, CURRENT_LOCATION);
+  test_fail(procedureScan, "get a;", {}, CURRENT_LOCATION);
+  test_fail(procedureScan, "get a+b;", {}, CURRENT_LOCATION);
+  test_fail(procedureScan, "get a,b;", {}, CURRENT_LOCATION);
 
 }

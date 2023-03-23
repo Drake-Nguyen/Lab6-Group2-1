@@ -31,7 +31,7 @@ bool procedureExpressionq(vector<token_323> &all_tokens, int &loc) {
         all_tokens[loc_helper].rule_holder.push_back(output_str);
         // std::cerr << output_str;
 
-        return_holder = true;
+        
       } else {
         throw std::logic_error("error, expecting <Expression'>");
       }
@@ -54,7 +54,7 @@ bool procedureExpressionq(vector<token_323> &all_tokens, int &loc) {
         all_tokens[loc_helper].rule_holder.push_back(output_str);
         // std::cerr << output_str;
 
-        return_holder = true;
+        
       } else {
         throw std::logic_error("error, expecting <Expression'>");
       }
@@ -67,7 +67,7 @@ bool procedureExpressionq(vector<token_323> &all_tokens, int &loc) {
     all_tokens[loc_helper].rule_holder.push_back(output_str);
     // std::cerr << output_str;
 
-    return_holder = true;
+    
   }
-  return return_holder;
+  return false;
 }

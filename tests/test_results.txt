@@ -6,91 +6,144 @@ Test relop...                                   [ FAILED ]
     test_relop.hpp:16: Check token [0]: lexeme mismatch: ">" != ">="... failed
     test_relop.hpp:16: Check erroneous extra token [1]: {"Operator", "="}... failed
 Test condition...                               [ FAILED ]
+  Case "true == true":
+    test_condition.hpp:24: Check procedure result mismatch: false != true... failed
   Case "true != false":
     test_condition.hpp:25: Check token [2]: token mismatch: "Other Separators" != "Operator"... failed
+    test_condition.hpp:25: Check procedure result mismatch: false != true... failed
   Case "123 < 345":
     test_condition.hpp:26: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:26: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:26: Check procedure result mismatch: false != true... failed
   Case "456 > 123":
     test_condition.hpp:27: Check token [0]: token mismatch: "Integer" != "Keyword"... failed
     test_condition.hpp:27: Check token [4]: token mismatch: "Integer" != "Keyword"... failed
+    test_condition.hpp:27: Check procedure result mismatch: false != true... failed
 Test if...                                      [ FAILED ]
   Case "if (1 == 1) { return; } fi":
-    test_if.hpp:14: Check procedure: syntax error at the end of the input: error, expecting =... failed
+    test_if.hpp:14: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) { return; a = b; } fi":
-    test_if.hpp:15: Check procedure: syntax error at the end of the input: error, expecting =... failed
+    test_if.hpp:15: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) { a = b; } fi":
-    test_if.hpp:16: Check procedure: syntax error near token [11] ({"Separator", "}"}): error, expecting < Statement List>... failed
+    test_if.hpp:16: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) a = b; fi":
-    test_if.hpp:19: Check procedure: syntax error near token [10] ({"Identifier", "fi"}): error, expecting < Statement > ... failed
+    test_if.hpp:19: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) if (0 == 1) a = b; fi fi":
-    test_if.hpp:23: Check procedure: syntax error near token [16] ({"Identifier", "fi"}): error, expecting < Statement > ... failed
+    test_if.hpp:23: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) { if (0 == 1) return; fi } fi":
-    test_if.hpp:25: Check procedure: syntax error at the end of the input: error, expecting =... failed
+    test_if.hpp:25: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
+  Case "if (1 == 1) return; fi":
+    test_if.hpp:28: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
+  Case "if (1 == 1) put(h); fi":
+    test_if.hpp:31: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
+  Case "if (1 == 1) get(a); fi":
+    test_if.hpp:34: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) while (0 == 1) a = b; fi":
-    test_if.hpp:38: Check procedure: syntax error near token [16] ({"Identifier", "fi"}): error, expecting < Statement >... failed
+    test_if.hpp:38: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) { return; } else { return false; } fi":
-    test_if.hpp:44: Check procedure: syntax error near token [10] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+    test_if.hpp:44: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) { return; a = b; } else { return false; } fi":
-    test_if.hpp:46: Check procedure: syntax error near token [14] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+    test_if.hpp:46: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) { a = b; } else { return false; } fi":
-    test_if.hpp:48: Check procedure: syntax error near token [11] ({"Separator", "}"}): error, expecting < Statement List>... failed
+    test_if.hpp:48: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) a = b; else a = c; fi":
-    test_if.hpp:51: Check procedure: syntax error near token [10] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+    test_if.hpp:51: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) if (0 == 1) a = b; else a = c; fi fi":
-    test_if.hpp:55: Check procedure: syntax error near token [16] ({"Keyword", "else"}): error, expecting < Statement > ... failed
+    test_if.hpp:55: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
+  Case "if (1 == 1) return; else return; fi":
+    test_if.hpp:59: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
+  Case "if (1 == 1) put(h); else put(e); fi":
+    test_if.hpp:63: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
+  Case "if (1 == 1) get(a); else get(b); fi":
+    test_if.hpp:67: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
   Case "if (1 == 1) while (0 == 1) a = b; else while (1 == 1) a = c; :
-    test_if.hpp:72: Check procedure: syntax error near token [16] ({"Keyword", "else"}): error, expecting < Statement >... failed
+    test_if.hpp:72: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition> ... failed
 Test id...                                      [ OK ]
 Test qualifier...                               [ OK ]
 Test assign...                                  [ FAILED ]
   Case "a = 123;":
-    test_assign.hpp:12: Check procedure result mismatch: false != true... failed
+    test_assign.hpp:12: Check procedure: syntax error near token [3] ({"Separator", ";"}): error, expecting <Expression>... failed
   Case "":
-    test_assign.hpp:15: Check procedure result mismatch: false != true... failed
+    test_assign.hpp:16: Check procedure result mismatch: false != true... failed
   Case "a = ;":
-    test_assign.hpp:16: Check procedure: syntax error near token [2] ({"Separator", ";"}): error, expecting <Expression>... failed
+    test_assign.hpp:17: Check procedure: syntax error near token [2] ({"Separator", ";"}): error, expecting <Expression>... failed
   Case "a = 123":
-    test_assign.hpp:17: Check procedure: syntax error at the end of the input: error, expecting ;... failed
+    test_assign.hpp:18: Check procedure: syntax error at the end of the input: error, expecting <Expression>... failed
   Case "a 123;":
-    test_assign.hpp:18: Check procedure: syntax error near token [1] ({"Integer", "123"}): error, expecting =... failed
+    test_assign.hpp:19: Check procedure: syntax error near token [1] ({"Integer", "123"}): error, expecting =... failed
   Case "123 = a;":
-    test_assign.hpp:19: Check procedure result mismatch: false != true... failed
+    test_assign.hpp:20: Check procedure result mismatch: false != true... failed
 Test primary...                                 [ FAILED ]
+  Case "temp":
+    test_primary.hpp:14: Check procedure result mismatch: false != true... failed
+  Case "10":
+    test_primary.hpp:15: Check procedure result mismatch: false != true... failed
+  Case "Temp integer":
+    test_primary.hpp:20: Check procedure result mismatch: false != true... failed
+  Case "temp+i":
+    test_primary.hpp:23: Check procedure result mismatch: false != true... failed
   Case "":
-    test_primary.hpp:18: Check procedure result mismatch: false != true... failed
+    test_primary.hpp:24: Check procedure result mismatch: false != true... failed
+  Case "3.14":
+    test_primary.hpp:25: Check procedure result mismatch: false != true... failed
+  Case "6.0222331231123146546":
+    test_primary.hpp:27: Check procedure result mismatch: false != true... failed
   Case "1.0E-5":
-    test_primary.hpp:21: Check tokens.size mismatch: 3 != 1... failed
-    test_primary.hpp:21: Check token [0]: token mismatch: "Invalid Token" != "Real"... failed
-    test_primary.hpp:21: Check token [0]: lexeme mismatch: "1.0E" != "1.0E-5"... failed
-    test_primary.hpp:21: Check erroneous extra token [1]: {"Operator", "-"}... failed
-    test_primary.hpp:21: Check erroneous extra token [2]: {"Integer", "5"}... failed
-    test_primary.hpp:21: Check procedure result mismatch: false != true... failed
+    test_primary.hpp:28: Check tokens.size mismatch: 3 != 1... failed
+    test_primary.hpp:28: Check token [0]: token mismatch: "Invalid Token" != "Real"... failed
+    test_primary.hpp:28: Check token [0]: lexeme mismatch: "1.0E" != "1.0E-5"... failed
+    test_primary.hpp:28: Check erroneous extra token [1]: {"Operator", "-"}... failed
+    test_primary.hpp:28: Check erroneous extra token [2]: {"Integer", "5"}... failed
+    test_primary.hpp:28: Check procedure result mismatch: false != true... failed
   Case "    ":
-    test_primary.hpp:22: Check procedure result mismatch: false != true... failed
+    test_primary.hpp:29: Check procedure result mismatch: false != true... failed
+  Case "true":
+    test_primary.hpp:30: Check procedure result mismatch: false != true... failed
+  Case "false":
+    test_primary.hpp:31: Check procedure result mismatch: false != true... failed
 Test expression...                              [ FAILED ]
   Case "":
     Threw std::exception... failed
-      std::exception::what(): basic_string::_M_create
+      std::exception::what(): std::bad_alloc
 Test parameters...                              [ FAILED ]
   Case "a()":
-    test_parameter.hpp:11: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+    test_parameter.hpp:14: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "a(int x, int y)":
-    test_parameter.hpp:12: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+    test_parameter.hpp:27: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
   Case "a(10)":
-    test_parameter.hpp:13: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
+    test_parameter.hpp:33: Check procedure: syntax error near token [1] ({"Separator", "("}): error, expecting <Qualifier>... failed
 Test term...                                    [ FAILED ]
+  Case "x":
+    test_term.hpp:13: Check procedure result mismatch: false != true... failed
+  Case "2*y":
+    test_term.hpp:14: Check procedure result mismatch: false != true... failed
+  Case "3*z/4":
+    test_term.hpp:15: Check procedure result mismatch: false != true... failed
   Case "3z/4":
+    test_term.hpp:16: Check procedure result mismatch: false != true... failed
+  Case "3 z / 4":
     test_term.hpp:17: Check procedure result mismatch: false != true... failed
   Case "3zz z / 4":
+    test_term.hpp:18: Check procedure result mismatch: false != true... failed
+  Case "2.5*x":
     test_term.hpp:19: Check procedure result mismatch: false != true... failed
+  Case "1.23*(y+z)":
+    test_term.hpp:20: Check procedure result mismatch: false != true... failed
 Test return...                                  [ FAILED ]
+  Case "return;":
+    test_return.hpp:14: Check procedure result mismatch: false != true... failed
+  Case "return ;":
+    test_return.hpp:17: Check procedure result mismatch: false != true... failed
   Case "return":
-    test_return.hpp:15: Check procedure: syntax error at the end of the input: error, expecting ; or <Expression>... failed
+    test_return.hpp:18: Check procedure: syntax error at the end of the input: error, expecting ; or <Expression>... failed
+  Case "return 2*x+3;":
+    test_return.hpp:29: Check procedure: syntax error near token [2] ({"Operator", "*"}): error, expecting ; or <Expression>... failed
+  Case "return true;":
+    test_return.hpp:36: Check procedure: syntax error near token [2] ({"Separator", ";"}): error, expecting ; or <Expression>... failed
   Case "return x > 0;":
-    test_return.hpp:21: Check procedure: syntax error near token [2] ({"Operator", ">"}): error, expecting ;... failed
+    test_return.hpp:47: Check procedure: syntax error near token [2] ({"Operator", ">"}): error, expecting ; or <Expression>... failed
   Case "return x+1, y*2, z;":
-    test_return.hpp:23: Check procedure: syntax error near token [4] ({"Separator", ","}): error, expecting ;... failed
+    test_return.hpp:64: Check procedure: syntax error near token [2] ({"Operator", "+"}): error, expecting ; or <Expression>... failed
 Test declaration...                             [ FAILED ]
   Case "int x;":
     test_declaration.hpp:12: Check procedure result mismatch: false != true... failed
@@ -116,144 +169,158 @@ Test parameter_list...                          [ FAILED ]
   Case "boolean x,real y":
     test_parameter_list.hpp:37: Check procedure result mismatch: false != true... failed
 Test while...                                   [ FAILED ]
+  Case "while(x==true)return;":
+    test_while.hpp:12: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition>... failed
+  Case "while (x!=10) return;":
+    test_while.hpp:13: Check procedure: syntax error near token [3] ({"Other Separators", "!="}): error, expecting <Condition>... failed
+  Case "while(x!=10)put(y);":
+    test_while.hpp:14: Check procedure: syntax error near token [3] ({"Other Separators", "!="}): error, expecting <Condition>... failed
+  Case "while(1>0)get(y);":
+    test_while.hpp:15: Check procedure: syntax error near token [3] ({"Operator", ">"}): error, expecting <Condition>... failed
   Case "while(1==1)a=b;":
-    test_while.hpp:16: Check procedure: syntax error at the end of the input: error, expecting < Statement >... failed
+    test_while.hpp:16: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition>... failed
+  Case "while(1==1)return false;":
+    test_while.hpp:17: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition>... failed
+  Case "while(1==1)while(1>0)return;":
+    test_while.hpp:18: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition>... failed
   Case "while(1==1){x=y; return true;}":
-    test_while.hpp:19: Check procedure: syntax error at the end of the input: error, expecting < Statement >... failed
+    test_while.hpp:19: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition>... failed
+  Case "while(1==1)if(x!=y)return; fi":
+    test_while.hpp:20: Check procedure: syntax error near token [3] ({"Operator", "=="}): error, expecting <Condition>... failed
   Case "":
     Threw std::exception... failed
       std::exception::what(): basic_string::_M_construct null not valid
 Test print...                                   [ FAILED ]
   Case "put(a);":
-    test_print.hpp:11: Check token [0]: token mismatch: "Keyword" != "Function"... failed
-    test_print.hpp:11: Check token [0]: lexeme mismatch: "put" != "print"... failed
-    test_print.hpp:11: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:11: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:11: Check token [4]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:11: Check procedure result mismatch: false != true... failed
+    test_print.hpp:18: Check token [0]: token mismatch: "Keyword" != "Function"... failed
+    test_print.hpp:18: Check token [0]: lexeme mismatch: "put" != "print"... failed
+    test_print.hpp:18: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:18: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:18: Check token [4]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:18: Check procedure result mismatch: false != true... failed
   Case "put(a,b);":
-    test_print.hpp:13: Check token [0]: token mismatch: "Keyword" != "Function"... failed
-    test_print.hpp:13: Check token [0]: lexeme mismatch: "put" != "print"... failed
-    test_print.hpp:13: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:13: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:13: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:13: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:13: Check procedure result mismatch: false != true... failed
+    test_print.hpp:27: Check token [0]: token mismatch: "Keyword" != "Function"... failed
+    test_print.hpp:27: Check token [0]: lexeme mismatch: "put" != "print"... failed
+    test_print.hpp:27: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:27: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:27: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:27: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:27: Check procedure result mismatch: false != true... failed
   Case "put(a+b);":
-    test_print.hpp:15: Check token [0]: token mismatch: "Keyword" != "Function"... failed
-    test_print.hpp:15: Check token [0]: lexeme mismatch: "put" != "print"... failed
-    test_print.hpp:15: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:15: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:15: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
-    test_print.hpp:15: Check procedure result mismatch: false != true... failed
+    test_print.hpp:36: Check token [0]: token mismatch: "Keyword" != "Function"... failed
+    test_print.hpp:36: Check token [0]: lexeme mismatch: "put" != "print"... failed
+    test_print.hpp:36: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:36: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:36: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_print.hpp:36: Check procedure result mismatch: false != true... failed
 Test scan...                                    [ FAILED ]
   Case "get(a);":
-    test_scan.hpp:11: Check token [0]: token mismatch: "Keyword" != "Function"... failed
-    test_scan.hpp:11: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:11: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:11: Check token [4]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:18: Check token [0]: token mismatch: "Keyword" != "Function"... failed
+    test_scan.hpp:18: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:18: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:18: Check token [4]: token mismatch: "Separator" != "Seperator"... failed
   Case "get(a,b);":
-    test_scan.hpp:13: Check token [0]: token mismatch: "Keyword" != "Function"... failed
-    test_scan.hpp:13: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:13: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:13: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:13: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:27: Check token [0]: token mismatch: "Keyword" != "Function"... failed
+    test_scan.hpp:27: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:27: Check token [3]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:27: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:27: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
   Case "get(a+b);":
-    test_scan.hpp:15: Check token [0]: token mismatch: "Keyword" != "Function"... failed
-    test_scan.hpp:15: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:15: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:15: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
-    test_scan.hpp:15: Check procedure: syntax error near token [3] ({"Operator", "+"}): error, expecting )... failed
+    test_scan.hpp:36: Check token [0]: token mismatch: "Keyword" != "Function"... failed
+    test_scan.hpp:36: Check token [1]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:36: Check token [5]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:36: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_scan.hpp:36: Check procedure: syntax error near token [3] ({"Operator", "+"}): error, expecting )... failed
 Test compound...                                [ FAILED ]
   Case "{int a=1;int b=1;if(a==b){return true;}else{return false;}":
-    test_compound.hpp:16: Check tokens.size mismatch: 32 != 31... failed
-    test_compound.hpp:16: Check token [0]: token mismatch: "Separator" != "Compound Seperator"... failed
-    test_compound.hpp:16: Check token [1]: token mismatch: "Keyword" != "Declaration"... failed
-    test_compound.hpp:16: Check token [2]: token mismatch: "Other Separators" != "Another Seperator"... failed
-    test_compound.hpp:16: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [7]: token mismatch: "Keyword" != "Declaration"... failed
-    test_compound.hpp:16: Check token [8]: token mismatch: "Other Separators" != "Another Seperator"... failed
-    test_compound.hpp:16: Check token [12]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [13]: token mismatch: "Keyword" != "Statement"... failed
-    test_compound.hpp:16: Check token [14]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [18]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [19]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [21]: token mismatch: "Other Separators" != "Seperator"... failed
-    test_compound.hpp:16: Check token [22]: token mismatch: "Keyword" != "Bool"... failed
-    test_compound.hpp:16: Check token [23]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [23]: lexeme mismatch: ";" != "}"... failed
-    test_compound.hpp:16: Check token [24]: token mismatch: "Separator" != "Statement"... failed
-    test_compound.hpp:16: Check token [24]: lexeme mismatch: "}" != "else"... failed
-    test_compound.hpp:16: Check token [25]: token mismatch: "Keyword" != "Seperator"... failed
-    test_compound.hpp:16: Check token [25]: lexeme mismatch: "else" != "{"... failed
-    test_compound.hpp:16: Check token [26]: token mismatch: "Separator" != "Keyword"... failed
-    test_compound.hpp:16: Check token [26]: lexeme mismatch: "{" != "return"... failed
-    test_compound.hpp:16: Check token [27]: token mismatch: "Keyword" != "Seperator"... failed
-    test_compound.hpp:16: Check token [27]: lexeme mismatch: "return" != " "... failed
-    test_compound.hpp:16: Check token [28]: token mismatch: "Other Separators" != "Bool"... failed
-    test_compound.hpp:16: Check token [28]: lexeme mismatch: " " != "true"... failed
-    test_compound.hpp:16: Check token [29]: token mismatch: "Keyword" != "Seperator"... failed
-    test_compound.hpp:16: Check token [29]: lexeme mismatch: "false" != ";"... failed
-    test_compound.hpp:16: Check token [30]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:16: Check token [30]: lexeme mismatch: ";" != "}"... failed
-    test_compound.hpp:16: Check erroneous extra token [31]: {"Separator", "}"}... failed
-    test_compound.hpp:16: Check procedure: syntax error near token [1] ({"Keyword", "int"}): error, expecting < Statement List>... failed
+    test_compound.hpp:17: Check tokens.size mismatch: 32 != 31... failed
+    test_compound.hpp:17: Check token [0]: token mismatch: "Separator" != "Compound Seperator"... failed
+    test_compound.hpp:17: Check token [1]: token mismatch: "Keyword" != "Declaration"... failed
+    test_compound.hpp:17: Check token [2]: token mismatch: "Other Separators" != "Another Seperator"... failed
+    test_compound.hpp:17: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [7]: token mismatch: "Keyword" != "Declaration"... failed
+    test_compound.hpp:17: Check token [8]: token mismatch: "Other Separators" != "Another Seperator"... failed
+    test_compound.hpp:17: Check token [12]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [13]: token mismatch: "Keyword" != "Statement"... failed
+    test_compound.hpp:17: Check token [14]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [18]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [19]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [21]: token mismatch: "Other Separators" != "Seperator"... failed
+    test_compound.hpp:17: Check token [22]: token mismatch: "Keyword" != "Bool"... failed
+    test_compound.hpp:17: Check token [23]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [23]: lexeme mismatch: ";" != "}"... failed
+    test_compound.hpp:17: Check token [24]: token mismatch: "Separator" != "Statement"... failed
+    test_compound.hpp:17: Check token [24]: lexeme mismatch: "}" != "else"... failed
+    test_compound.hpp:17: Check token [25]: token mismatch: "Keyword" != "Seperator"... failed
+    test_compound.hpp:17: Check token [25]: lexeme mismatch: "else" != "{"... failed
+    test_compound.hpp:17: Check token [26]: token mismatch: "Separator" != "Keyword"... failed
+    test_compound.hpp:17: Check token [26]: lexeme mismatch: "{" != "return"... failed
+    test_compound.hpp:17: Check token [27]: token mismatch: "Keyword" != "Seperator"... failed
+    test_compound.hpp:17: Check token [27]: lexeme mismatch: "return" != " "... failed
+    test_compound.hpp:17: Check token [28]: token mismatch: "Other Separators" != "Bool"... failed
+    test_compound.hpp:17: Check token [28]: lexeme mismatch: " " != "true"... failed
+    test_compound.hpp:17: Check token [29]: token mismatch: "Keyword" != "Seperator"... failed
+    test_compound.hpp:17: Check token [29]: lexeme mismatch: "false" != ";"... failed
+    test_compound.hpp:17: Check token [30]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:17: Check token [30]: lexeme mismatch: ";" != "}"... failed
+    test_compound.hpp:17: Check erroneous extra token [31]: {"Separator", "}"}... failed
+    test_compound.hpp:17: Check procedure: syntax error near token [1] ({"Keyword", "int"}): error, expecting < Statement List>... failed
   Case "{while(a!=b){get(a);put(b);}":
-    test_compound.hpp:19: Check token [0]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [1]: token mismatch: "Keyword" != "Statement"... failed
-    test_compound.hpp:19: Check token [2]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [4]: token mismatch: "Other Separators" != "Operator"... failed
-    test_compound.hpp:19: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [7]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [8]: token mismatch: "Keyword" != "Function"... failed
-    test_compound.hpp:19: Check token [9]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [11]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [12]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [13]: token mismatch: "Keyword" != "Function"... failed
-    test_compound.hpp:19: Check token [14]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [16]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [17]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [18]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:19: Check token [18]: lexeme mismatch: "}" != ";"... failed
-    test_compound.hpp:19: Check procedure: syntax error at the end of the input: error, expecting < Statement >... failed
+    test_compound.hpp:20: Check token [0]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [1]: token mismatch: "Keyword" != "Statement"... failed
+    test_compound.hpp:20: Check token [2]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [4]: token mismatch: "Other Separators" != "Operator"... failed
+    test_compound.hpp:20: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [7]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [8]: token mismatch: "Keyword" != "Function"... failed
+    test_compound.hpp:20: Check token [9]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [11]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [12]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [13]: token mismatch: "Keyword" != "Function"... failed
+    test_compound.hpp:20: Check token [14]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [16]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [17]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [18]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:20: Check token [18]: lexeme mismatch: "}" != ";"... failed
+    test_compound.hpp:20: Check procedure: syntax error near token [4] ({"Other Separators", "!="}): error, expecting <Condition>... failed
   Case "{if(a<b){a=a+1;return true;}":
-    test_compound.hpp:22: Check tokens.size mismatch: 19 != 18... failed
-    test_compound.hpp:22: Check token [0]: token mismatch: "Separator" != "Statemment"... failed
-    test_compound.hpp:22: Check token [0]: lexeme mismatch: "{" != "if"... failed
-    test_compound.hpp:22: Check token [1]: token mismatch: "Keyword" != "Seperator"... failed
-    test_compound.hpp:22: Check token [1]: lexeme mismatch: "if" != "("... failed
-    test_compound.hpp:22: Check token [2]: token mismatch: "Separator" != "Identifier"... failed
-    test_compound.hpp:22: Check token [2]: lexeme mismatch: "(" != "a"... failed
-    test_compound.hpp:22: Check token [3]: token mismatch: "Identifier" != "Operator"... failed
-    test_compound.hpp:22: Check token [3]: lexeme mismatch: "a" != "<"... failed
-    test_compound.hpp:22: Check token [4]: token mismatch: "Operator" != "Identifier"... failed
-    test_compound.hpp:22: Check token [4]: lexeme mismatch: "<" != "b"... failed
-    test_compound.hpp:22: Check token [5]: token mismatch: "Identifier" != "Seperator"... failed
-    test_compound.hpp:22: Check token [5]: lexeme mismatch: "b" != ")"... failed
-    test_compound.hpp:22: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:22: Check token [6]: lexeme mismatch: ")" != "{"... failed
-    test_compound.hpp:22: Check token [7]: token mismatch: "Separator" != "Identifier"... failed
-    test_compound.hpp:22: Check token [7]: lexeme mismatch: "{" != "a"... failed
-    test_compound.hpp:22: Check token [8]: token mismatch: "Identifier" != "Operator"... failed
-    test_compound.hpp:22: Check token [8]: lexeme mismatch: "a" != "="... failed
-    test_compound.hpp:22: Check token [9]: token mismatch: "Operator" != "Identifier"... failed
-    test_compound.hpp:22: Check token [9]: lexeme mismatch: "=" != "a"... failed
-    test_compound.hpp:22: Check token [10]: token mismatch: "Identifier" != "Operator"... failed
-    test_compound.hpp:22: Check token [10]: lexeme mismatch: "a" != "+"... failed
-    test_compound.hpp:22: Check token [11]: token mismatch: "Operator" != "Integer"... failed
-    test_compound.hpp:22: Check token [11]: lexeme mismatch: "+" != "1"... failed
-    test_compound.hpp:22: Check token [12]: token mismatch: "Integer" != "Seperator"... failed
-    test_compound.hpp:22: Check token [12]: lexeme mismatch: "1" != ";"... failed
-    test_compound.hpp:22: Check token [13]: token mismatch: "Separator" != "Keyword"... failed
-    test_compound.hpp:22: Check token [13]: lexeme mismatch: ";" != "return"... failed
-    test_compound.hpp:22: Check token [14]: token mismatch: "Keyword" != "Seperator"... failed
-    test_compound.hpp:22: Check token [14]: lexeme mismatch: "return" != " "... failed
-    test_compound.hpp:22: Check token [15]: token mismatch: "Other Separators" != "Bool"... failed
-    test_compound.hpp:22: Check token [15]: lexeme mismatch: " " != "true"... failed
-    test_compound.hpp:22: Check token [16]: token mismatch: "Keyword" != "Seperator"... failed
-    test_compound.hpp:22: Check token [16]: lexeme mismatch: "true" != ";"... failed
-    test_compound.hpp:22: Check token [17]: token mismatch: "Separator" != "Seperator"... failed
-    test_compound.hpp:22: Check token [17]: lexeme mismatch: ";" != "}"... failed
-    test_compound.hpp:22: Check erroneous extra token [18]: {"Separator", "}"}... failed
-    test_compound.hpp:22: Check procedure: syntax error at the end of the input: error, expecting < Statement > ... failed
+    test_compound.hpp:23: Check tokens.size mismatch: 19 != 18... failed
+    test_compound.hpp:23: Check token [0]: token mismatch: "Separator" != "Statemment"... failed
+    test_compound.hpp:23: Check token [0]: lexeme mismatch: "{" != "if"... failed
+    test_compound.hpp:23: Check token [1]: token mismatch: "Keyword" != "Seperator"... failed
+    test_compound.hpp:23: Check token [1]: lexeme mismatch: "if" != "("... failed
+    test_compound.hpp:23: Check token [2]: token mismatch: "Separator" != "Identifier"... failed
+    test_compound.hpp:23: Check token [2]: lexeme mismatch: "(" != "a"... failed
+    test_compound.hpp:23: Check token [3]: token mismatch: "Identifier" != "Operator"... failed
+    test_compound.hpp:23: Check token [3]: lexeme mismatch: "a" != "<"... failed
+    test_compound.hpp:23: Check token [4]: token mismatch: "Operator" != "Identifier"... failed
+    test_compound.hpp:23: Check token [4]: lexeme mismatch: "<" != "b"... failed
+    test_compound.hpp:23: Check token [5]: token mismatch: "Identifier" != "Seperator"... failed
+    test_compound.hpp:23: Check token [5]: lexeme mismatch: "b" != ")"... failed
+    test_compound.hpp:23: Check token [6]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:23: Check token [6]: lexeme mismatch: ")" != "{"... failed
+    test_compound.hpp:23: Check token [7]: token mismatch: "Separator" != "Identifier"... failed
+    test_compound.hpp:23: Check token [7]: lexeme mismatch: "{" != "a"... failed
+    test_compound.hpp:23: Check token [8]: token mismatch: "Identifier" != "Operator"... failed
+    test_compound.hpp:23: Check token [8]: lexeme mismatch: "a" != "="... failed
+    test_compound.hpp:23: Check token [9]: token mismatch: "Operator" != "Identifier"... failed
+    test_compound.hpp:23: Check token [9]: lexeme mismatch: "=" != "a"... failed
+    test_compound.hpp:23: Check token [10]: token mismatch: "Identifier" != "Operator"... failed
+    test_compound.hpp:23: Check token [10]: lexeme mismatch: "a" != "+"... failed
+    test_compound.hpp:23: Check token [11]: token mismatch: "Operator" != "Integer"... failed
+    test_compound.hpp:23: Check token [11]: lexeme mismatch: "+" != "1"... failed
+    test_compound.hpp:23: Check token [12]: token mismatch: "Integer" != "Seperator"... failed
+    test_compound.hpp:23: Check token [12]: lexeme mismatch: "1" != ";"... failed
+    test_compound.hpp:23: Check token [13]: token mismatch: "Separator" != "Keyword"... failed
+    test_compound.hpp:23: Check token [13]: lexeme mismatch: ";" != "return"... failed
+    test_compound.hpp:23: Check token [14]: token mismatch: "Keyword" != "Seperator"... failed
+    test_compound.hpp:23: Check token [14]: lexeme mismatch: "return" != " "... failed
+    test_compound.hpp:23: Check token [15]: token mismatch: "Other Separators" != "Bool"... failed
+    test_compound.hpp:23: Check token [15]: lexeme mismatch: " " != "true"... failed
+    test_compound.hpp:23: Check token [16]: token mismatch: "Keyword" != "Seperator"... failed
+    test_compound.hpp:23: Check token [16]: lexeme mismatch: "true" != ";"... failed
+    test_compound.hpp:23: Check token [17]: token mismatch: "Separator" != "Seperator"... failed
+    test_compound.hpp:23: Check token [17]: lexeme mismatch: ";" != "}"... failed
+    test_compound.hpp:23: Check erroneous extra token [18]: {"Separator", "}"}... failed
+    test_compound.hpp:23: Check procedure: syntax error near token [4] ({"Operator", "<"}): error, expecting <Condition> ... failed
 FAILED: 15 of 17 unit tests have failed.

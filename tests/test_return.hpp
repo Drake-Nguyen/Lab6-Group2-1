@@ -10,14 +10,14 @@
 
 static void test_return(void) {
   // Test empty return statement
-  test(procedure_Return, "return;", {{"Keyword", "return"}, {"Separator", ";"}},
+  test(procedureReturn, "return;", {{"Keyword", "return"}, {"Separator", ";"}},
        CURRENT_LOCATION);
-  test(procedure_Return, "return ;",
+  test(procedureReturn, "return ;",
        {{"Keyword", "return"}, {"Other Separators", " "}, {"Separator", ";"}},
        CURRENT_LOCATION);
-  test(procedure_Return, "return", {{"Keyword", "return"}}, CURRENT_LOCATION);
+  test(procedureReturn, "return", {{"Keyword", "return"}}, CURRENT_LOCATION);
 
-  test(procedure_Return, "return 2*x+3;",
+  test(procedureReturn, "return 2*x+3;",
        {{"Keyword", "return"},
         {"Other Separators", " "},
         {"Integer", "2"},
@@ -28,14 +28,14 @@ static void test_return(void) {
         {"Separator", ";"}},
        CURRENT_LOCATION);
 
-  test(procedure_Return, "return true;",
+  test(procedureReturn, "return true;",
        {{"Keyword", "return"},
         {"Other Separators", " "},
         {"Keyword", "true"},
         {"Separator", ";"}},
        CURRENT_LOCATION);
 
-  test(procedure_Return, "return x > 0;",
+  test(procedureReturn, "return x > 0;",
        {{"Keyword", "return"},
         {"Other Separators", " "},
         {"Identifier", "x"},
@@ -46,7 +46,7 @@ static void test_return(void) {
         {"Separator", ";"}},
        CURRENT_LOCATION);
 
-  test(procedure_Return, "return x+1, y*2, z;",
+  test(procedureReturn, "return x+1, y*2, z;",
        {{"Keyword", "return"},
         {"Other Separators", " "},
         {"Identifier", "x"},
